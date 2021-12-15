@@ -1,0 +1,113 @@
+@font-face {
+  font-family: "NanumSquareR";
+  src: url("../font/NanumSquareR.ttf");
+}
+@font-face {
+  font-family: "NanumSquareB";
+  src: url("../font/NanumSquareB.ttf");
+}
+@font-face {
+  font-family: "NanumSquareEB";
+  src: url("../font/NanumSquareEB.ttf");
+}
+@font-face {
+  font-family: "SCDream3";
+  src: url("../font/SCDream3.otf");
+}
+@font-face {
+  font-family: "SCDream4";
+  src: url("../font/SCDream4.otf");
+}
+@font-face {
+  font-family: "NEXONGothicR";
+  src: url("../font/NEXONLv1GothicRegular.ttf");
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+a:focus {
+  opacity: 0.8;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "NanumSquareR";
+  line-height: 1;
+}
+li {
+  list-style: none;
+}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: bottom;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+ol,
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+img {
+  border: 0;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  outline: none;
+  background: none;
+  border: none;
+  appearance: none;
+
+  -webkit-appearance: none;
+
+  -webkit-border-radius: 0;
+}
+body {
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+input {
+  /*ios대응*/
+
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+select {
+  /*ios대응*/
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+select::-ms-expand {
+  display: none; /* 화살표 없애기 for IE10, 11*/
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-transition: background-color #fff0 ease-out;
+  -webkit-box-shadow: 0 0 0px 1000px #fff0 inset !important;
+  -webkit-text-fill-color: #000 !important;
+}
+input[type="password"] {
+  font-family: "" !important;
+}
