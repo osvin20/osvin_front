@@ -6,22 +6,15 @@ export default function Menu() {
 
     const numbers = [1, 2, 3, 4, 5];
     const names = ["이름","나이","학번","또또","내용"];
-    
+
     return (
         <Layout>
             <div className={'content_box'}>
                 테스트페이지
             </div>
-            <h2>글쓰기</h2>
-            {numbers.map((itme,key) =>
-                <LabelInput 
-                    label_name={names[key]} 
-                    label_id={"title"+itme}
-                />
-            )}
-    
+
             <input type={"button"} value={"전송"}/>
         </Layout>
     )
-  
+
 }
