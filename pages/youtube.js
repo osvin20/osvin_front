@@ -23,7 +23,7 @@ export default function Youtube(){
                     </div>
                     <div>
                       <p className={'ytb_tit'}>
-                      역대급 가성비 빈티지샵 로드무역 옷무덤에서 보물찾기 🧦
+                      역대급 가성비 빈티지샵 로드무역 옷무덤에서 보물찾기
                       </p>
                       <span className={'ytd_date'}>2021-08-20</span>
                     </div>
@@ -38,7 +38,7 @@ export default function Youtube(){
                     </div>
                     <div>
                       <p className={'ytb_tit'}>
-                      역대급 가성비 빈티지샵 로드무역 옷무덤에서 보물찾기 🧦
+                      역대급 가성비 빈티지샵 로드무역 옷무덤에서 보물찾기
                       </p>
                       <span className={'ytd_date'}>2021-08-20</span>
                     </div>
@@ -53,7 +53,7 @@ export default function Youtube(){
                     </div>
                     <div>
                       <p className={'ytb_tit'}>
-                      빈티지샵 추천(서울대입구 빈티지샵 어썸9) '진정성 있게 운영하시는 20대 사업가'
+                      빈티지샵 추천(서울대입구 빈티지샵 어썸9) 진정성 있게 운영하시는 20대 사업가
                       </p>
                       <span className={'ytd_date'}>2021-08-20</span>
                     </div>
@@ -68,7 +68,7 @@ export default function Youtube(){
                     </div>
                     <div>
                       <p className={'ytb_tit'}>
-                      나만 알고싶은 빈티지샵 🤎빈토리🤎에서 쇼핑하고 왔어요💸+ 하울영상도!
+                      나만 알고싶은 빈티지샵 빈토리 에서 쇼핑하고 왔어요 + 하울영상도!
                       </p>
                       <span className={'ytd_date'}>2021-08-20</span>
                     </div>
@@ -83,7 +83,7 @@ export default function Youtube(){
                     </div>
                     <div>
                       <p className={'ytb_tit'}>
-                      빈티지샵 추천(서울대입구 빈티지샵 어썸9) '진정성 있게 운영하시는 20대 사업가'
+                      빈티지샵 추천(서울대입구 빈티지샵 어썸9) 진정성 있게 운영하시는 20대 사업가
                       </p>
                       <span className={'ytd_date'}>2021-08-20</span>
                     </div>
