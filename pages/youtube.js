@@ -13,7 +13,7 @@ export default function Youtube(){
                 </div>오스빈
               </div>
             </div>
-            <div className={'upload_txt extra_bold'}>업로드한 "동영상"</div>
+            <div className={'upload_txt extra_bold'}>업로드한 &quot;동영상&quot;</div>
             <ul className={'ytb_list'}>
               <li>
                 <Link href='/'>
