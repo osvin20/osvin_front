@@ -5,7 +5,9 @@ import Link from 'next/link'
 export default function Point(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>POINT</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>POINT</h1>
+            </div>
             <div className={'point_div'}>
                 <div className={'pointbox'}>
                     <div>

@@ -4,7 +4,9 @@ import Link from 'next/link'
 export default function Youtube(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>YOUTUBE</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>YOUTUBE</h1>
+            </div>
             <div className={'borderfix'}></div>
             <div className={'youtube_prof'}>
               <div>

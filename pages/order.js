@@ -25,7 +25,9 @@ export default function Order(){
   const classes = useStyles();
   return (
     <NoneTab>
-      <h1 className={'page_tit'}>ORDER</h1>
+      <div className={'pagetit_div'}>
+        <h1 className={'page_tit'}>ORDER</h1>
+      </div>
       <div className={'borderfix'}></div>
       <div className={'notice_list order_div'}>
         <div className={'border_top'}></div>

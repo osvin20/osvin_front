@@ -12,7 +12,9 @@ export default function OrderDetail() {
 
   return (
     <TitleLayout>
-      <h1 className={"page_tit"}>ORDER DETAIL</h1>
+      <div className={'pagetit_div'}>
+        <h1 className={"page_tit"}>ORDER DETAIL</h1>
+      </div>
       <div className={'borderfix'}></div>
       <div className={"od_div"}>
         <Link href="/order_detail">

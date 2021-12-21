@@ -15,7 +15,9 @@ export default function Search(){
     };
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>SEARCH</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>SEARCH</h1>
+            </div>
             <div className={'borderfix'}></div>
             <div className={'search_div'}>
               <div className={'search_filter'}>

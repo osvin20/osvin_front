@@ -5,7 +5,9 @@ import Link from 'next/link'
 export default function OfflineShop(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>OFFLINESHOP</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>OFFLINESHOP</h1>
+            </div>
             <div className={'offshop_map'}>
                 <img src="/img/map.jpg"/>
             </div>
@@ -28,32 +30,41 @@ export default function OfflineShop(){
                     검색 결과가 없습니다.
                 </li> */}
                 <li>
-                    <div className={'offshop_info'}>
-                        <div>
-                            <p className={'offshop_name'}>
-                                STAYFREE
-                            </p>
-                            <p className={'offshop_adrs'}>부산광역시 금정구 금정로225 00빌딩 6층</p>
+                    <Link href='/store'>
+                      <a>
+                        <div className={'offshop_info'}>
+                            <div>
+                                <p className={'offshop_name'}>
+                                    STAYFREE
+                                </p>
+                                <p className={'offshop_adrs'}>부산광역시 금정구 금정로225 00빌딩 6층</p>
+                            </div>
+                            <p className={'offshop_phone'}>070-0000-0000</p>
                         </div>
-                        <p className={'offshop_phone'}>070-0000-0000</p>
-                    </div>
-                    <div className={'offshop_thumb'}>
-                        <img src="/img/story01.jpg"/>
-                    </div>
+                        <div className={'offshop_thumb'}>
+                            <img src="/img/story01.jpg"/>
+                        </div>
+                      </a>
+                    </Link>
                 </li>
                 <li>
-                    <div className={'offshop_info'}>
-                        <div>
-                            <p className={'offshop_name'}>
-                                STAYFREE
-                            </p>
-                            <p className={'offshop_adrs'}>부산광역시 금정구 금정로225 00빌딩 6층</p>
-                        </div>
-                        <p className={'offshop_phone'}>070-0000-0000</p>
-                    </div>
-                    <div className={'offshop_thumb'}>
-                        <img src="/img/story02.jpg"/>
-                    </div>
+                  <Link href='/store'>
+                    <a>
+                      <div className={'offshop_info'}>
+                          <div>
+                              <p className={'offshop_name'}>
+                                  STAYFREE
+                              </p>
+                              <p className={'offshop_adrs'}>부산광역시 금정구 금정로225 00빌딩 6층</p>
+                          </div>
+                          <p className={'offshop_phone'}>070-0000-0000</p>
+                      </div>
+                      <div className={'offshop_thumb'}>
+                          <img src="/img/story02.jpg"/>
+                      </div>
+                    </a>
+                  </Link>
+
                 </li>
             </ul>
         </TitleLayout>

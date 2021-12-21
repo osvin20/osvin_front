@@ -4,7 +4,9 @@ import Link from 'next/link'
 export default function Category(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>CATEGORY</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>CATEGORY</h1>
+            </div>
             <ul className={'cate_list'}>
                 <li>
                     <Link href="/itemlist">

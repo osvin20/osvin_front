@@ -4,9 +4,11 @@ import Link from 'next/link'
 export default function SearchResult(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>SEARCH</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>SEARCH</h1>
+            </div>
             <div className={'borderfix'}></div>
-            <div className={'search_div'}>
+            <div className={'search_div search_result_input'}>
                 <input placeholder="빈티지목걸이" />
                 <img src="/img/search.png"/>
             </div>

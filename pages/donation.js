@@ -4,7 +4,9 @@ import Link from 'next/link'
 export default function Donation(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>DONATION</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>DONATION</h1>
+            </div>
             <div className={'borderfix'}></div>
         </TitleLayout>
     )

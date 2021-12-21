@@ -23,7 +23,9 @@ export default function FollowList(){
     };
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>FOLLOW</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>FOLLOW</h1>
+            </div>
             <div className={'feedcate searchcate'}>
                 <AppBar position="static" centerTitle="true">
                 <Tabs value={pageNumber} onChange={handleChange} aria-label="simple tabs example">

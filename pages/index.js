@@ -120,7 +120,7 @@ export default function Main() {
         <h3 className={"main_tit"}>YOUTUBE
         <Link href="/youtube">
           <a>
-            채널 전체보기
+            채널 바로가기
             <img src="/img/arrow_02.png" />
           </a>
         </Link>
@@ -147,7 +147,7 @@ export default function Main() {
           오스빈 SPECIAL EVENT
           <Link href="/notice_event?tabnumber=1">
             <a>
-              기획전 모두보기
+              이벤트 모두보기
               <img src="/img/arrow_02.png" />
             </a>
           </Link>

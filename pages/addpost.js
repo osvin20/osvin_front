@@ -5,7 +5,9 @@ import Link from 'next/link'
 export default function Comment(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>ITEM LIST</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>ITEM LIST</h1>
+            </div>
             <div className={'post_btn'}>
                 <Link href='/post_write'>
                     <a>
@@ -43,7 +45,7 @@ export default function Comment(){
                             내핑 버튼 포인트 와이드 슬렉스
                         </p>
                     </div>
-                </li>    
+                </li>
                 <li>
                     <div className={'post_check'}>
                         <img src="/img/item05.jpg" />
@@ -74,7 +76,7 @@ export default function Comment(){
                         </p>
                     </div>
                 </li>
-                
+
             </ul>
         </TitleLayout>
     )

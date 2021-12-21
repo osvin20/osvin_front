@@ -5,7 +5,9 @@ import React from "react";
 export default function OrderDetail() {
   return (
     <TitleLayout>
-      <h1 className={"page_tit"}>POST</h1>
+      <div className={'pagetit_div'}>
+        <h1 className={"page_tit"}>POST</h1>
+      </div>
       <div className={"qnawrite"}>
         <div className={"qnaitem"}>
           <div className={"qnaitem_img"}>

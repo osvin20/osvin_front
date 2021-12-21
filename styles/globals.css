@@ -111,3 +111,7 @@ input:-webkit-autofill:active {
 input[type="password"] {
   font-family: "" !important;
 }
+body, html {
+  max-width: 600px;
+  margin: 0 auto;
+}

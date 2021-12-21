@@ -21,7 +21,9 @@ export default function QnaList(){
     const classes = useStyles();
     return (
         <TitleLayout>
-          <h1 className={"page_tit"}>Q&A</h1>
+          <div className={'pagetit_div'}>
+            <h1 className={"page_tit"}>Q&A</h1>
+          </div>
           <div className={'borderfix'}></div>
           <ul className={'qnalist'}>
             <li>

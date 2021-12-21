@@ -27,7 +27,9 @@ export default function AdPakage(){
     }
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>ADVERTISEMENT</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>ADVERTISEMENT</h1>
+            </div>
             <div className={'adpakage_div'}>
               <div className={'adpakage'}>
                 <ul className={'adpakagelist'}>

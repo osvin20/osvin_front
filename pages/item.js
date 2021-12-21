@@ -65,27 +65,41 @@ export default function Item(){
             <div className={'item_tag'}>
                 <p>tag</p>
                 <div className={'hothash'}>
-                    <div>
-                        # <span>빈티지목걸이</span>
-                    </div>
-                    <div>
-                        # <span>다이어리</span>
-                    </div>
-                    <div>
-                        # <span>만년필</span>
-                    </div>
-                    <div>
-                        # <span>화장대</span>
-                    </div>
-                    <div>
-                        # <span>엔틱수납장</span>
-                    </div>
-                    <div>
-                        # <span>클래식</span>
-                    </div>
-                    <div>
-                        # <span>빈티지드레스</span>
-                    </div>
+                <Link href='/search_result'>
+                  <a>
+                      # <span>빈티지목걸이</span>
+                  </a>
+                </Link>
+                <Link href='/search_result'>
+                  <a>
+                      # <span>다이어리</span>
+                  </a>
+                </Link>
+                <Link href='/search_result'>
+                  <a>
+                      # <span>만년필</span>
+                  </a>
+                </Link>
+                <Link href='/search_result'>
+                  <a>
+                      # <span>화장대</span>
+                  </a>
+                </Link>
+                <Link href='/search_result'>
+                  <a>
+                      # <span>엔틱수납장</span>
+                  </a>
+                </Link>
+                <Link href='/search_result'>
+                  <a>
+                      # <span>클래식</span>
+                  </a>
+                </Link>
+                <Link href='/search_result'>
+                  <a>
+                      # <span>빈티지드레스</span>
+                  </a>
+                </Link>
                 </div>
             </div>
             <div className={'item_buy'}>

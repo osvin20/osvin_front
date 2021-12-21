@@ -27,7 +27,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 3;
 }
 .main_head_top {
   background-color: #ffffffe8;
@@ -58,9 +58,6 @@
 .content_box2 {
   height: 500px;
   background-color: #000;
-}
-.sub_head {
-  background: #fff;
 }
 .cart_ico {
   position: absolute;
@@ -680,7 +677,10 @@
 .feedcate header {
   position: fixed;
   top: 55px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px
 }
 .mt43 {
   margin-top: 43px;
@@ -881,22 +881,31 @@
 }
 .back_ico {
   width: 25px;
+  cursor: pointer;
 }
 .searchcate header {
   position: inherit;
+  transform: none
 }
 .search_div {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 15px;
-  padding: 20px 10px 5px 5px;
-  margin-bottom: 20px;
+  padding: 20px 5px 0 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #000;
+}
+.search_result_input {
+  padding-bottom: 5px
+}
+.search_result_input input {
+  width: 100%;
+  padding-right: 10px
 }
 .search_input {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #000;
   width: 100%;
   justify-content: space-between;
   height: 29px;
@@ -911,7 +920,7 @@
   font-size: 12px;
 }
 .search_div img {
-  width: 20px;
+  width: 18px;
 }
 .search_div input:placeholder {
   color: #ccc;
@@ -919,7 +928,7 @@
 .hothash {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 15px 10px 15px;
+  padding: 0 15px;
 }
 .hothash > a {
   background: #fbf0e7;
@@ -973,12 +982,11 @@
 }
 .search_filter {
   position: relative;
-  border: 1px solid #000;
   padding: 7px 7px;
   display: flex;
   align-items: center;
-  padding-top: 8px;
-  margin-right: 13px;
+  margin-right: 10px;
+  padding-top: 10px;
 }
 .search_filter select {
   min-width: 60px;
@@ -988,8 +996,8 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  right: 7px;
-  width: 10px;
+  right: 4px;
+  width: 8px;
 }
 
 /* 카테고리 */
@@ -997,10 +1005,20 @@
 .page_tit {
   font-size: 18px;
   font-weight: 400;
+}
+.pagetit_div {
   position: fixed;
-  top: 20px;
-  left: 60px;
+  top: 0;
+  padding-left: 60px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
+  width: 100%;
+  max-width: 600px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  background: #fff
 }
 .cate_list {
   display: flex;
@@ -1188,6 +1206,7 @@
   z-index: 1;
   width: 100%;
   padding: 5px;
+  max-width: 600px
 }
 .item_heart {
   width: 50px;
@@ -1939,6 +1958,7 @@
   padding: 15px;
   font-size: 13px;
   padding-bottom: 20px;
+  padding-top: 5px;
 }
 .pointbox {
   background: #f8f4f1;
@@ -2712,6 +2732,7 @@
 }
 .storecate header {
   position: inherit;
+  transform: none
 }
 .shop_info_div {
   display: flex;
@@ -3061,10 +3082,12 @@
 .offshoplist li {
   border-bottom: 1px solid #ddd;
   padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.offshoplist li a {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 .offshop_name {
   margin-bottom: 8px;
@@ -3117,6 +3140,7 @@
   height: 1px;
   z-index: 1;
   background: #ddd;
+  max-width: 600px
 }
 .faq_list {
   margin-top: 0;
@@ -3483,7 +3507,6 @@
   display: flex;
   margin-top: 15px;
   padding-bottom: 15px;
-  justify-content: space-between;
 }
 .normalpay_sel input[type="radio"] {
   display: none;
@@ -3500,6 +3523,7 @@
   line-height: 1.3;
   background: url("../img/card_bg_grey.png") center center no-repeat;
   background-size: cover;
+  margin-right: 10px
 }
 .normalpay_sel label:last-child {
   margin-right: 0
@@ -5069,6 +5093,11 @@
 
 /* 반응형 */
 
+@media (min-width: 600px) {
+  .storecate .MuiTab-root {
+    min-width: 125px
+  }
+}
 @media (max-width: 370px) {
   .join_form {
     width: 85%;

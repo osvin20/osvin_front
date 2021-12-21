@@ -4,7 +4,9 @@ import Link from 'next/link'
 export default function Cart(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>CART</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>CART</h1>
+            </div>
             <div className={'empty_cart'}>
                 <img src="img/cart.png"/>
                 <p>장바구니가 비어있습니다.</p>
