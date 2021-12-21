@@ -21,6 +21,9 @@ export default function Post(){
       };
     return (
         <TitleLayout>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>POST</h1>
+            </div>
             <div className={'borderfix'}></div>
             <div className={'post_content'}>
                 <div className={'rv_prof'}>

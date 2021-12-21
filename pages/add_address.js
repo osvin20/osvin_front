@@ -4,7 +4,9 @@ import Link from 'next/link'
 export default function Address(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>ADDRESS</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>ADDRESS</h1>
+            </div>
             <Link href="/address_form">
                 <a className={'add_address'}>
                     <div className={'plus_ico'}>

@@ -5,7 +5,9 @@ import Link from 'next/link'
 export default function Coupon(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>COUPON</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>COUPON</h1>
+            </div>
             <div className={'couponpage'}>
                 <p className={'coupon_count'}>
                     보유쿠폰

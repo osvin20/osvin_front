@@ -15,7 +15,7 @@ export default function NoticeEvent(){
     const [pageNumber, setPageNumber] = React.useState(0);
     useEffect(() =>{
         if(typeof tabnumber != "undefined"){
-            setPageNumber(Number(tabnumber));    
+            setPageNumber(Number(tabnumber));
         }
     },[tabnumber]);
     const handleChange = (event, newValue) => {
@@ -23,7 +23,9 @@ export default function NoticeEvent(){
     };
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>NOTICE & EVENT</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>NOTICE & EVENT</h1>
+            </div>
             <div className={'feedcate zzim_cate'}>
                 <AppBar position="static" centerTitle="true">
                 <Tabs value={pageNumber} onChange={handleChange} aria-label="simple tabs example">

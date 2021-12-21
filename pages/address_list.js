@@ -5,7 +5,9 @@ import Link from 'next/link'
 export default function AddressForm(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>ADDRESS</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>ADDRESS</h1>
+            </div>
             <div>
                 <Link href="/add_address">
                     <a className={'add_adrs'}>
@@ -116,7 +118,7 @@ export default function AddressForm(){
                     </div>
                 </div>
                 </li>
-            </ul>            
+            </ul>
         </TitleLayout>
     )
 }

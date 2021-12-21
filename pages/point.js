@@ -1,4 +1,3 @@
-
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
 

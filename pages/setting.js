@@ -7,8 +7,9 @@ export default function Setting(){
 
     return (
         <TitleLayout>
-            
-            <h1 className={'page_tit'}>SETTING</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>SETTING</h1>
+            </div>
             <div className={'setting_div'}>
                 <div className={'setting'}>
                     <p>오스빈 소식</p>
@@ -16,9 +17,9 @@ export default function Setting(){
                         <li>
                             <p>앱 알림</p>
                             <div>
-                                <CusSwitch 
-                                    checked={false} 
-                                    checkedIcon={false} 
+                                <CusSwitch
+                                    checked={false}
+                                    checkedIcon={false}
                                     uncheckedIcon={false}
                                     height={24}
                                     width={40}
@@ -30,9 +31,9 @@ export default function Setting(){
                         <li>
                             <p>SMS</p>
                             <div>
-                                <CusSwitch 
-                                    checked={false} 
-                                    checkedIcon={false} 
+                                <CusSwitch
+                                    checked={false}
+                                    checkedIcon={false}
                                     uncheckedIcon={false}
                                     height={24}
                                     width={40}
@@ -44,9 +45,9 @@ export default function Setting(){
                         <li>
                             <p>이메일</p>
                             <div>
-                                <CusSwitch 
-                                    checked={false} 
-                                    checkedIcon={false} 
+                                <CusSwitch
+                                    checked={false}
+                                    checkedIcon={false}
                                     uncheckedIcon={false}
                                     height={24}
                                     width={40}
@@ -63,9 +64,9 @@ export default function Setting(){
                         <li>
                             <p>팔로잉 피드 업로드</p>
                             <div>
-                                <CusSwitch 
-                                    checked={false} 
-                                    checkedIcon={false} 
+                                <CusSwitch
+                                    checked={false}
+                                    checkedIcon={false}
                                     uncheckedIcon={false}
                                     height={24}
                                     width={40}
@@ -77,9 +78,9 @@ export default function Setting(){
                         <li>
                             <p>피드 댓글 및 좋아요</p>
                             <div>
-                                <CusSwitch 
-                                    checked={false} 
-                                    checkedIcon={false} 
+                                <CusSwitch
+                                    checked={false}
+                                    checkedIcon={false}
                                     uncheckedIcon={false}
                                     height={24}
                                     width={40}
@@ -91,9 +92,9 @@ export default function Setting(){
                         <li>
                             <p>찜 상품 환불 알림</p>
                             <div>
-                                <CusSwitch 
-                                    checked={false} 
-                                    checkedIcon={false} 
+                                <CusSwitch
+                                    checked={false}
+                                    checkedIcon={false}
                                     uncheckedIcon={false}
                                     height={24}
                                     width={40}
@@ -110,9 +111,9 @@ export default function Setting(){
                         <li>
                             <p>팔로잉 스토어 스토리</p>
                             <div>
-                                <CusSwitch 
-                                    checked={false} 
-                                    checkedIcon={false} 
+                                <CusSwitch
+                                    checked={false}
+                                    checkedIcon={false}
                                     uncheckedIcon={false}
                                     height={24}
                                     width={40}
@@ -124,9 +125,9 @@ export default function Setting(){
                         <li>
                             <p>팔로잉 스토어 판매상품</p>
                             <div>
-                                <CusSwitch 
-                                    checked={false} 
-                                    checkedIcon={false} 
+                                <CusSwitch
+                                    checked={false}
+                                    checkedIcon={false}
                                     uncheckedIcon={false}
                                     height={24}
                                     width={40}
@@ -138,7 +139,7 @@ export default function Setting(){
                     </ul>
                 </div>
             </div>
-            
+
         </TitleLayout>
     )
 }

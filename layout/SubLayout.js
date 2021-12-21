@@ -29,12 +29,12 @@ export default function SubLayout({children,...props}){
                     </Link>
                 </div>
             </div>
-            
+
             <div className={'mt55'}></div>
-            <div className={'border'}></div>
-            
+            <div className={'borderfix'}></div>
+
             {children}
-            
+
             <div className={'mt55 mb60'}></div>
 
             <div>

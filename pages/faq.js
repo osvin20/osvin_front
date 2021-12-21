@@ -22,7 +22,9 @@ export default function Faq(){
     const classes = useStyles();
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>FAQ</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>FAQ</h1>
+            </div>
             <div className={'border borderfix'}></div>
             <div className={'notice_list faq_list'}>
                 <div>
@@ -106,8 +108,8 @@ export default function Faq(){
                             <span className={'tit_q tit_a'}>A</span>
                             <br/> [포인트]<br/>- 취소/환불 완료 즉시 환급됩니다.<br/>
                             - 단, 부분 취소/환불의 경우 실 결제하신 상품가 전액 환급되며, 포인트는 환급되지 않습니다.<br/>
-                            [쿠폰]<br/> 
-                            - 취소/환불 완료 즉시 복원됩니다. <br/> 
+                            [쿠폰]<br/>
+                            - 취소/환불 완료 즉시 복원됩니다. <br/>
                             - 유효 기간이 지났을 경우 자동소멸됩니다.
                             </Typography>
                         </AccordionDetails>
@@ -132,7 +134,7 @@ export default function Faq(){
 
                             따라서 각 스토어마다 반품 방법과 배송비가 상이하며 현재는 배송비 차감 시스템이 제공되지 않습니다.
 
-                            번거로우시더라도 구매하신 스토어를 통하여 반품비 문의 후 입금 부탁드립니다.<br/> 
+                            번거로우시더라도 구매하신 스토어를 통하여 반품비 문의 후 입금 부탁드립니다.<br/>
 
                             ※ 반품비 입금이 늦어질 경우 환불처리가 지연될 수 있는 점 참고 바랍니다.
                             </Typography>

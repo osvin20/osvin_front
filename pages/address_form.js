@@ -4,7 +4,9 @@ import Link from 'next/link'
 export default function AddressForm(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>ADDRESS</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>ADDRESS</h1>
+            </div>
             <div className={'address_form'}>
                 <div className={'address_check'}>
                     <input type="checkbox" id="address_basic"/>
@@ -54,7 +56,7 @@ export default function AddressForm(){
                     저장
                 </button>
             </div>
-            
+
         </TitleLayout>
     )
 }

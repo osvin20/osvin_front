@@ -4,7 +4,9 @@ import Link from "next/link";
 export default function OrderDetail() {
   return (
     <TitleLayout>
-      <h1 className={"page_tit"}>MY CARD</h1>
+      <div className={'pagetit_div'}>
+        <h1 className={'page_tit'}>MY CARD</h1>
+      </div>
       <div className={'cardlist'}>
         <Link href="/cardform">
           <a className={'plus_ico'}>

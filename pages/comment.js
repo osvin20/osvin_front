@@ -5,6 +5,10 @@ import Link from 'next/link'
 export default function Comment(){
     return (
         <TitleLayout>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>COMMENT</h1>
+            </div>
+            <div className={'borderfix'}></div>
             <div className={'post_comment comment_page'}>
                 <ul>
                     <li>

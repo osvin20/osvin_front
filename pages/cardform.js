@@ -6,7 +6,9 @@ export let txt1 =
 export default function OrderDetail() {
   return (
     <TitleLayout>
-      <h1 className={"page_tit"}>MY CARD</h1>
+      <div className={'pagetit_div'}>
+        <h1 className={'page_tit'}>MY CARD</h1>
+      </div>
       <div className={"cardform"}>
         <div className={"cardform_txt"}>
           <p>카드를 등록하고 간편하게 결제를 완료하세요!</p>
@@ -51,9 +53,9 @@ export default function OrderDetail() {
           <div>
             <input type="checkbox" id="easypay2" />
             <label htmlFor="easypay2">오스빈 간편결제 이용약관 동의</label>
-            <OsbinModal 
-              title="" 
-              bnt_title="보기" 
+            <OsbinModal
+              title=""
+              bnt_title="보기"
               class_name={"modal_btn"}
             >
               <p>{txt1}</p>
@@ -62,9 +64,9 @@ export default function OrderDetail() {
           <div>
             <input type="checkbox" id="easypay3" />
             <label htmlFor="easypay3">전자금융 거래 이용약관</label>
-            <OsbinModal 
-              title="" 
-              bnt_title="보기" 
+            <OsbinModal
+              title=""
+              bnt_title="보기"
               class_name={"modal_btn"}
             >
               <p>{txt1}</p>
@@ -73,9 +75,9 @@ export default function OrderDetail() {
           <div>
             <input type="checkbox" id="easypay4" />
             <label htmlFor="easypay4">개인정보 수집 및 이용 동의</label>
-            <OsbinModal 
-              title="" 
-              bnt_title="보기" 
+            <OsbinModal
+              title=""
+              bnt_title="보기"
               class_name={"modal_btn"}
             >
               <p>{txt1}</p>
@@ -84,9 +86,9 @@ export default function OrderDetail() {
           <div>
             <input type="checkbox" id="easypay5" />
             <label htmlFor="easypay5">개인정보 제3자 제공 및 위탁 동의</label>
-            <OsbinModal 
-              title="" 
-              bnt_title="보기" 
+            <OsbinModal
+              title=""
+              bnt_title="보기"
               class_name={"modal_btn"}
             >
               <p>{txt1}</p>

@@ -10,7 +10,9 @@ export let phone_num =
 export default function MyInfo(){
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>MY INFO</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>MY INFO</h1>
+            </div>
             <div className={'myinfo'}>
                 <div className={'prof_pic'}>
                     <div className={'prof_change'}>
@@ -87,15 +89,13 @@ export default function MyInfo(){
                     <button className={'info_submit'}>
                         수정완료
                     </button>
-                    <OsbinModal
-                        title=""
-                        bnt_title="탈퇴하기"
-                        class_name={"member_del"}
-                    >
-                        <p className={'phone_modal'}>{member_del}</p>
-                    </OsbinModal>
+                    <Link href='withdrawal'>
+                      <a className={'member_del'}>
+                        탈퇴하기
+                      </a>
+                    </Link>
                 </div>
-                
+
             </div>
         </TitleLayout>
     )

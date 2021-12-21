@@ -14,7 +14,7 @@ export default function NoneTab({children}){
                 <meta name="description" content="오스빈" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <div className={'head sub_head back_hd'}>
+            <div className={'head back_hd'}>
                 <img className={'back_ico'} src="/img/arrow_05.png" onClick={() => router.back()} />
                 <Link href="/cart">
                     <a className={'cart_ico'}>
@@ -23,11 +23,11 @@ export default function NoneTab({children}){
                     </a>
                 </Link>
             </div>
-            
+
             <div className={'mt55'}></div>
-            
+
             {children}
-            
+
             <div className={'mt55'}></div>
 
         </div>
