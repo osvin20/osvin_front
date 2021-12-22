@@ -3829,7 +3829,8 @@
   box-shadow: 1px 1px 5px #ccc;
   height: calc(100vh - 200px);
   overflow-y: scroll;
-  padding-bottom: 80px
+  padding-bottom: 80px;
+  max-width: 600px;
 }
 .dona_tit {
   font-size: 18px;
@@ -5318,6 +5319,7 @@
 .MuiDialog-container .MuiDialog-paperWidthSm {
   width: 85%;
   position: relative;
+  max-width: 500px;
 }
 .MuiPaper-root .MuiDialogContent-root {
   flex: none;
@@ -5525,6 +5527,7 @@
   align-items: center;
   justify-content: center;
   z-index:1999;
+  left: 0;
 }
 .alert_box_back{
   position:fixed;
@@ -5532,9 +5535,9 @@
   width:100%;
   height:100vh;
   z-index:900;
+  background: rgba(0, 0, 0, 0.5)
 }
 .alert_msg_box{
-  box-shadow: none;
   text-align: center;
   padding:20px;
   padding-top: 30px;
@@ -5543,10 +5546,10 @@
   position:relative;
   z-index:999;
   width:85%;
-  max-width: 600px;
+  max-width: 500px;
   margin: 32px;
   min-height:80px;
-  box-shadow: none;
+  box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%), 0px 9px 46px 8px rgb(0 0 0 / 12%)
 }
 .alert_msg_box p{
   font-size:14px;

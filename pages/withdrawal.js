@@ -47,7 +47,7 @@ export default function Withdrawal(){
                 bnt_title ="탈퇴하기"
                 btn_label ="아니오"
                 class_name={"withdrawal_btn"}
-                modalFun = {()=>dispatch(reAlert("탈퇴되셨습니다."))}
+                modalFun = {()=>dispatch(reAlert({msg:"탈퇴되셨습니다.",url:"/"}))}
                 modal_id={"withdrawal_modal"}
               >
                 <p className={"phone_modal"}>정말로 탈퇴하시겠습니까?</p>

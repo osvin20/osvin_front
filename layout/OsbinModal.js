@@ -13,6 +13,10 @@ export default function OsbinModal({title,children,bnt_title,class_name,modalFun
     const closeModal = () =>{
         setOpen(false);
     }
+    const actionModal = (e) =>{
+        modalFun(e);
+        closeModal();
+    }
     return (
         <div className="osbinModal">
             <span onClick={openModal} className={class_name}>{bnt_title}</span>
@@ -25,7 +29,7 @@ export default function OsbinModal({title,children,bnt_title,class_name,modalFun
                 </DialogContent>
                 <DialogActions>
                     {typeof  modalFun == "function" ?
-                    <Button variant="outlined" color="primary" onClick={modalFun}>네</Button>:
+                    <Button variant="outlined" color="primary" onClick={actionModal}>네</Button>:
                     ""}
                     {close_con !== false ?
                     <Button

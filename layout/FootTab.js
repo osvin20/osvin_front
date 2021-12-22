@@ -13,7 +13,12 @@ export default function FootTab({children,...props}){
     const router = useRouter();
     const dispatch = useDispatch();
     const alert_value = useSelector(({alert_value}) => alert_value);
-
+    const close_alert = () =>{
+      dispatch(closeVal())
+      if(typeof alert_value.url == "string" ){
+        router.push(alert_value.url);
+      }
+    }
     const arr1 = ["/"];
     const arr2 = ["/zzim"];
     const arr3 = ["/search"];
@@ -95,7 +100,7 @@ export default function FootTab({children,...props}){
               <div className={'alert_box_back'}></div>
               <div className={'alert_msg_box'}>
                 <p>{alert_value.msg}</p>
-                <button onClick={()=>dispatch(closeVal())}>닫기</button>
+                <button onClick={close_alert}>확인</button>
               </div>
             </div>
             :""}
