@@ -1,6 +1,7 @@
 import TitleLayout from "../layout/TitleLayout";
 import OsbinModal from "../layout/OsbinModal";
 
+export let txt1 = "오스빈 약관 내용이 노출됩니다.";
 export default function CardForm() {
   return (
     <TitleLayout>
@@ -89,6 +90,7 @@ export default function CardForm() {
               bnt_title="보기"
               class_name={"modal_btn"}
             >
+              <p>{txt1}</p>
             </OsbinModal>
           </div>
         </div>
