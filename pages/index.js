@@ -43,7 +43,7 @@ export default function Main() {
           </Link>
         </li>
         <li onClick={()=>dispatch(setTabNumber(3))}>
-          <Link href="/feed">
+          <Link href="/store">
             <a>오스빈 피드</a>
           </Link>
         </li>
