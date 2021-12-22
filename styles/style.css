@@ -1203,7 +1203,7 @@
 .item_heart img {
   width: 23px;
 }
-.item_buy a {
+.item_buy a, .item_buy span {
   background: #ca8756;
   color: #fff;
   width: 100%;
@@ -1214,11 +1214,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
+}
+.item_buy .osbinModal {
+  width: 100%;
+  padding-right: 5px;
 }
 .item_buy .cart_dir {
   border: 1px solid #ca8756;
   background: #fff;
-  color: #ca8756
+  color: #ca8756;
 }
 .store_flex {
   display: flex;
@@ -5342,7 +5347,8 @@
 .phone_modal {
   font-size: 14px;
   text-align: center;
-  padding: 20px 0
+  padding: 20px 0;
+  line-height: 1.3
 }
 #withdrawal_modal .modal_close {
   background: #ca8756;

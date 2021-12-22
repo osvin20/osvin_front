@@ -7,8 +7,13 @@ import CheckBox from '../layout/CheckBox.js';
 import Slider  from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import OsbinModal from '../layout/OsbinModal';
+import AlertModal  from '../layout/OsbinModal';
+import {reAlert} from '../store/modules/alert_popup';
+import {useDispatch } from 'react-redux';
 
 export default function Item(){
+    const dispatch = useDispatch();
     const [ck ,setCk] = useState(false);
     const router = useRouter()
     let settings = {
@@ -121,11 +126,18 @@ export default function Item(){
                     </div>
                   }
                 />
-                <Link href='/cart'>
-                    <a className={'cart_dir'}>
-                    장바구니
-                    </a>
-                </Link>
+
+                <OsbinModal
+                  title=""
+                  bnt_title ="장바구니"
+                  btn_label ="쇼핑 계속하기"
+                  dir_label ="장바구니로 가기"
+                  class_name={"cart_dir"}
+                  modalFun ={()=>router.push("/cart")}
+                  modal_id={"withdrawal_modal"}
+                >
+                  <p className={"phone_modal"}>상품을 장바구니에 담았습니다.</p>
+                </OsbinModal>
                 <Link href='/order'>
                     <a>
                     구매하기

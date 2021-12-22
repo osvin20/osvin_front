@@ -5,7 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 
-export default function OsbinModal({title,children,bnt_title,class_name,modalFun,modal_id,close_con,btn_label}){
+export default function OsbinModal({title,children,bnt_title,class_name,modalFun,modal_id,close_con,btn_label,action_label}){
     const [open,setOpen] = useState(false);
     const openModal = () =>{
         setOpen(true);
@@ -29,7 +29,7 @@ export default function OsbinModal({title,children,bnt_title,class_name,modalFun
                 </DialogContent>
                 <DialogActions>
                     {typeof  modalFun == "function" ?
-                    <Button variant="outlined" color="primary" onClick={actionModal}>네</Button>:
+                    <Button variant="outlined" color="primary" onClick={actionModal}>{action_label}</Button>:
                     ""}
                     {close_con !== false ?
                     <Button
@@ -47,4 +47,5 @@ export default function OsbinModal({title,children,bnt_title,class_name,modalFun
 }
 OsbinModal.defaultProps = {
   btn_label: "닫기",
+  action_label: "네",
 }
