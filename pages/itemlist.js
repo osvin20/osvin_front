@@ -6,7 +6,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import AllItem from './allitem';
-
+import ItemCate1 from './itemcate1';
+import ItemCate2 from './itemcate2';
 import { useRouter } from 'next/router';
 
 function TabPanel(props) {
@@ -30,7 +31,7 @@ export default function ItemList(){
     const {tabnumber} = router.query;
     useEffect(() =>{
         if(typeof tabnumber != "undefined"){
-            setValue(Number(tabnumber));    
+            setValue(Number(tabnumber));
         }
     },[tabnumber]);
     const [value, setValue] = React.useState(0);
@@ -57,6 +58,36 @@ export default function ItemList(){
           </AppBar>
         <TabPanel value={value} index={0}>
             <AllItem></AllItem>
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+            <ItemCate1></ItemCate1>
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+            <ItemCate2></ItemCate2>
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+            <AllItem></AllItem>
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+            <ItemCate1></ItemCate1>
+        </TabPanel>
+        <TabPanel value={value} index={5}>
+            <ItemCate2></ItemCate2>
+        </TabPanel>
+        <TabPanel value={value} index={6}>
+            <AllItem></AllItem>
+        </TabPanel>
+        <TabPanel value={value} index={7}>
+            <ItemCate1></ItemCate1>
+        </TabPanel>
+        <TabPanel value={value} index={8}>
+            <ItemCate2></ItemCate2>
+        </TabPanel>
+        <TabPanel value={value} index={9}>
+            <AllItem></AllItem>
+        </TabPanel>
+        <TabPanel value={value} index={10}>
+            <ItemCate1></ItemCate1>
         </TabPanel>
       </div>
         </SubLayout>

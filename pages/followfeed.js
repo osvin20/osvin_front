@@ -5,7 +5,9 @@ import React from "react";
 export default function FollowFeed() {
   return (
     <TitleLayout>
-      <h1 className={"page_tit"}>FOLLOW FEED</h1>
+      <div className={'pagetit_div'}>
+        <h1 className={'page_tit'}>FOLLOW FEED</h1>
+      </div>
       <div className={"storefeed followfeed"}>
         <ul className={"storefeed_ul"}>
           <li>

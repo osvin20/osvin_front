@@ -1473,22 +1473,30 @@
   margin-right: 5px;
   line-height: 1.3;
 }
+.comment .comment_dir {
+  font-family: "NanumSquareR";
+}
 .comment_info {
   display: flex;
   align-items: center;
   margin-top: 5px;
 }
-.comment_date,
-.comment_like {
+.user_comment .comment_info .comment_date,
+.user_comment .comment_info .comment_like {
   color: #cbcbcb;
   font-size: 12px;
   margin-right: 10px;
+  width: auto;
 }
 .comment_heart {
   width: 15px;
   height: 15px;
   min-width: 15px;
   margin-left: 10px;
+}
+.post_react .comment_heart {
+  margin-left: 0;
+  margin-right: 5px;
 }
 .comment_heart img {
   width: 100%;
@@ -1902,6 +1910,7 @@
   padding: 11px 0;
   background: #ca8756;
   color: #fff;
+  display: block;
   font-size: 13px;
 }
 .member_del {
@@ -2109,6 +2118,7 @@
   color: #878787;
   font-size: 12px;
   margin-top: 5px;
+  line-height: 1.2
 }
 
 /* 내가 쓴 리뷰 */

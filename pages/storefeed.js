@@ -16,7 +16,7 @@ export default function StoreFeed() {
                 <img src="/img/shop_01.jpg" />
               </div>
               <div>
-                <p>PEPE NOWIE</p>
+                <p>VINTAGE STORE</p>
                 <div className={"store_follow"}>
                   <img src="/img/user2.png" />
                   <span>51</span>
@@ -37,7 +37,7 @@ export default function StoreFeed() {
                 <img src="/img/shop_02.jpg" />
               </div>
               <div>
-                <p>FOUND VINTAGE</p>
+                <p>VINTAGE STORE</p>
                 <div className={"store_follow"}>
                   <img src="/img/user2.png" />
                   <span>51</span>
@@ -58,7 +58,7 @@ export default function StoreFeed() {
                 <img src="/img/shop_03.jpg" />
               </div>
               <div>
-                <p>MIlk honey</p>
+                <p>VINTAGE STORE</p>
                 <div className={"store_follow"}>
                   <img src="/img/user2.png" />
                   <span>51</span>
@@ -79,7 +79,7 @@ export default function StoreFeed() {
                 <img src="/img/shop_04.jpg" />
               </div>
               <div>
-                <p>MOON Shine</p>
+                <p>VINTAGE STORE</p>
                 <div className={"store_follow"}>
                   <img src="/img/user2.png" />
                   <span>51</span>
@@ -100,7 +100,7 @@ export default function StoreFeed() {
                 <img src="/img/shop_05.jpg" />
               </div>
               <div>
-                <p>MOON Shine</p>
+                <p>VINTAGE STORE</p>
                 <div className={"store_follow"}>
                   <img src="/img/user2.png" />
                   <span>51</span>
@@ -121,7 +121,7 @@ export default function StoreFeed() {
                 <img src="/img/shop_06.jpg" />
               </div>
               <div>
-                <p>MOON Shine</p>
+                <p>VINTAGE STORE</p>
                 <div className={"store_follow"}>
                   <img src="/img/user2.png" />
                   <span>51</span>
@@ -142,7 +142,7 @@ export default function StoreFeed() {
                 <img src="/img/shop_01.jpg" />
               </div>
               <div>
-                <p>PEPE NOWIE</p>
+                <p>VINTAGE STORE</p>
                 <div className={"store_follow"}>
                   <img src="/img/user2.png" />
                   <span>51</span>
@@ -163,7 +163,7 @@ export default function StoreFeed() {
                 <img src="/img/shop_02.jpg" />
               </div>
               <div>
-                <p>PEPE NOWIE</p>
+                <p>VINTAGE STORE</p>
                 <div className={"store_follow"}>
                   <img src="/img/user2.png" />
                   <span>51</span>

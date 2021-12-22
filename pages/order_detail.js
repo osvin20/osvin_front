@@ -63,7 +63,9 @@ export default function OrderDetail() {
         </div>:""}
         {od_con == "배송완료"?
         <div className={"order_cancle order_review"}>
-          <button>리뷰쓰기</button>
+        <Link href='/post_write'>
+          <a>리뷰쓰기</a>
+        </Link>
         </div>:""}
       </div>
       <div className={"od_div od_user"}>

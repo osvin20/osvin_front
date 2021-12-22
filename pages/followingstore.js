@@ -1,18 +1,23 @@
 
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
+import React,{useState} from 'react';
+import CheckBox from '../layout/CheckBox.js';
 
 export default function FollowStore(){
+    const [ck ,setCk] = useState(false);
     return (
         <TitleLayout>
-            <h1 className={'page_tit'}>FOLLOW STORE</h1>
+            <div className={'pagetit_div'}>
+              <h1 className={'page_tit'}>FOLLOW STORE</h1>
+            </div>
             <div className={'followstore'}>
                 <p className={'fs_count'}>
                     <span>3</span> 개의 스토어를 팔로우 중입니다.
                 </p>
                 <ul className={'fs_list'}>
                     <li>
-                        <Link href='/'>
+                        <Link href='/store'>
                             <a>
                                 <img src="img/shop_06.jpg" className={'follow_img'}/>
                                 <div>
@@ -21,10 +26,23 @@ export default function FollowStore(){
                                 </div>
                             </a>
                         </Link>
-                        <button className={'follow_btn'}>팔로우</button>
+                        <CheckBox
+                          id={"checkBox1"}
+                          defCk={false}
+                          offEl={
+                            <button className={'follow_btn following_btn'}>
+                              팔로잉
+                            </button>
+                          }
+                          onEl={
+                            <button className={'follow_btn'}>
+                              팔로우
+                            </button>
+                          }
+                        />
                     </li>
                     <li>
-                        <Link href='/'>
+                        <Link href='/store'>
                             <a>
                                 <img src="img/shop_10.jpg" className={'follow_img'}/>
                                 <div>
@@ -33,10 +51,23 @@ export default function FollowStore(){
                                 </div>
                             </a>
                         </Link>
-                        <button className={'follow_btn following_btn'}>팔로잉</button>
+                        <CheckBox
+                          id={"checkBox2"}
+                          defCk={false}
+                          offEl={
+                            <button className={'follow_btn following_btn'}>
+                              팔로잉
+                            </button>
+                          }
+                          onEl={
+                            <button className={'follow_btn'}>
+                              팔로우
+                            </button>
+                          }
+                        />
                     </li>
                     <li>
-                        <Link href='/'>
+                        <Link href='/store'>
                             <a>
                                 <img src="img/shop_08.jpg" className={'follow_img'}/>
                                 <div>
@@ -45,7 +76,20 @@ export default function FollowStore(){
                                 </div>
                             </a>
                         </Link>
-                        <button className={'follow_btn'}>팔로우</button>
+                        <CheckBox
+                          id={"checkBox3"}
+                          defCk={false}
+                          offEl={
+                            <button className={'follow_btn following_btn'}>
+                              팔로잉
+                            </button>
+                          }
+                          onEl={
+                            <button className={'follow_btn'}>
+                              팔로우
+                            </button>
+                          }
+                        />
                     </li>
                 </ul>
             </div>

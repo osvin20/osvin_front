@@ -86,9 +86,15 @@ export default function MyInfo(){
                             </div>
                         </li>
                     </ul>
-                    <button className={'info_submit'}>
-                        수정완료
-                    </button>
+                    <OsbinModal
+                      title=""
+                      bnt_title ="수정완료"
+                      btn_label ="확인"
+                      class_name={"info_submit"}
+                      modal_id={"withdrawal_modal"}
+                    >
+                      <p className={"phone_modal"}>회원정보 수정이 완료되었습니다.</p>
+                    </OsbinModal>
                     <Link href='withdrawal'>
                       <a className={'member_del'}>
                         탈퇴하기

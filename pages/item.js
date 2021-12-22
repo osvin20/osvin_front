@@ -126,7 +126,6 @@ export default function Item(){
                     </div>
                   }
                 />
-
                 <OsbinModal
                   title=""
                   bnt_title ="장바구니"

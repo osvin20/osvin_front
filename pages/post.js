@@ -94,7 +94,20 @@ export default function Post(){
                 </div>
                 <div className={'post_react'}>
                     <div>
-                        <img src="/img/heart5.png"/>
+                        <CheckBox
+                          id={"checkBox4"}
+                          defCk={false}
+                          offEl={
+                            <div className={'comment_heart'}>
+                                <img src="/img/heart5.png"/>
+                            </div>
+                          }
+                          onEl={
+                            <div className={'comment_heart'}>
+                              <img src="/img/heart6.png"/>
+                            </div>
+                          }
+                        />
                         <p>51</p>
                     </div>
                     <div>
@@ -119,7 +132,12 @@ export default function Post(){
                                         <a>
                                           hyeri0820
                                         </a>
-                                      </Link>가디건이 너무 이뻐요!ㅜㅜ
+                                      </Link>
+                                      <Link href='/comment'>
+                                        <a className={'comment_dir'}>
+                                          가디건이 너무 이뻐요!ㅜㅜ
+                                        </a>
+                                      </Link>
                                     </div>
                                     <div className={'comment_info'}>
                                         <p className={'comment_date'}>2021-08-20</p>
@@ -158,7 +176,12 @@ export default function Post(){
                                             <a>
                                               minah1121
                                             </a>
-                                          </Link>저도 얼른 장만하고싶네요!
+                                          </Link>
+                                          <Link href='/comment'>
+                                            <a className={'comment_dir'}>
+                                              저도 얼른 장만하고싶네요!
+                                            </a>
+                                          </Link>
                                         </div>
                                         <div className={'comment_info'}>
                                             <p className={'comment_date'}>2021-08-20</p>
@@ -169,7 +192,7 @@ export default function Post(){
                                     </div>
                                 </div>
                                 <CheckBox
-                                  id={"checkBox1"}
+                                  id={"checkBox2"}
                                   defCk={false}
                                   offEl={
                                     <div className={'comment_heart'}>
@@ -205,7 +228,12 @@ export default function Post(){
                                         <a>
                                           hyeri0820
                                         </a>
-                                      </Link>가디건이 너무 이뻐요!ㅜㅜ
+                                      </Link>
+                                      <Link href='/comment'>
+                                        <a className={'comment_dir'}>
+                                          가디건이 너무 이뻐요!ㅜㅜ
+                                        </a>
+                                      </Link>
                                     </div>
                                     <div className={'comment_info'}>
                                         <p className={'comment_date'}>2021-08-20</p>
@@ -216,7 +244,7 @@ export default function Post(){
                                 </div>
                             </div>
                             <CheckBox
-                              id={"checkBox1"}
+                              id={"checkBox3"}
                               defCk={false}
                               offEl={
                                 <div className={'comment_heart'}>
@@ -244,7 +272,13 @@ export default function Post(){
                                             <a>
                                               minah1121
                                             </a>
-                                          </Link>저도 얼른 장만하고싶네요!
+                                          </Link>
+                                          <Link href='/comment'>
+                                            <a className={'comment_dir'}>
+                                              저도 얼른 장만하고싶네요!
+                                            </a>
+                                          </Link>
+
                                         </div>
                                         <div className={'comment_info'}>
                                             <p className={'comment_date'}>2021-08-20</p>
@@ -255,7 +289,7 @@ export default function Post(){
                                     </div>
                                 </div>
                                 <CheckBox
-                                  id={"checkBox1"}
+                                  id={"checkBox4"}
                                   defCk={false}
                                   offEl={
                                     <div className={'comment_heart'}>

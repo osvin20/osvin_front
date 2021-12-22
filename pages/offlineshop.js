@@ -35,7 +35,7 @@ export default function OfflineShop(){
                         <div className={'offshop_info'}>
                             <div>
                                 <p className={'offshop_name'}>
-                                    STAYFREE
+                                    VINTAGE STORE
                                 </p>
                                 <p className={'offshop_adrs'}>부산광역시 금정구 금정로225 00빌딩 6층</p>
                             </div>
@@ -53,7 +53,7 @@ export default function OfflineShop(){
                       <div className={'offshop_info'}>
                           <div>
                               <p className={'offshop_name'}>
-                                  STAYFREE
+                                  VINTAGE STORE
                               </p>
                               <p className={'offshop_adrs'}>부산광역시 금정구 금정로225 00빌딩 6층</p>
                           </div>

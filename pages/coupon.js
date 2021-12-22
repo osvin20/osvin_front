@@ -15,7 +15,7 @@ export default function Coupon(){
                 </p>
                 <ul className={'couponlist'}>
                     <li>
-                        <Link href="/">
+                        <Link href="/store">
                             <a>
                                 <div className={'couponinfo'}>
                                     <img src="img/shop_07.jpg" className={'couponimg'}/>
@@ -35,7 +35,7 @@ export default function Coupon(){
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/store">
                             <a>
                                 <div className={'couponinfo'}>
                                     <img src="img/shop_08.jpg" className={'couponimg'}/>
@@ -55,7 +55,7 @@ export default function Coupon(){
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/store">
                             <a>
                                 <div className={'couponinfo'}>
                                     <img src="img/shop_09.jpg" className={'couponimg'}/>
@@ -75,7 +75,7 @@ export default function Coupon(){
                         </Link>
                     </li>
                     <li>
-                        <Link href="/">
+                        <Link href="/store">
                             <a>
                                 <div className={'couponinfo'}>
                                     <img src="img/shop_10.jpg" className={'couponimg'}/>

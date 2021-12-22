@@ -6,7 +6,7 @@ export default function HotStore(){
             <ul className={'hot_list'}>
                 <li>
                     <p className={'hot_num'}>1</p>
-                    <Link href="/">
+                    <Link href="/store">
                         <a className={'hotstore'}>
                         <div className={'hotstoreimg'}>
                             <img src="/img/shop_01.jpg" />
@@ -17,7 +17,7 @@ export default function HotStore(){
                 </li>
                 <li>
                     <p className={'hot_num'}>2</p>
-                    <Link href="/">
+                    <Link href="/store">
                         <a className={'hotstore'}>
                             <div className={'hotstoreimg'}>
                                 <img src="/img/shop_02.jpg" />
@@ -25,11 +25,11 @@ export default function HotStore(){
                             <p className={'hotkw'}>페이지원</p>
                         </a>
                     </Link>
-                    
+
                 </li>
                 <li>
                     <p className={'hot_num'}>3</p>
-                    <Link href="/">
+                    <Link href="/store">
                         <a className={'hotstore'}>
                             <div className={'hotstoreimg'}>
                                 <img src="/img/shop_03.jpg" />
@@ -37,11 +37,11 @@ export default function HotStore(){
                             <p className={'hotkw'}>옴니피플</p>
                         </a>
                     </Link>
-                    
+
                 </li>
                 <li>
                     <p className={'hot_num'}>4</p>
-                    <Link href="/">
+                    <Link href="/store">
                         <a className={'hotstore'}>
                             <div className={'hotstoreimg'}>
                                 <img src="/img/shop_04.jpg" />
@@ -52,7 +52,7 @@ export default function HotStore(){
                 </li>
                 <li>
                     <p className={'hot_num'}>5</p>
-                    <Link href="/">
+                    <Link href="/store">
                         <a className={'hotstore'}>
                             <div className={'hotstoreimg'}>
                                 <img src="/img/shop_05.jpg" />
@@ -60,11 +60,11 @@ export default function HotStore(){
                             <p className={'hotkw'}>빈티지앤</p>
                         </a>
                     </Link>
-                    
+
                 </li>
                 <li>
                     <p className={'hot_num'}>6</p>
-                    <Link href="/">
+                    <Link href="/store">
                         <a className={'hotstore'}>
                             <div className={'hotstoreimg'}>
                                 <img src="/img/shop_06.jpg" />
@@ -72,11 +72,11 @@ export default function HotStore(){
                             <p className={'hotkw'}>As you like</p>
                         </a>
                     </Link>
-                    
+
                 </li>
                 <li>
                     <p className={'hot_num'}>7</p>
-                    <Link href="/">
+                    <Link href="/store">
                         <a className={'hotstore'}>
                             <div className={'hotstoreimg'}>
                                 <img src="/img/shop_01.jpg" />
@@ -84,11 +84,11 @@ export default function HotStore(){
                             <p className={'hotkw'}>라보 빈티지</p>
                         </a>
                     </Link>
-                    
+
                 </li>
                 <li>
                     <p className={'hot_num'}>8</p>
-                    <Link href="/">
+                    <Link href="/store">
                         <a className={'hotstore'}>
                             <div className={'hotstoreimg'}>
                                 <img src="/img/shop_02.jpg" />
@@ -99,7 +99,7 @@ export default function HotStore(){
                 </li>
                 <li>
                     <p className={'hot_num'}>9</p>
-                    <Link href="/">
+                    <Link href="/store">
                         <a className={'hotstore'}>
                             <div className={'hotstoreimg'}>
                                 <img src="/img/shop_03.jpg" />
@@ -110,7 +110,7 @@ export default function HotStore(){
                 </li>
                 <li>
                     <p className={'hot_num'}>10</p>
-                    <Link href="/">
+                    <Link href="/store">
                         <a className={'hotstore'}>
                             <div className={'hotstoreimg'}>
                                 <img src="/img/shop_04.jpg" />

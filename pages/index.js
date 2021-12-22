@@ -74,7 +74,7 @@ export default function Main() {
             <Link href="/store">
               <a>
                 <img src="/img/off_shop_01.jpg" />
-                <p className={"offshop_name"}>FOUND VINTAGE</p>
+                <p className={"offshop_name"}>VINTAGE STORE</p>
                 <p className={"off_address"}>
                   부산시 금정구 장전3동 장전로 12번길 54 지하1층
                 </p>
@@ -85,7 +85,7 @@ export default function Main() {
             <Link href="/store">
               <a>
                 <img src="/img/off_shop_02.jpg" />
-                <p className={"offshop_name"}>FOUND VINTAGE</p>
+                <p className={"offshop_name"}>VINTAGE STORE</p>
                 <p className={"off_address"}>
                   부산시 금정구 장전3동 장전로 12번길 54 지하1층
                 </p>
@@ -96,7 +96,7 @@ export default function Main() {
             <Link href="/store">
               <a>
                 <img src="/img/off_shop_03.jpg" />
-                <p className={"offshop_name"}>FOUND VINTAGE</p>
+                <p className={"offshop_name"}>VINTAGE STORE</p>
                 <p className={"off_address"}>
                   부산시 금정구 장전3동 장전로 12번길 54 지하1층
                 </p>

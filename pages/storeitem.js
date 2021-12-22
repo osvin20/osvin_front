@@ -37,9 +37,20 @@ export default function StoreItem(){
                         <img src="/img/item11.jpg"/>
                       </a>
                   </Link>
-                  <div className={'heart_ico heart_click'}>
-                    <img src="/img/heart3.png"/>
-                  </div>
+                  <CheckBox
+                    id={"likeCheck2"}
+                    defCk={false}
+                    offEl={
+                      <div className={'heart_ico'}>
+                        <img src="/img/heart2.png"/>
+                      </div>
+                    }
+                    onEl={
+                      <div className={'heart_ico heart_click'}>
+                        <img src="/img/heart3.png"/>
+                      </div>
+                    }
+                  />
               </li>
               <li>
                   <Link href="/item">
@@ -47,9 +58,20 @@ export default function StoreItem(){
                         <img src="/img/item13.jpg"/>
                       </a>
                   </Link>
-                  <div className={'heart_ico heart_click'}>
-                    <img src="/img/heart3.png"/>
-                  </div>
+                  <CheckBox
+                    id={"likeCheck3"}
+                    defCk={false}
+                    offEl={
+                      <div className={'heart_ico'}>
+                        <img src="/img/heart2.png"/>
+                      </div>
+                    }
+                    onEl={
+                      <div className={'heart_ico heart_click'}>
+                        <img src="/img/heart3.png"/>
+                      </div>
+                    }
+                  />
               </li>
               <li>
                   <Link href="/item">
@@ -57,9 +79,20 @@ export default function StoreItem(){
                         <img src="/img/feed_01.jpg"/>
                       </a>
                   </Link>
-                  <div className={'heart_ico'}>
-                    <img src="/img/heart2.png"/>
-                  </div>
+                  <CheckBox
+                    id={"likeCheck4"}
+                    defCk={false}
+                    offEl={
+                      <div className={'heart_ico'}>
+                        <img src="/img/heart2.png"/>
+                      </div>
+                    }
+                    onEl={
+                      <div className={'heart_ico heart_click'}>
+                        <img src="/img/heart3.png"/>
+                      </div>
+                    }
+                  />
               </li>
               <li>
                   <Link href="/item">
@@ -67,9 +100,20 @@ export default function StoreItem(){
                         <img src="/img/item16.jpg"/>
                       </a>
                   </Link>
-                  <div className={'heart_ico'}>
-                    <img src="/img/heart2.png"/>
-                  </div>
+                  <CheckBox
+                    id={"likeCheck5"}
+                    defCk={false}
+                    offEl={
+                      <div className={'heart_ico'}>
+                        <img src="/img/heart2.png"/>
+                      </div>
+                    }
+                    onEl={
+                      <div className={'heart_ico heart_click'}>
+                        <img src="/img/heart3.png"/>
+                      </div>
+                    }
+                  />
               </li>
               <li>
                   <Link href="/item">
@@ -80,9 +124,20 @@ export default function StoreItem(){
                   <div className={'soldout'}>
                       SOLD OUT
                   </div>
-                  <div className={'heart_ico heart_click'}>
-                    <img src="/img/heart3.png"/>
-                  </div>
+                  <CheckBox
+                    id={"likeCheck6"}
+                    defCk={false}
+                    offEl={
+                      <div className={'heart_ico'}>
+                        <img src="/img/heart2.png"/>
+                      </div>
+                    }
+                    onEl={
+                      <div className={'heart_ico heart_click'}>
+                        <img src="/img/heart3.png"/>
+                      </div>
+                    }
+                  />
               </li>
               <li>
                   <Link href="/item">
@@ -90,9 +145,20 @@ export default function StoreItem(){
                         <img src="/img/storefeed_04.jpg"/>
                       </a>
                   </Link>
-                  <div className={'heart_ico heart_click'}>
-                    <img src="/img/heart3.png"/>
-                  </div>
+                  <CheckBox
+                    id={"likeCheck7"}
+                    defCk={false}
+                    offEl={
+                      <div className={'heart_ico'}>
+                        <img src="/img/heart2.png"/>
+                      </div>
+                    }
+                    onEl={
+                      <div className={'heart_ico heart_click'}>
+                        <img src="/img/heart3.png"/>
+                      </div>
+                    }
+                  />
               </li>
               <li>
                   <Link href="/item">
@@ -100,9 +166,20 @@ export default function StoreItem(){
                         <img src="/img/item02.jpg"/>
                       </a>
                   </Link>
-                  <div className={'heart_ico'}>
-                    <img src="/img/heart2.png"/>
-                  </div>
+                  <CheckBox
+                    id={"likeCheck8"}
+                    defCk={false}
+                    offEl={
+                      <div className={'heart_ico'}>
+                        <img src="/img/heart2.png"/>
+                      </div>
+                    }
+                    onEl={
+                      <div className={'heart_ico heart_click'}>
+                        <img src="/img/heart3.png"/>
+                      </div>
+                    }
+                  />
               </li>
           </ul>
       </div>

@@ -1,9 +1,10 @@
 import SubLayout from "../layout/SubLayout";
 import Link from "next/link";
 import OsbinModal from "../layout/OsbinModal";
+import {useRouter} from 'next/router'
 
-export let txt1 = "로그아웃 하시겠습니까?";
 export default function MyPage() {
+  const router = useRouter()
   return (
     <SubLayout>
       <div className={"mypage_div"}>
@@ -48,7 +49,7 @@ export default function MyPage() {
             </Link>
           </li>
           <li>
-            <Link href="/myinfo">
+            <Link href="/mypage">
               <a>
                 <div>
                   <img src="/img/gift.png" />
@@ -100,16 +101,16 @@ export default function MyPage() {
                 </Link>
               </li>
               <li>
-                <Link href="/">
-                  <a>추적 허용 설정</a>
-                </Link>
-              </li>
-              <li>
                 <OsbinModal
                   title=""
-                  bnt_title="로그아웃"
+                  bnt_title ="로그아웃"
+                  btn_label ="아니오"
+                  dir_label ="네"
+                  class_name={"cart_dir"}
+                  modalFun ={()=>router.push("/")}
+                  modal_id={"withdrawal_modal"}
                 >
-                  <p className={'modal_txt'}>{txt1}</p>
+                  <p className={"phone_modal"}>로그아웃 하시겠습니까?</p>
                 </OsbinModal>
               </li>
             </ul>
@@ -128,7 +129,7 @@ export default function MyPage() {
                 </Link>
               </li>
               <li>
-                <Link href="/">
+                <Link href="/mypage">
                   <a>이용약관</a>
                 </Link>
               </li>
