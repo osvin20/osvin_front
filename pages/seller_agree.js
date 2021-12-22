@@ -66,9 +66,10 @@ export default function SellerAgree() {
         </div>
         <div className={"join_btn"}>
           <Link href='seller_join'>
-            <a>다음</a>
+            <a>
+              <button>다음</button>
+            </a>
           </Link>
-          {/* <button>다음</button> */}
         </div>
       </div>
     </LoginTheme>

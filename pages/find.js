@@ -74,11 +74,11 @@ export default function Join(){
                         </div>
                     </TabPanel>
                 </div>
-                
+
             </div>
-            
+
         </LoginTheme>
-        
+
     )
 
 }

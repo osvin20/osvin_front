@@ -56,7 +56,11 @@ export default function Item(){
                       <p className={'sale_per'}>10%</p>
                       <p className={'cost'}>56,000원</p>
                   </div>
-                  <img src='img/coupon2.png'/>
+                  <Link href='/coupon_down'>
+                    <a>
+                      <img src='img/coupon2.png'/>
+                    </a>
+                  </Link>
                 </div>
             </div>
             <div className={'item_detail'}>

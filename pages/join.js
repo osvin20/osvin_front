@@ -3,8 +3,7 @@ import OsbinModal from "../layout/OsbinModal";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export let txt1 =
-  "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd";
+export let txt1 = "오스빈 약관 내용이 노출됩니다.";
 export let phone_num = "인증에 성공하였습니다.";
 export default function Join() {
   const router = useRouter();
@@ -93,7 +92,7 @@ export default function Join() {
         <div className={"join_btn"}>
           <Link href='welcome'>
             <a>
-              가입하기
+              <button>가입하기</button>
             </a>
           </Link>
         </div>

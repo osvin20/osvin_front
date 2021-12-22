@@ -3,7 +3,7 @@ import Link from "next/link";
 import OsbinModal from "../layout/OsbinModal";
 
 export let txt1 = "로그아웃 하시겠습니까?";
-export default function MyPage() {
+export default function SellerPage() {
   return (
     <SubLayout>
       <div className={"mypage_div"}>

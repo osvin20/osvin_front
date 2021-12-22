@@ -1,9 +1,7 @@
 import TitleLayout from "../layout/TitleLayout";
 import OsbinModal from "../layout/OsbinModal";
 
-export let txt1 =
-  "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd";
-export default function OrderDetail() {
+export default function CardForm() {
   return (
     <TitleLayout>
       <div className={'pagetit_div'}>

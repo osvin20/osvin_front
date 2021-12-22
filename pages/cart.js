@@ -28,11 +28,19 @@ export default function Cart(){
                             <input type="checkbox" id="itemcheck1"/>
                             <label htmlFor="itemcheck1"></label>
                         </div>
-                        <img src="img/item16.jpg" className={'cart_thumb'}/>
+                        <Link href='item'>
+                          <a>
+                            <img src="img/item16.jpg" className={'cart_thumb'}/>
+                          </a>
+                        </Link>
                         <div className={'cartitem'}>
                             <div>
                                 <p className={'cart_shop'}>오스빈 스토어</p>
-                                <p className={'cartitem_name'}>컬러링 필 버튼 니트 가디건</p>
+                                <Link href='/item'>
+                                  <a>
+                                    <p className={'cartitem_name'}>컬러링 필 버튼 니트 가디건</p>
+                                  </a>
+                                </Link>
                             </div>
                             <div className={'cart_price_div'}>
                                 <p className={'del_cost'}>
@@ -51,11 +59,19 @@ export default function Cart(){
                             <input type="checkbox" id="itemcheck1"/>
                             <label htmlFor="itemcheck1"></label>
                         </div>
-                        <img src="img/item17.jpg" className={'cart_thumb'}/>
+                        <Link href='item'>
+                          <a>
+                            <img src="img/item17.jpg" className={'cart_thumb'}/>
+                          </a>
+                        </Link>
                         <div className={'cartitem'}>
                             <div>
                                 <p className={'cart_shop'}>오스빈 스토어</p>
-                                <p className={'cartitem_name'}>모디쉬 루즈 핏 라이더 자켓</p>
+                                <Link href='/item'>
+                                  <a>
+                                    <p className={'cartitem_name'}>모디쉬 루즈 핏 라이더 자켓</p>
+                                  </a>
+                                </Link>
                             </div>
                             <div className={'cart_price_div'}>
                                 <p className={'del_cost'}>
@@ -74,11 +90,19 @@ export default function Cart(){
                             <input type="checkbox" id="itemcheck1"/>
                             <label htmlFor="itemcheck1"></label>
                         </div>
-                        <img src="img/item18.jpg" className={'cart_thumb'}/>
+                        <Link href='item'>
+                          <a>
+                            <img src="img/item18.jpg" className={'cart_thumb'}/>
+                          </a>
+                        </Link>
                         <div className={'cartitem'}>
                             <div>
                                 <p className={'cart_shop'}>오스빈 스토어</p>
-                                <p className={'cartitem_name'}>리키 울 트위스트 니트 버킷 햇</p>
+                                <Link href='/item'>
+                                  <a>
+                                    <p className={'cartitem_name'}>리키 울 트위스트 니트 버킷 햇</p>
+                                  </a>
+                                </Link>
                             </div>
                             <div className={'cart_price_div'}>
                                 <p className={'del_cost'}>

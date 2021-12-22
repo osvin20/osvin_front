@@ -1,7 +1,7 @@
 import TitleLayout from "../layout/TitleLayout";
 import Link from "next/link";
 
-export default function OrderDetail() {
+export default function CardList() {
   return (
     <TitleLayout>
       <div className={'pagetit_div'}>

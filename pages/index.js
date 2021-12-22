@@ -105,17 +105,6 @@ export default function Main() {
           </li>
         </ul>
       </div>
-      <div className={"banner_div"}>
-        <div>
-          <Link href="/">
-            <a>
-              <img className={"banner_img"} src="/img/banner_02.jpg" />
-              <p>경매 참여하기</p>
-              <img className={"arrow"} src="/img/arrow_01.png" />
-            </a>
-          </Link>
-        </div>
-      </div>
       <div className={"main_offshop"}>
         <h3 className={"main_tit"}>YOUTUBE
         <Link href="/youtube">

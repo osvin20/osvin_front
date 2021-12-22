@@ -22,6 +22,10 @@
   font-family: "NEXONGothicR";
   src: url("../font/NEXONLv1GothicRegular.ttf");
 }
+@font-face {
+  font-family: "NEXONGothicB";
+  src: url("../font/NEXONLv1GothicBold.ttf");
+}
 a {
   color: inherit;
   text-decoration: none;

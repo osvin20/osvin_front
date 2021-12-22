@@ -2,7 +2,7 @@ import TitleLayout from "../layout/TitleLayout";
 import Link from "next/link";
 import React from "react";
 
-export default function OrderDetail() {
+export default function EventDetail() {
   return (
     <TitleLayout>
       <div className={'pagetit_div'}>

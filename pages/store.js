@@ -13,7 +13,7 @@ import StoreReview from './storereview'
 import StoreQna from './storeqna'
 import TabPanel from '../layout/TabPanel'
 
-export default function Feed(){
+export default function Store(){
     const [ck ,setCk] = useState(false);
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {

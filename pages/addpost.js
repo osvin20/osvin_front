@@ -2,7 +2,7 @@
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
 
-export default function Comment(){
+export default function AddPost(){
     return (
         <TitleLayout>
             <div className={'pagetit_div'}>

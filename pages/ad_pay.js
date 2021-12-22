@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AdPakage(){
+export default function AdPay(){
     const classes = useStyles();
     const onchangeHandler = (e) =>{
       console.log() //데이터 받기

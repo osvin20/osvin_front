@@ -1,8 +1,19 @@
 import Link from 'next/link'
 import { useRouter } from "next/router";
 import { useEffect,useState } from "react";
+
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import {alert_value,closeVal} from '../store/modules/alert_popup';
+import { useSelector, useDispatch } from 'react-redux';
+
 export default function FootTab({children,...props}){
     const router = useRouter();
+    const dispatch = useDispatch();
+    const alert_value = useSelector(({alert_value}) => alert_value);
+
     const arr1 = ["/"];
     const arr2 = ["/zzim"];
     const arr3 = ["/search"];
@@ -19,10 +30,10 @@ export default function FootTab({children,...props}){
             if(arr5.indexOf(router.route)!== -1){setTabNav(5);}
             if(arr6.indexOf(router.route)!== -1){setTabNav(6);}
         }
-
     }, []);
 
     return (
+      <>
         <ul className={'footer_tab'}>
                 <li>
                     <Link href="/">
@@ -79,5 +90,15 @@ export default function FootTab({children,...props}){
                     </Link>
                 </li>
             </ul>
+            {alert_value.value?
+            <div className={'alert_box'}>
+              <div className={'alert_box_back'}></div>
+              <div className={'alert_msg_box'}>
+                <p>{alert_value.msg}</p>
+                <button onClick={()=>dispatch(closeVal())}>닫기</button>
+              </div>
+            </div>
+            :""}
+        </>
     )
 }

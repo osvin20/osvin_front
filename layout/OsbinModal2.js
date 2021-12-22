@@ -23,5 +23,4 @@ export default function OsbinModal2({title,children,bnt_title,class_name,modalFu
             </Dialog>
         </div>
     )
-
 }

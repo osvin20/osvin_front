@@ -5,7 +5,10 @@ import React from "react";
 export default function Campaign() {
   return (
     <TitleLayout>
-      <h1 className={"page_tit"}>CAMPAIGN</h1>
+      <div className={'pagetit_div'}>
+        <h1 className={'page_tit'}>CAMPAIGN</h1>
+      </div>
+      <div className={'borderfix'}></div>
       <div className={'campaign'}>
           <div className={'campaign_banner'}>
             <img src="/img/eco_banner2.jpg" />

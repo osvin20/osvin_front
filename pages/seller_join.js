@@ -7,7 +7,7 @@ export let txt1 =
   "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd";
 export let phone_num = "인증에 성공하였습니다.";
 export let bank_num = "계좌가 확인되었습니다.";
-export default function Join() {
+export default function SellerJoin() {
   const router = useRouter();
 
   return (
@@ -94,7 +94,11 @@ export default function Join() {
           </form>
         </div>
         <div className={"join_btn"}>
-          <button>가입하기</button>
+          <Link href='welcome'>
+            <a>
+              <button>가입하기</button>
+            </a>
+          </Link>
         </div>
       </div>
     </LoginTheme>

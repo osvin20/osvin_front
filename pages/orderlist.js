@@ -4,7 +4,7 @@ import React from 'react';
 import OsbinModal from '../layout/OsbinModal';
 import AddressModal from '../layout/AddressModal'
 
-export default function OrderDetail() {
+export default function OrderList() {
   // 주문완료 배송중 배송완료
   const [od_con ,setOd_con] = React.useState("배송완료");
   // 일반배송 탁송 방문수령

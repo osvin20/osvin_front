@@ -1,12 +1,15 @@
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
 import OsbinModal from '../layout/OsbinModal';
-
+import AlertModal  from '../layout/OsbinModal';
+import {reAlert} from '../store/modules/alert_popup';
+import {useDispatch } from 'react-redux';
 export default function Withdrawal(){
+    const dispatch = useDispatch();
     return (
         <TitleLayout>
             <div className={'pagetit_div'}>
-              <h1 className={'page_tit'}>WITHDRAWAL</h1>
+              <h1 className={'page_tit'}>DELETE ACCOUNT</h1>
             </div>
             <ul className={'withdrawal_form'}>
               <li>
@@ -38,15 +41,19 @@ export default function Withdrawal(){
               </div>
               </li>
             </ul>
-
             <div className={'withdrawal_btn_div'}>
               <OsbinModal
                 title=""
                 bnt_title ="탈퇴하기"
+                btn_label ="아니오"
                 class_name={"withdrawal_btn"}
+                modalFun = {()=>dispatch(reAlert("탈퇴되셨습니다."))}
+                modal_id={"withdrawal_modal"}
               >
+                <p className={"phone_modal"}>정말로 탈퇴하시겠습니까?</p>
               </OsbinModal>
             </div>
+
         </TitleLayout>
     )
 }

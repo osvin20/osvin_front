@@ -1,7 +1,7 @@
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
 
-export default function Address(){
+export default function AddAddress(){
     return (
         <TitleLayout>
             <div className={'pagetit_div'}>
