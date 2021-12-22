@@ -89,7 +89,6 @@ export default function CardForm() {
               bnt_title="보기"
               class_name={"modal_btn"}
             >
-              <p>{txt1}</p>
             </OsbinModal>
           </div>
         </div>
