@@ -6,7 +6,8 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import TabPanel from '../layout/TabPanel'
+import TabPanel from '../layout/TabPanel';
+import OsbinModal from "../layout/OsbinModal";
 
 export default function Join(){
     const [value, setValue] = React.useState(0);
@@ -31,11 +32,23 @@ export default function Join(){
                             <p>가입 시 등록한 휴대폰 번호를 입력하면<br/>이메일 주소의 일부를 알려드립니다.</p>
                             <div className={'input_btn input_send'}>
                                 <input placeholder='휴대폰 번호를 입력해주세요.'></input>
-                                <button>인증번호 발송</button>
+                                <OsbinModal
+                                  title=""
+                                  bnt_title ="인증번호 발송"
+                                  modal_id={"join_modal"}
+                                >
+                                  <p className={"phone_modal"}>인증번호를 발송하였습니다.</p>
+                                </OsbinModal>
                             </div>
                             <div className={'input_btn'}>
                                 <input placeholder='인증번호를 입력해주세요.'></input>
-                                <button>인증하기</button>
+                                <OsbinModal
+                                  title=""
+                                  bnt_title ="인증하기"
+                                  modal_id={"join_modal"}
+                                >
+                                  <p className={"phone_modal"}>인증되었습니다.</p>
+                                </OsbinModal>
                             </div>
                             <div className={'join_btn'}>
                                 <Link href="/result_id">
@@ -56,11 +69,23 @@ export default function Join(){
                             </div>
                             <div className={'input_btn input_send'}>
                                 <input placeholder='휴대폰 번호를 입력해주세요.'></input>
-                                <button>인증번호 발송</button>
+                                <OsbinModal
+                                  title=""
+                                  bnt_title ="인증번호 발송"
+                                  modal_id={"join_modal"}
+                                >
+                                  <p className={"phone_modal"}>인증번호를 발송하였습니다.</p>
+                                </OsbinModal>
                             </div>
                             <div className={'input_btn'}>
                                 <input placeholder='인증번호를 입력해주세요.'></input>
-                                <button>인증하기</button>
+                                <OsbinModal
+                                  title=""
+                                  bnt_title ="인증하기"
+                                  modal_id={"join_modal"}
+                                >
+                                  <p className={"phone_modal"}>인증되었습니다.</p>
+                                </OsbinModal>
                             </div>
                             <div className={'join_btn'}>
                                 <Link href="/result_pw">

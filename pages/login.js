@@ -34,9 +34,11 @@ export default function Login(){
                         </Link>
                     </div>
                     <div className={'login_btn'}>
-                        <button>
-                            LOGIN
-                        </button>
+                      <Link href='/'>
+                          <a>
+                              LOGIN
+                          </a>
+                      </Link>
                     </div>
                 </form>
                 <div className={'social_login'}>
@@ -60,7 +62,7 @@ export default function Login(){
                 </div>
             </div>
         </LoginTheme>
-        
+
     )
 
 }

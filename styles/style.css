@@ -335,6 +335,7 @@
   justify-content: center;
   align-items: center;
   width: 75%;
+  max-width: 400px;
 }
 .login_logo {
   width: 70px;
@@ -380,7 +381,7 @@
   width: 100%;
   margin-bottom: 45px;
 }
-.login_btn button {
+.login_btn a {
   background: #ca8756;
   width: 100%;
   color: #fff;
@@ -477,7 +478,7 @@
 .input_btn input::placeholder {
   color: #a6a6a6;
 }
-.input_btn button, .input_btn .phone_num {
+.input_btn button, .input_btn .phone_num, .input_btn span {
   color: #fff;
   background: #ca8756;
   font-size: 11px;
@@ -486,7 +487,7 @@
   min-width: 54.5px;
   display: block
 }
-.input_send button {
+.input_send button, .input_send span {
   min-width: 77px;
 }
 .join_agree {
@@ -537,6 +538,9 @@
   padding: 8px 0;
   font-size: 15px;
   border-radius: 0 0 15px 15px;
+}
+.join_btn button {
+  padding: 6px 0
 }
 .join_btn a {
   display: block;
@@ -621,7 +625,7 @@
   display: block;
   margin: 0 auto;
   margin-top: 40px;
-  padding: 11px 0;
+  padding: 13px 0;
 }
 .join_start:focus {
   background: #e2a67b;

@@ -21,11 +21,23 @@ export default function Join() {
           <form>
             <div className={"input_btn"}>
               <input placeholder="이메일을 입력해주세요."></input>
-              <button>중복확인</button>
+              <OsbinModal
+                title=""
+                bnt_title ="중복확인"
+                modal_id={"join_modal"}
+              >
+                <p className={"phone_modal"}>사용가능한 이메일입니다.</p>
+              </OsbinModal>
             </div>
             <div className={"input_btn"}>
               <input placeholder="닉네임을 입력해주세요."></input>
-              <button>중복확인</button>
+              <OsbinModal
+                title=""
+                bnt_title ="중복확인"
+                modal_id={"join_modal"}
+              >
+                <p className={"phone_modal"}>사용가능한 닉네임입니다.</p>
+              </OsbinModal>
             </div>
             <div className={"input_btn input_div"}>
               <input placeholder="비밀번호를 입력해주세요."></input>
@@ -35,16 +47,22 @@ export default function Join() {
             </div>
             <div className={"input_btn input_send"}>
               <input placeholder="휴대폰 번호를 입력해주세요."></input>
-              <button>인증번호 발송</button>
+              <OsbinModal
+                title=""
+                bnt_title ="인증번호 발송"
+                modal_id={"join_modal"}
+              >
+                <p className={"phone_modal"}>인증번호를 발송하였습니다.</p>
+              </OsbinModal>
             </div>
             <div className={"input_btn"}>
               <input placeholder="인증번호를 입력해주세요."></input>
               <OsbinModal
                 title=""
-                bnt_title="인증하기"
-                class_name={"phone_num"}
+                bnt_title ="인증하기"
+                modal_id={"join_modal"}
               >
-                <p className={"phone_modal"}>{phone_num}</p>
+                <p className={"phone_modal"}>인증되었습니다.</p>
               </OsbinModal>
             </div>
             <div className={"join_agree"}>
