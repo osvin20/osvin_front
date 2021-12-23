@@ -1,8 +1,11 @@
 import TitleLayout from "../layout/TitleLayout";
 import Link from "next/link";
 import React from 'react';
+import OsbinModal from "../layout/OsbinModal";
+import {useRouter} from 'next/router'
 
 export default function QnaWrite() {
+  const router = useRouter()
   return (
     <TitleLayout>
       <div className={'pagetit_div'}>
@@ -56,7 +59,15 @@ export default function QnaWrite() {
           </p>
         </div>
         <div className={'qna_btn'}>
-          <button>등록</button>
+          <OsbinModal
+            title=""
+            bnt_title ="등록"
+            action_label ="확인"
+            modal_id={"return_modal"}
+            modalFun ={()=>router.push("/qnalist")}
+          >
+            <p className={"phone_modal"}>문의가 등록되었습니다.</p>
+          </OsbinModal>
         </div>
       </div>
     </TitleLayout>

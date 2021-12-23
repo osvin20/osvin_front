@@ -1,7 +1,10 @@
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
+import OsbinModal from "../layout/OsbinModal";
+import {useRouter} from 'next/router'
 
 export default function AddressForm(){
+  const router = useRouter()
     return (
         <TitleLayout>
             <div className={'pagetit_div'}>
@@ -52,9 +55,15 @@ export default function AddressForm(){
                 </div>
             </div>
             <div className={'adrs_btn'}>
-                <button>
-                    저장
-                </button>
+                <OsbinModal
+                  title=""
+                  bnt_title ="저장"
+                  action_label ="확인"
+                  modal_id={"return_modal"}
+                  modalFun ={()=>router.push("/address_list")}
+                >
+                  <p className={"phone_modal"}>배송지 등록이 완료되었습니다.</p>
+                </OsbinModal>
             </div>
 
         </TitleLayout>

@@ -2406,7 +2406,7 @@
   text-align: center;
   padding-top: 15px;
 }
-.adrs_btn button {
+.adrs_btn button, .adrs_btn span {
   background: #ca8756;
   color: #fff;
   padding: 8px 15px;
