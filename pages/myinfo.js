@@ -2,12 +2,14 @@
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
 import OsbinModal from "../layout/OsbinModal";
+import {useRouter} from 'next/router'
 
 export let member_del =
 "정말 탈퇴하시겠습니까?";
 export let phone_num =
 "인증에 성공하였습니다.";
 export default function MyInfo(){
+    const router = useRouter()
     return (
         <TitleLayout>
             <div className={'pagetit_div'}>
@@ -90,8 +92,10 @@ export default function MyInfo(){
                       title=""
                       bnt_title ="수정완료"
                       btn_label ="확인"
+                      action_label ="확인"
                       class_name={"info_submit"}
-                      modal_id={"withdrawal_modal"}
+                      modal_id={"return_modal"}
+                      modalFun ={()=>router.push("/mypage")}
                     >
                       <p className={"phone_modal"}>회원정보 수정이 완료되었습니다.</p>
                     </OsbinModal>

@@ -1,8 +1,10 @@
 import TitleLayout from "../layout/TitleLayout";
 import OsbinModal from "../layout/OsbinModal";
+import {useRouter} from 'next/router'
 
 export let txt1 = "오스빈 약관 내용이 노출됩니다.";
 export default function CardForm() {
+  const router = useRouter()
   return (
     <TitleLayout>
       <div className={'pagetit_div'}>
@@ -93,6 +95,18 @@ export default function CardForm() {
               <p>{txt1}</p>
             </OsbinModal>
           </div>
+        </div>
+        <div className={'qna_btn'}>
+          <OsbinModal
+            title=""
+            bnt_title ="확인"
+            action_label ="확인"
+            class_name={"info_submit"}
+            modal_id={"return_modal"}
+            modalFun ={()=>router.push("/cardlist")}
+          >
+            <p className={"phone_modal"}>카드 등록이 완료되었습니다.</p>
+          </OsbinModal>
         </div>
       </div>
     </TitleLayout>

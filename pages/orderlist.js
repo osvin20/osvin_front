@@ -6,7 +6,7 @@ import AddressModal from '../layout/AddressModal'
 
 export default function OrderList() {
   // 주문완료 배송중 배송완료
-  const [od_con ,setOd_con] = React.useState("배송완료");
+  const [od_con ,setOd_con] = React.useState("주문완료");
   // 일반배송 탁송 방문수령
   const [od_del ,setOd_del] = React.useState("일반배송");
 
@@ -62,7 +62,9 @@ export default function OrderList() {
         </div>
         {od_con == "주문완료"?
         <div className={"order_cancle"}>
-          <button>주문취소</button>
+          <Link href='/order_cancle'>
+            <a>주문취소</a>
+          </Link>
         </div>:""}
         {od_con == "배송중"?
         <div className={"order_cancle order_decide"}>

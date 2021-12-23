@@ -130,7 +130,7 @@ export default function Item(){
                   title=""
                   bnt_title ="장바구니"
                   btn_label ="쇼핑 계속하기"
-                  dir_label ="장바구니로 가기"
+                  action_label ="장바구니로 가기"
                   class_name={"cart_dir"}
                   modalFun ={()=>router.push("/cart")}
                   modal_id={"withdrawal_modal"}

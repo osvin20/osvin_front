@@ -14,7 +14,6 @@
   );
   height: 3px !important;
 }
-
 .head {
   position: fixed;
   top: 0;
@@ -1136,10 +1135,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 .price_flex a {
   position: absolute;
-  right: 15px;
+  right: 0;
 }
 .price_flex img {
   width: 115px;
@@ -1332,7 +1332,8 @@
   border-radius: 100%;
   position: fixed;
   bottom: 80px;
-  right: 15px;
+  right: calc(50% - 300px);
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3867,6 +3868,24 @@
   font-size: 14px;
 }
 
+/* 스토어 스토리 상세 */
+
+.story_detail {
+  font-size: 13px;
+}
+.story_detail .rv_prof {
+  margin-bottom: 0
+}
+.story_detail .story_info {
+  margin-bottom: 0
+}
+.story_detail .post_content {
+  border-bottom: none
+}
+.story_content img {
+  width: 100%
+}
+
 /* 배송지 목록 모달 */
 
 .address_modal_box .adrs_list {
@@ -4102,6 +4121,7 @@
   color: #ca8756;
   padding: 10px 0;
   text-align: center;
+  display: block;
 }
 .order_review a,
 .order_decide .decide_btn {
@@ -4114,7 +4134,7 @@
   align-items: flex-start;
   justify-content: space-between;
 }
-.order_decide button {
+.order_decide button, .order_decide a {
   width: 49.5%;
 }
 .od_user .od_flex {
@@ -4297,7 +4317,7 @@
   margin-bottom: 5px;
 }
 .easypay > div:last-child {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 .cardlist {
   padding: 15px;
@@ -4336,12 +4356,15 @@
 }
 .qnaitem .extra_bold {
   font-size: 13px;
-  line-height: 1.7;
+  line-height: 1.2;
+  margin-top: 4px;
+  display: block;
 }
 .qnaitem_img {
   width: 55px;
   height: 55px;
   margin-right: 10px;
+  min-width: 55px;
 }
 .qnaitem_img img {
   width: 100%;
@@ -4428,7 +4451,7 @@
   margin-top: 40px;
   margin-bottom: 25px;
 }
-.qna_btn button, .qna_btn a {
+.qna_btn button, .qna_btn a, .qna_btn span {
   background: #ca8756;
   color: #fff;
   padding: 10px 25px;
@@ -5307,6 +5330,41 @@
   font-size: 15px;
 }
 
+/* 주문취소 */
+
+.qnaitem .price {
+  color: #ca8756;
+  font-size: 16px;
+  line-height: 1
+}
+.itemreturn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh - 110px)
+}
+.return_btn span {
+  background: #ca8756;
+  color: #fff;
+  width: 100%;
+  padding: 12px 0;
+  font-size: 15px;
+}
+
+/* 이용약관 */
+
+.agreement {
+  padding: 15px;
+  font-size: 13px;
+}
+.agreement_tit {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.agreement_txt {
+  line-height: 1.5
+}
+
 /* 모달 css */
 
 .osbinModal {
@@ -5396,6 +5454,13 @@
 #review_detail_modal .MuiDialogContent-root {
   padding: 0
 }
+#return_modal .modal_close {
+  display: none
+}
+#return_modal .action_btn {
+  background: #ca8756;
+  color: #fff
+}
 
 /* 반응형 */
 
@@ -5407,6 +5472,16 @@
 @media (max-width: 370px) {
   .join_form {
     width: 85%;
+  }
+  .feed_write {
+    transform: none;
+    right: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .feed_write {
+    transform: none;
+    right: 15px;
   }
 }
 @media (max-width: 350px) {

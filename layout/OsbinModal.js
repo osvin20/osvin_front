@@ -4,6 +4,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
+import {useRouter} from 'next/router'
 
 export default function OsbinModal({title,children,bnt_title,class_name,modalFun,modal_id,close_con,btn_label,action_label}){
     const [open,setOpen] = useState(false);
@@ -17,6 +18,7 @@ export default function OsbinModal({title,children,bnt_title,class_name,modalFun
         modalFun(e);
         closeModal();
     }
+    const router = useRouter()
     return (
         <div className="osbinModal">
             <span onClick={openModal} className={class_name}>{bnt_title}</span>
@@ -29,7 +31,7 @@ export default function OsbinModal({title,children,bnt_title,class_name,modalFun
                 </DialogContent>
                 <DialogActions>
                     {typeof  modalFun == "function" ?
-                    <Button variant="outlined" color="primary" onClick={actionModal}>{action_label}</Button>:
+                    <Button variant="outlined" color="primary" className={'action_btn'} onClick={actionModal}>{action_label}</Button>:
                     ""}
                     {close_con !== false ?
                     <Button

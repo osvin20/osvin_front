@@ -4,6 +4,8 @@ export default function StoreStory(){
     return (
       <ul className={'storestory'}>
         <li>
+        <Link href='/storydetail'>
+          <a>
             <div className={'story_info'}>
                 <img src="/img/prof_04.jpg"/>
                 <div>
@@ -28,6 +30,8 @@ export default function StoreStory(){
                     <img src="/img/story04.jpg"/>
                 </div>
             </div>
+          </a>
+        </Link>  
         </li>
         <li>
             <div className={'story_info'}>

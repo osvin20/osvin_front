@@ -129,12 +129,12 @@ export default function MyPage() {
                 </Link>
               </li>
               <li>
-                <Link href="/mypage">
+                <Link href="/agreement">
                   <a>이용약관</a>
                 </Link>
               </li>
               <li>
-                <Link href="/">
+                <Link href="/private">
                   <a>개인정보처리방침</a>
                 </Link>
               </li>
