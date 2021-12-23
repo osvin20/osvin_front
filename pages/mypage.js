@@ -51,10 +51,10 @@ export default function MyPage() {
           <li>
             <Link href="/mypage">
               <a>
-                <div>
-                  <img src="/img/gift.png" />
+                <div className={'bell_ico'}>
+                  <img src="/img/bell.png" />
                 </div>
-                <p>기부하기</p>
+                <p>알림</p>
               </a>
             </Link>
           </li>

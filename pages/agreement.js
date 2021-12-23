@@ -10,6 +10,7 @@ export default function Agreement(){
             <div className={'pagetit_div'}>
               <h1 className={'page_tit'}>AGREEMENT</h1>
             </div>
+            <div className={'borderfix'}></div>
             <div className={'agreement'}>
               <p className={'agreement_tit extra_bold'}>오스빈 이용약관</p>
               <div className={'agreement_txt'}>

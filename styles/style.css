@@ -1570,7 +1570,7 @@
   z-index: 1
 }
 .comment_page > ul {
-  padding-bottom: 170px;
+  padding-bottom: 90px;
 }
 .comment_page li ul li {
   padding-top: 25px;
@@ -1612,7 +1612,7 @@
 .MuiPaper-root .MuiAccordionSummary-root {
   padding: 0
 }
-.MuiCollapse-wrapper .MuiAccordionDetails-root p {
+.comment_more .MuiCollapse-wrapper .MuiAccordionDetails-root p {
   width: 100%
 }
 .comment_more .MuiAccordionSummary-expandIcon {
@@ -1733,6 +1733,9 @@
 }
 .mypage_ico img {
   width: 30px;
+}
+.bell_ico img {
+  width: 34px;
 }
 .mypage_ico .special_img {
   width: 33px;
