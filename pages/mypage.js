@@ -8,7 +8,9 @@ export default function MyPage() {
   return (
     <SubLayout>
       <div className={"mypage_div"}>
-        <img src="/img/prof_01.jpg" className={"mypage_prof"} />
+        <div className={"mypage_prof"}>
+          <img src="/img/prof_01.jpg"/>
+        </div>
         <div>
           <p className={"user_name"}>sohee1203</p>
           <Link href="/myinfo">
