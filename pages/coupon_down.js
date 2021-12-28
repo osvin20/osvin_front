@@ -22,7 +22,7 @@ export default function CouponDown(){
                       <span>3,000</span>원
                     </p>
                     <span>오스빈 신규고객 쿠폰</span>
-                    <p className={'coupon_date'}>2021-08-20 ~ 2021-09-20</p>
+                    <p className={'coupon_date'}>2021-08-20 까지</p>
                   </div>
                   <div className={'couponico'}>
                     <div>
@@ -36,7 +36,7 @@ export default function CouponDown(){
                       <span>20</span>%
                     </p>
                     <span>오스빈 홀리데이 쿠폰</span>
-                    <p className={'coupon_date'}>2021-08-20 ~ 2021-09-20</p>
+                    <p className={'coupon_date'}>2021-08-20 까지</p>
                   </div>
                   <div className={'couponico'}>
                     <div>
@@ -50,7 +50,7 @@ export default function CouponDown(){
                       <span>1000</span>원
                     </p>
                     <span>오스빈 런칭 할인쿠폰</span>
-                    <p className={'coupon_date'}>2021-08-20 ~ 2021-09-20</p>
+                    <p className={'coupon_date'}>2021-08-20 까지</p>
                   </div>
                   <div className={'couponico'}>
                     <div>
@@ -64,7 +64,7 @@ export default function CouponDown(){
                       <span>3,000</span>원
                     </p>
                     <span>오스빈 신규고객 쿠폰</span>
-                    <p className={'coupon_date'}>2021-08-20 ~ 2021-09-20</p>
+                    <p className={'coupon_date'}>2021-08-20 까지</p>
                   </div>
                   <div className={'couponico'}>
                     <div>
