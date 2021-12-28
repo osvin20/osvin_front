@@ -51,12 +51,12 @@ export default function MyPage() {
             </Link>
           </li>
           <li>
-            <Link href="/mypage">
+            <Link href="/qnalist">
               <a>
                 <div className={'bell_ico'}>
-                  <img src="/img/bell.png" />
+                  <img src="/img/qna.png" />
                 </div>
-                <p>알림</p>
+                <p>문의내역</p>
               </a>
             </Link>
           </li>
@@ -75,11 +75,6 @@ export default function MyPage() {
               <li>
                 <Link href="/followfeed">
                   <a>팔로잉 피드</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/qnalist">
-                  <a>문의내역</a>
                 </Link>
               </li>
             </ul>
