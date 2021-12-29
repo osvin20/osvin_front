@@ -2481,6 +2481,10 @@
   font-size: 13px;
   border-bottom: 1px solid #ddd;
   margin: 15px;
+  padding-top: 10px;
+}
+.setting:first-child {
+  padding-top: 15px;
 }
 .setting > p {
   color: #d3d3d3;
@@ -3806,7 +3810,7 @@
   background: #d9d9d9
 }
 .download_coupon .coupon_date {
-  color: #ddd 
+  color: #ddd
 }
 
 /* 기부 */
@@ -4980,6 +4984,7 @@
   text-align: center;
   line-height: 16px;
   margin-right: 5px;
+  margin-bottom: 1px;
 }
 .ad_txt {
   color: #bfaa9a;
@@ -4995,6 +5000,10 @@
 .ad_txt div p:first-child {
   margin-bottom: 5px
 }
+.ad_txt div .MuiAccordionSummary-content p:first-child {
+  margin-bottom: 0;
+  margin-top: 2px;
+}
 .ad_txt .MuiPaper-elevation1 {
   border-bottom: none
 }
@@ -5003,7 +5012,7 @@
   padding-right: 15px
 }
 .ad_txt .MuiAccordionSummary-root, .ad_txt .MuiAccordionSummary-root.Mui-expanded {
-  min-height: 50px
+  min-height: 47px
 }
 .ad_txt .MuiAccordionDetails-root > p {
   padding-top: 0
