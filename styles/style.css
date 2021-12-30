@@ -3229,10 +3229,10 @@
   line-height: 1.1;
 }
 .faq_list .MuiAccordionSummary-root {
-  min-height: 50px;
+  min-height: 45px;
 }
 .faq_list .MuiAccordionSummary-root.Mui-expanded {
-  min-height: 50px;
+  min-height: 45px;
 }
 
 /* 주문하기 */
@@ -3649,7 +3649,7 @@
 .pay_note {
   color: #ccc;
   margin-top: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   font-size: 11px;
 }
 .total_pay ul {

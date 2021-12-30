@@ -46,7 +46,7 @@ export default function Order(){
           <AccordionDetails>
               <Typography>
                   <ul className={'order_ul'}>
-                      <li>
+                      {/* <li>
                         <Link href='/item'>
                           <a>
                             <div className={'order_item'}>
@@ -68,7 +68,7 @@ export default function Order(){
                             </div>
                           </a>
                         </Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link href='/item'>
                           <a>
