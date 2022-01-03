@@ -43,7 +43,10 @@ export default function Item(){
                 <div className={'store_flex'}>
                     <Link href='/store'>
                         <a className={'item_store'}>
-                            <img src="/img/shop_01.jpg"/>오스빈 스토어
+                            <div className={'item_store_img'}>
+                              <img src="/img/shop_01.jpg"/>
+                            </div>
+                            오스빈 스토어
                         </a>
                     </Link>
                     <Link href='/qna_write'>

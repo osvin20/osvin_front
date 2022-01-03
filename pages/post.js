@@ -46,7 +46,7 @@ export default function Post(){
                 <div className={'rv_prof'}>
                   <Link href="/userfeed">
                     <a className={'user_prof_div'}>
-                      <img src="/img/prof_01.jpg"/>
+                      <div className={'user_prof_img'}><img src="/img/prof_01.jpg"/></div>
                       <p>sohee1203</p>
                     </a>
                   </Link>

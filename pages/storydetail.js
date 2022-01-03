@@ -14,7 +14,9 @@ export default function StoreDetail(){
                   <div className={'rv_prof'}>
                     <Link href="/userfeed">
                       <a className={'story_info'}>
-                        <img src="/img/prof_04.jpg"/>
+                        <div className={'story_info_img'}>
+                          <img src="/img/prof_04.jpg"/>
+                        </div>
                         <div>
                             <p>오스빈스토어</p>
                             <span>2021년 8월 20일</span>

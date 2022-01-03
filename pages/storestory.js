@@ -7,7 +7,9 @@ export default function StoreStory(){
         <Link href='/storydetail'>
           <a>
             <div className={'story_info'}>
-                <img src="/img/prof_04.jpg"/>
+                <div className={'storereview_prof'}>
+                  <img src="/img/prof_04.jpg"/>
+                </div>
                 <div>
                     <p>오스빈스토어</p>
                     <span>2021년 8월 20일</span>
@@ -31,11 +33,13 @@ export default function StoreStory(){
                 </div>
             </div>
           </a>
-        </Link>  
+        </Link>
         </li>
         <li>
             <div className={'story_info'}>
-                <img src="/img/prof_04.jpg"/>
+                <div className={'storereview_prof'}>
+                  <img src="/img/prof_04.jpg"/>
+                </div>
                 <div>
                     <p>오스빈스토어</p>
                     <span>2021년 8월 20일</span>

@@ -68,7 +68,7 @@ export default function OrderConfirm(){
             </div>
             <div className={'oc_div oc_pay'}>
                 <div>
-                    <p>총 결제금액</p>
+                    <p className={'extra_bold'}>총 결제금액</p>
                     <div className={'extra_bold'}>
                         60,000원
                     </div>

@@ -1123,11 +1123,17 @@
   align-items: center;
   font-size: 12px;
 }
-.item_store img {
+.item_store_img {
   border-radius: 100%;
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
   margin-right: 5px;
+  overflow: hidden;
+}
+.item_store img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .item_tit {
   font-family: "NanumSquareB";
@@ -1357,11 +1363,17 @@
   display: flex;
   align-items: center;
 }
-.user_prof_div img {
+.user_prof_img {
   width: 35px;
   height: 35px;
   border-radius: 100%;
   margin-right: 10px;
+  overflow: hidden;
+}
+.user_prof_div img {
+  width: 100%;
+  height: 100;
+  object-fit: cover;
 }
 .user_prof_div p {
   font-family: "NanumSquareEB";
@@ -2890,11 +2902,17 @@
   align-items: center;
   margin-bottom: 15px;
 }
-.story_info img {
+.story_info_img {
   width: 35px;
   height: 35px;
   border-radius: 100%;
   margin-right: 10px;
+  overflow: hidden;
+}
+.story_info_img img {
+  width: 100%;
+  height: 100;
+  object-fit: cover;
 }
 .story_info p {
   font-family: "NanumSquareEB";
@@ -4044,12 +4062,16 @@
 .oc_pay .extra_bold {
   color: #ca8756;
   font-size: 17px;
+  margin-bottom: 0
+}
+.oc_pay p.extra_bold {
+  color: #000
 }
 .oc_btn {
   display: flex;
   align-items: center;
-  padding-bottom: 40px;
-  padding-top: 20px;
+  padding-bottom: 30px;
+  padding-top: 30px;
   justify-content: center;
 }
 .oc_btn a {
