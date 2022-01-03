@@ -1310,7 +1310,7 @@
   line-height: 1.5;
 }
 .user_txt p {
-  list-style: 1.3;
+  line-height: 1.3;
   font-size: 12px;
   margin-bottom: 10px;
 }
@@ -1557,7 +1557,7 @@
   min-width: 30px;
   text-align: right;
   font-size: 12px;
-  padding-top: 5px;
+  padding-top: 2px;
   color: #ca8756;
 }
 .more_comment {
@@ -1630,6 +1630,9 @@
 }
 .comment_more .MuiCollapse-wrapper .MuiAccordionDetails-root p {
   width: 100%
+}
+.comment_more .MuiCollapse-wrapper .MuiAccordionDetails-root .comment_date {
+  width: auto;
 }
 .comment_more .MuiAccordionSummary-expandIcon {
   display: none

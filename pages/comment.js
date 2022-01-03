@@ -533,6 +533,7 @@ export default function Comment(){
                     <img src="/img/prof_01.jpg"/>
                     <div>
                         <textarea placeholder="댓글 달기..." />
+                        <button className={'extra_bold'}>게시</button>
                     </div>
                 </div>
             </div>
