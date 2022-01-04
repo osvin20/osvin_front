@@ -69,11 +69,13 @@ export default function Main() {
             </a>
           </Link>
         </h3>
-        <ul className={"offshop"}>
+        <ul className={"offshop offshop_list"}>
           <li>
             <Link href="/store">
               <a>
-                <img src="/img/off_shop_01.jpg" />
+                <div>
+                  <img src="/img/off_shop_01.jpg"/>
+                </div>
                 <p className={"offshop_name"}>VINTAGE STORE</p>
                 <p className={"off_address"}>
                   부산시 금정구 장전3동 장전로 12번길 54 지하1층
@@ -84,7 +86,9 @@ export default function Main() {
           <li>
             <Link href="/store">
               <a>
-                <img src="/img/off_shop_02.jpg" />
+                <div>
+                  <img src="/img/off_shop_03.jpg"/>
+                </div>
                 <p className={"offshop_name"}>VINTAGE STORE</p>
                 <p className={"off_address"}>
                   부산시 금정구 장전3동 장전로 12번길 54 지하1층
@@ -95,7 +99,9 @@ export default function Main() {
           <li>
             <Link href="/store">
               <a>
-                <img src="/img/off_shop_03.jpg" />
+                <div>
+                  <img src="/img/off_shop_02.jpg"/>
+                </div>
                 <p className={"offshop_name"}>VINTAGE STORE</p>
                 <p className={"off_address"}>
                   부산시 금정구 장전3동 장전로 12번길 54 지하1층
@@ -114,7 +120,7 @@ export default function Main() {
           </a>
         </Link>
         </h3>
-        <ul className={"offshop"}>
+        <ul className={"offshop ytblist"}>
           <li>
             <Link href="/">
               <a>
@@ -141,11 +147,13 @@ export default function Main() {
             </a>
           </Link>
         </h3>
-        <ul className={"offshop"}>
+        <ul className={"offshop offshop_list"}>
           <li>
             <Link href="/event_detail">
               <a>
-                <img src="/img/event_01.jpg" />
+              <div>
+                <img src="/img/event_01.jpg"/>
+              </div>
                 <p className={"offshop_name"}>굿바이 어텀 50% 세일</p>
               </a>
             </Link>
@@ -153,7 +161,9 @@ export default function Main() {
           <li>
             <Link href="/event_detail">
               <a>
-                <img src="/img/event_02.jpg" />
+              <div>
+                <img src="/img/event_02.jpg"/>
+              </div>
                 <p className={"offshop_name"}>가을 신상 20% 할인</p>
               </a>
             </Link>
@@ -161,7 +171,9 @@ export default function Main() {
           <li>
             <Link href="/event_detail">
               <a>
-                <img src="/img/event_01.jpg" />
+              <div>
+                <img src="/img/event_01.jpg"/>
+              </div>
                 <p className={"offshop_name"}>굿바이 어텀 50% 세일</p>
               </a>
             </Link>

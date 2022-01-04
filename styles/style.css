@@ -222,13 +222,44 @@
   width: 55%;
   margin-right: 10px;
   flex: 0 0 auto;
+  position: relative;
 }
 .offshop li a {
   display: block;
+  margin-bottom: 10px;
+}
+.offshop li a > div {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 10px
 }
 .offshop li img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+.offshop_list li a {
+  display: block;
+  position: relative;
   margin-bottom: 10px;
+}
+.offshop_list li a > div {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px
+}
+.offshop_list li a > div::after {
+  padding-bottom: 100%;
+  content: "";
+  display: block;
+}
+.offshop_list li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
 }
 .off_address {
   overflow: hidden;
@@ -243,6 +274,13 @@
 }
 .offshop li p {
   padding-left: 10px;
+}
+.ytblist li a {
+  height: 130px;
+  margin-bottom: 0;
+}
+.event_list li {
+  position: inherit;
 }
 .offshop_name {
   margin-bottom: 5px;
