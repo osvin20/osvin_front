@@ -721,8 +721,23 @@
 .storefeed li:nth-child(odd) {
   margin-right: 0.6%;
 }
-.storefeed li img {
+.storefeed li a {
+  display: block;
   width: 100%;
+  overflow: hidden;
+}
+.storefeed li a::before {
+  padding-bottom: 100%;
+  content: "";
+  display: block;
+}
+.storefeed li a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .item_ranking {
   position: absolute;
@@ -839,7 +854,7 @@
   height: 23px;
   padding: 7px;
   border-radius: 100%;
-  background: #ffffff47;
+  background: #79797947;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1056,9 +1071,9 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   word-wrap: break-word;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.1;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
 }
 .itemprice,
 .itemprice span {
@@ -1069,6 +1084,20 @@
   border-bottom: none;
   margin-bottom: 15px;
   width: 49.5%;
+  position: relative;
+}
+.itemcate li > a:first-child {
+  width: 100%;
+  position: relative;
+  display: block;
+}
+.itemcate li > a:first-child::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+.itemcate li > a img {
+  position: absolute;
 }
 .itemcate li:nth-child(odd) {
   margin-right: 1%;
@@ -1327,13 +1356,27 @@
 }
 .userfeed_pic li {
   width: 33%;
+  position: relative;
   margin-bottom: 2px;
+}
+.userfeed_pic li a {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+}
+.userfeed_pic li::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
 }
 .userfeed_pic li:not(:nth-child(3n)) {
   margin-right: 0.5%;
 }
 .userfeed_pic li img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
 }
 .feed_write {
   width: 45px;
@@ -2234,7 +2277,7 @@
   object-fit: cover;
 }
 .reviewlist li {
-  padding: 20px 0;
+  padding: 15px 0;
 }
 .reviewlist li:not(:last-child) {
   border-bottom: 1px solid #ddd;
@@ -2629,7 +2672,7 @@
 }
 .cart_div {
   font-size: 13px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 .cart_div label {
   background: url("../img/none_check.png") no-repeat 0 0px / contain;
@@ -2660,9 +2703,14 @@
 }
 .cart_thumb {
   width: 90px;
+  height: 90px;
   margin-right: 10px;
   min-width: 90px;
-  margin-left: 5px;
+}
+.cart_thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .cart_price {
   font-family: "NanumSquareEB";
@@ -2701,8 +2749,15 @@
   position: absolute;
   top: 15px;
   right: 0px;
-  width: 17px;
-  height: 17px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  width: 30px;
+  height: 30px;
+}
+.cart_del div {
+  width: 20px;
+  height: 20px;
   background: #f1e4db;
   border-radius: 100%;
   display: flex;
@@ -2738,7 +2793,7 @@
   color: #ca8756;
 }
 .pay_btn {
-  padding: 15px;
+  padding: 10px;
   margin-top: 15px;
 }
 .pay_btn a {
@@ -2805,6 +2860,9 @@
   height: 75px;
   min-width: 75px;
   margin-right: 20px;
+}
+.storecate {
+  overflow-x: hidden;
 }
 .storecate header {
   position: inherit;
@@ -3002,7 +3060,8 @@
   margin-right: 10px;
 }
 .storereview_info .extra_bold {
-  margin-top: 5px;
+  margin-top: 10px;
+  font-size: 15px
 }
 
 /* 스토어 qna */
@@ -3434,8 +3493,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 20px;
-  padding-top: 15px;
+  padding: 15px 0;
   font-size: 13px;
 }
 .eco_point input {
@@ -4458,7 +4516,7 @@
 .qna_txt textarea {
   resize: none;
   width: 100%;
-  height: 100px;
+  height: 150px;
   padding: 15px;
   background: #f6f6f6;
   line-height: 1.4;
@@ -5485,7 +5543,7 @@
   text-align: center;
 }
 .mod_dir, .del_btn {
-  line-height: 2;
+  line-height: 2.5;
   font-size: 13px;
   display: block;
 }
@@ -5500,14 +5558,14 @@
 }
 #review_detail_modal .MuiDialog-paper{
   margin:80px;
-  border-radius:10px;
 }
 #review_detail_modal .MuiDialogTitle-root, #review_detail_modal .MuiDialogActions-root {
   display: none
 }
 #review_detail_modal .MuiDialogContent-root {
   padding: 0
-}
+}#review_detail_modal .MuiDialog-paper
+
 #return_modal .modal_close {
   display: none
 }

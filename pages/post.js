@@ -54,9 +54,10 @@ export default function Post(){
                     <OsbinModal
                       title=""
                       bnt_title =""
+                      dir_label ="네"
+                      btn_label ="아니오"
                       class_name={"rv_mod_btn"}
                       modal_id={"review_detail_modal"}
-                      close_con={false}
                     >
                       <ModModal/>
                     </OsbinModal>

@@ -29,8 +29,8 @@ export default function Cart(){
                             <label htmlFor="itemcheck1"></label>
                         </div>
                         <Link href='item'>
-                          <a>
-                            <img src="img/item16.jpg" className={'cart_thumb'}/>
+                          <a className={'cart_thumb'}>
+                            <img src="img/item16.jpg"/>
                           </a>
                         </Link>
                         <div className={'cartitem'}>
@@ -51,13 +51,15 @@ export default function Cart(){
                             </div>
                         </div>
                         <div className={'cart_del'}>
+                          <div>
                             <img src="img/close.png"/>
+                          </div>
                         </div>
                     </li>
                     <li>
                         <div>
-                            <input type="checkbox" id="itemcheck1"/>
-                            <label htmlFor="itemcheck1"></label>
+                            <input type="checkbox" id="itemcheck2"/>
+                            <label htmlFor="itemcheck2"></label>
                         </div>
                         <Link href='item'>
                           <a>
@@ -82,13 +84,15 @@ export default function Cart(){
                             </div>
                         </div>
                         <div className={'cart_del'}>
+                          <div>
                             <img src="img/close.png"/>
+                          </div>
                         </div>
                     </li>
                     <li>
                         <div>
-                            <input type="checkbox" id="itemcheck1"/>
-                            <label htmlFor="itemcheck1"></label>
+                            <input type="checkbox" id="itemcheck3"/>
+                            <label htmlFor="itemcheck3"></label>
                         </div>
                         <Link href='item'>
                           <a>
@@ -113,7 +117,9 @@ export default function Cart(){
                             </div>
                         </div>
                         <div className={'cart_del'}>
+                          <div>
                             <img src="img/close.png"/>
+                          </div>
                         </div>
                     </li>
                 </ul>

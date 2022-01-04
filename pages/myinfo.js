@@ -96,6 +96,7 @@ export default function MyInfo(){
                       class_name={"info_submit"}
                       modal_id={"return_modal"}
                       modalFun ={()=>router.push("/mypage")}
+                      close_con={false}
                     >
                       <p className={"phone_modal"}>회원정보 수정이 완료되었습니다.</p>
                     </OsbinModal>

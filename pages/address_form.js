@@ -59,6 +59,7 @@ export default function AddressForm(){
                   title=""
                   bnt_title ="저장"
                   action_label ="확인"
+                  close_con={false}
                   modal_id={"return_modal"}
                   modalFun ={()=>router.push("/address_list")}
                 >
