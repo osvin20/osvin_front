@@ -1075,18 +1075,18 @@
   font-family: "NanumSquareEB";
   font-size: 15px;
 }
-.itemcate li {
+.itemcate li, .s_result li {
   border-bottom: none;
   margin-bottom: 15px;
   width: 49.5%;
   position: relative;
 }
-.itemcate li > a:first-child {
+.itemcate li > a:first-child, .s_result li > a:first-child {
   width: 100%;
   position: relative;
   display: block;
 }
-.itemcate li > a:first-child::after, .zzimlist li > a:first-child::after {
+.itemcate li > a:first-child::after, .zzimlist li > a:first-child::after, .s_result li > a:first-child::after {
   content: "";
   display: block;
   padding-bottom: 100%;
