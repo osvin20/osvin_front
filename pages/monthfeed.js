@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function MonthFeed(){
     return (
       <div className={'storefeed'}>
-          <ul>
+          <ul className={'storefeed_ul'}>
               <li>
                   <Link href="/post">
                       <a>

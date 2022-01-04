@@ -726,7 +726,7 @@
   width: 100%;
   overflow: hidden;
 }
-.storefeed_ul li a img, .zzimlist li a img {
+.storefeed_ul li a > img, .zzimlist li a img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -748,7 +748,7 @@
   font-size: 17px;
   text-shadow: 0px 0px 1px #5e5e5e
 }
-.store_div {
+.storefeed_ul li .store_div {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -756,6 +756,7 @@
   display: flex;
   align-items: center;
   color: #fff;
+  display: flex;
 }
 .shop_thumb {
   width: 32px;
@@ -1086,7 +1087,7 @@
   position: relative;
   display: block;
 }
-.itemcate li > a:first-child::after, .zzimlist li > a:first-child::after, .s_result li > a:first-child::after {
+.itemcate li > a:first-child::after, .zzimlist li > a:first-child::after, .s_result li > a:first-child::after, .storefeed_ul li > a:first-child::after {
   content: "";
   display: block;
   padding-bottom: 100%;
@@ -3773,7 +3774,7 @@
   white-space: nowrap;
   color: #ccc;
 }
-.pay_agree li p {
+.pay_agree li .modal_open {
   color: #ccc;
 }
 .pay_agree input[type="checkbox"]:checked + label {
@@ -4005,6 +4006,9 @@
   font-family: "NanumSquareR";
   min-width: 71px;
   font-size: 13px;
+}
+.cart_modal .MuiDialogActions-root .MuiButton-root {
+  min-width: 115px
 }
 .address_modal_box .adrs_div {
   flex-direction: column;
@@ -5524,6 +5528,12 @@
   text-align: center;
   padding: 20px 0;
   line-height: 1.3
+}
+.agree_txt {
+  font-size: 14px;
+  line-height: 1.3;
+  max-height: 220px;
+  overflow-y: scroll;
 }
 #withdrawal_modal .modal_close {
   background: #ca8756;

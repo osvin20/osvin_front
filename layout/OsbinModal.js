@@ -6,7 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import {useRouter} from 'next/router'
 
-export default function OsbinModal({title,children,bnt_title,class_name,modalFun,modal_id,close_con,btn_label,action_label}){
+export default function OsbinModal({title,children,bnt_title,class_name,modalFun,modal_id,close_con,btn_label,action_label,modal_class}){
     const [open,setOpen] = useState(false);
     const openModal = () =>{
         setOpen(true);
@@ -22,7 +22,7 @@ export default function OsbinModal({title,children,bnt_title,class_name,modalFun
     return (
         <div className="osbinModal">
             <span onClick={openModal} className={class_name}>{bnt_title}</span>
-            <Dialog open={open} onClose={closeModal} id={modal_id} >
+            <Dialog open={open} onClose={closeModal} id={modal_id} className={modal_class}>
                 <DialogTitle>
                     {title}
                 </DialogTitle>

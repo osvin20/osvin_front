@@ -73,8 +73,15 @@ export default function Join() {
               <div className={"join_view"}>
                 <input type="checkbox" id="all_agree1" />
                 <label htmlFor="all_agree1">(필수) 만 14세 이상입니다.</label>
-                <OsbinModal title="" bnt_title="보기" class_name={"bnt"}>
-                  <p>{txt1}</p>
+                <OsbinModal
+                  title=""
+                  bnt_title ="보기"
+                  class_name={"bnt"}
+                  modal_id={"agree_modal"}
+                >
+                  <p className={"agree_txt"}>
+                    (필수) 만 14세 이상입니다.
+                  </p>
                 </OsbinModal>
               </div>
               <div className={"join_view"}>
@@ -82,8 +89,15 @@ export default function Join() {
                 <label htmlFor="all_agree2">
                   (필수) 서비스 이용약관에 동의
                 </label>
-                <OsbinModal title="" bnt_title="보기" class_name={"bnt"}>
-                  <p>{txt1}</p>
+                <OsbinModal
+                  title=""
+                  bnt_title ="보기"
+                  class_name={"bnt"}
+                  modal_id={"agree_modal"}
+                >
+                  <p className={"agree_txt"}>
+                    (필수) 서비스 이용약관에 동의
+                  </p>
                 </OsbinModal>
               </div>
               <div className={"join_view"}>
@@ -91,8 +105,15 @@ export default function Join() {
                 <label htmlFor="all_agree3">
                   (필수) 개인 정보 수집이용에 동의
                 </label>
-                <OsbinModal title="" bnt_title="보기" class_name={"bnt"}>
-                  <p>{txt1}</p>
+                <OsbinModal
+                  title=""
+                  bnt_title ="보기"
+                  class_name={"bnt"}
+                  modal_id={"agree_modal"}
+                >
+                  <p className={"agree_txt"}>
+                    (필수) 개인 정보 수집이용에 동의
+                  </p>
                 </OsbinModal>
               </div>
               <div className={"join_view"}>
@@ -100,8 +121,15 @@ export default function Join() {
                 <label htmlFor="all_agree4">
                   (선택) 홍보 및 마케팅 이용에 동의
                 </label>
-                <OsbinModal title="" bnt_title="보기" class_name={"bnt"}>
-                  <p>{txt1}</p>
+                <OsbinModal
+                  title=""
+                  bnt_title ="보기"
+                  class_name={"bnt"}
+                  modal_id={"agree_modal"}
+                >
+                  <p className={"agree_txt"}>
+                    (선택) 홍보 및 마케팅 이용에 동의
+                  </p>
                 </OsbinModal>
               </div>
             </div>

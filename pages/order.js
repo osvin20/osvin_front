@@ -420,17 +420,46 @@ export default function Order(){
                       <li>
                           <input type="checkbox" id="payagree1"/>
                           <label htmlFor="payagree1">오스빈 약관 동의</label>
-                          <p>보기</p>
+                          <OsbinModal
+                            title=""
+                            bnt_title ="보기"
+                            action_label ="확인"
+                            class_name ="modal_open"
+                            modal_id={"agree_modal"}
+                          >
+                            <p className={"agree_txt"}>
+                              오스빈 약관 동의
+                            </p>
+                          </OsbinModal>
                       </li>
                       <li>
                           <input type="checkbox" id="payagree2"/>
                           <label htmlFor="payagree2">개인정보 수집 및 이용에 대한 안내</label>
-                          <p>보기</p>
+                          <OsbinModal
+                            title=""
+                            bnt_title ="보기"
+                            action_label ="확인"
+                            class_name ="modal_open"
+                            modal_id={"agree_modal"}
+                          >
+                            <p className={"agree_txt"}>
+                              개인정보 수집 및 이용에 대한 안내
+                            </p>
+                          </OsbinModal>
                       </li>
                       <li>
                           <input type="checkbox" id="payagree3"/>
                           <label htmlFor="payagree3">구매조건 및 개인정보 제3자 제공</label>
-                          <p>보기</p>
+                          <OsbinModal
+                            title=""
+                            bnt_title ="보기"
+                            class_name ="modal_open"
+                            modal_id={"agree_modal"}
+                          >
+                            <p className={"agree_txt"}>
+                              오스빈 구매조건 및 개인정보 제3자 제공
+                            </p>
+                          </OsbinModal>
                       </li>
                   </ul>
               </Typography>

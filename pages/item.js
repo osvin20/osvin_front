@@ -137,6 +137,7 @@ export default function Item(){
                   class_name={"cart_dir"}
                   modalFun ={()=>router.push("/cart")}
                   modal_id={"withdrawal_modal"}
+                  modal_class={"cart_modal"}
                 >
                   <p className={"phone_modal"}>상품을 장바구니에 담았습니다.</p>
                 </OsbinModal>
