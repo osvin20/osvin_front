@@ -4,8 +4,6 @@ import NumberInput from "../layout/NumberInput";
 import styled from "styled-components";
 import { useSelector, useDispatch } from 'react-redux';
 import {setTabNumber} from '../store/modules/tab_number';
-
-
 export default function Main() {
   const dispatch = useDispatch();
   return (

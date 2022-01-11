@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 export default function HotStore(){
+  
     return (
       <div className={'storefeed zzimlist searchlist'}>
             <ul className={'hot_list'}>
