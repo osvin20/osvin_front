@@ -5,7 +5,7 @@ export default function ItemBox({list}){
     <div className={'storefeed itemlist'}>
         <ul className={'storefeed_ul'}>
           {list.map((val,key) =>(
-            <li>
+            <li key={key}>
                 <Link href="/item">
                     <a>
                       <img
