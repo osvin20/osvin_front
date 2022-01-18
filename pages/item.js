@@ -92,7 +92,7 @@ function Item({query}){
                       <p className={'sale_per'}>10%</p>
                       <p className={'cost'}>56,000원</p>
                     </div>
-                    <p class="item_del_cost">
+                    <p className={'item_del_cost'}>
                       배송비
                       <span>2500원</span>
                     </p>
