@@ -2,7 +2,7 @@
 import ItemLayout from '../layout/ItemLayout'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
-import React,{useState} from 'react';
+import {useEffect,useState} from 'react';
 import CheckBox from '../layout/CheckBox.js';
 import Slider  from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -11,10 +11,14 @@ import OsbinModal from '../layout/OsbinModal';
 import AlertModal  from '../layout/OsbinModal';
 import {reAlert} from '../store/modules/alert_popup';
 import {useDispatch } from 'react-redux';
+import axios from 'axios';
 
-export default function Item(){
+function Item({query}){
+    const {it_id} = query;
     const dispatch = useDispatch();
     const [ck ,setCk] = useState(false);
+    const [item ,setItem] = useState([]);
+    const [imgList ,setImgList] = useState([]);
     const router = useRouter()
     let settings = {
         dots: true,
@@ -23,17 +27,40 @@ export default function Item(){
         arrows:false,
         slidesToShow: 1,
         slidesToScroll: 1
-      };
-    return (
+    };
+    useEffect(() =>{
+      let imgArr = [];
+      axios.get(process.env.api+"Item/Info/"+it_id
+      ).then((res)=>{
+        if(res.data){
+          let it = res.data.data;
+          for (var i = 1; i < 11; i++){
+            if(it["it_img"+i] != ""){
+              imgArr.push(it["it_img"+i]);
+            }
+          }
+          setItem(it);
+          setImgList(imgArr);
+        }
+      }).catch((error)=> {
+
+      });
+    },[]);
+    return(
         <ItemLayout>
             <div className={'item_pic'}>
                 <Slider {...settings}>
-                    <div className={'content_box'}>
-                        <img src="/img/item01.jpg"/>
-                    </div>
-                    <div className={'content_box'}>
-                        <img src="/img/item02.jpg"/>
-                    </div>
+                    {imgList.map((val,key) =>(
+                      <div className={'content_box'}>
+                          <img
+                            src ={
+                              val != ''?
+                              process.env.domain+'data/item/'+val:
+                              "/img/no_img.png"
+                            }
+                          />
+                      </div>
+                    ))}
                 </Slider>
                 <div className={'item_back'}>
                     <img className={'back_ico'} src="/img/arrow_06.png" onClick={() => router.back()}/>
@@ -58,11 +85,17 @@ export default function Item(){
                 <p className={'item_tit'}>도리 믹스 패턴 박시 핏 니트</p>
                 <div className={'price_flex'}>
                   <div className={'detail_price'}>
+                    <div>
                       <p className={'sale_price'}>
                           51,000원
                       </p>
                       <p className={'sale_per'}>10%</p>
                       <p className={'cost'}>56,000원</p>
+                    </div>
+                    <p class="item_del_cost">
+                      배송비
+                      <span>2500원</span>
+                    </p>
                   </div>
                   <Link href='/coupon_down'>
                     <a>
@@ -150,3 +183,7 @@ export default function Item(){
         </ItemLayout>
     )
 }
+Item.getInitialProps = async ({ req ,query }) => {
+  return {query}
+}
+export default Item;

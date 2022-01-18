@@ -50,12 +50,25 @@
 .mt55 {
   margin-top: 55px;
 }
-.content_box {
+.content_box{
   height: auto;
   position: relative;
 }
+.item_pic .content_box::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+.item_pic .content_box img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  object-fit: cover;
+}
 .content_box img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .content_box2 {
   height: 500px;
@@ -1217,9 +1230,17 @@
 .price_flex img {
   width: 115px;
 }
-.detail_price {
+.detail_price div {
   display: flex;
   align-items: center;
+}
+.item_del_cost {
+  font-size: 13px;
+  margin-top: 10px;
+  color: #777
+}
+.item_del_cost span {
+  margin-left: 5px;
 }
 .sale_price {
   font-family: "NanumSquareEB";
@@ -3034,6 +3055,8 @@
 }
 .story_img img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* 스토어 공지사항 */

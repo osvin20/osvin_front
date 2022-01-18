@@ -6,7 +6,7 @@ export default function ItemBox({list}){
         <ul className={'storefeed_ul'}>
           {list.map((val,key) =>(
             <li key={key}>
-                <Link href="/item">
+                <Link href={"/item?it_id="+val.it_id}>
                     <a>
                       <img
                         src ={

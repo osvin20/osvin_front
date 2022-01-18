@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import ItemBox from '../components/ItemBox';
-import {useEffect,useState,uselayouteffect} from 'react';
+import {useEffect,useState} from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import useHistoryState from '../hook/useHistoryState';
