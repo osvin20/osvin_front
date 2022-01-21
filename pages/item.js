@@ -54,7 +54,7 @@ function Item({query}){
             <div className={'item_pic'}>
                 <Slider {...settings}>
                     {imgList.map((val,key) =>(
-                      <div className={'content_box'}>
+                      <div className={'content_box'} key={key}>
                           <img
                             src ={
                               val != ''?
