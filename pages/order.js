@@ -10,7 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import OsbinModal from '../layout/OsbinModal';
 import AddressModal from '../layout/AddressModal'
-
+import axios from 'axios';
+import {useEffect,useState} from 'react';
 const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',
@@ -23,8 +24,39 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Order(){
   const classes = useStyles();
+  const [mobile_url ,setMobile_url] = useState('');
+  const getOrderPg = () =>{
+    const form = new FormData();
+    form.append('mb_token', 'sha256:12000:lDYdAJZKCpZBNUwvDC1KrCaOBVNN7vmt:5R5IZnQfzBG5j4J+3I5lYeivC89IGXgY');
+    form.append('od_name', '영준');
+    form.append('prduct_name', '오스빈티셔츠');
+    axios.post(process.env.api+"Order/GetOrderPg",form
+    ).then((res)=>{
+        console.log(res.data.mobile_url);
+        setMobile_url(res.data.mobile_url)
+
+    }).catch((error)=> {
+
+    });
+  }
+  useEffect(() => {
+      // 데이터보냄
+     window.addEventListener(
+       "message",
+       (e) => {
+         // if (e.origin === SERVER_URL && e.data.message) {
+         //   // 생략
+         // }
+       },
+       false
+     );
+   }, []);
+
   return (
     <NoneTab>
+      {mobile_url != '' &&
+        <iframe className={'pg_page'} src={mobile_url} />
+      }
       <div className={'pagetit_div'}>
         <h1 className={'page_tit'}>ORDER</h1>
       </div>
@@ -467,10 +499,10 @@ export default function Order(){
         </Accordion>
       </div>
       <div className={'mb75'}></div>
-      <div className={'pay_btn paybtn'}>
-        <Link href="/order_confirm">
-            <a>결제하기</a>
-        </Link>
+      <div className={'pay_btn paybtn'} onClick={getOrderPg}>
+        {/*"/order_confirm"*/}
+          <a>결제하기</a>
+
       </div>
     </NoneTab>
   )

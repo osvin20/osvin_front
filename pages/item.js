@@ -18,6 +18,7 @@ function Item({query}){
     const dispatch = useDispatch();
     const [ck ,setCk] = useState(false);
     const [item ,setItem] = useState([]);
+    const [tag ,setTag] = useState([]);
     const [imgList ,setImgList] = useState([]);
     const router = useRouter()
     let settings = {
@@ -34,11 +35,13 @@ function Item({query}){
       ).then((res)=>{
         if(res.data){
           let it = res.data.data;
+
           for (var i = 1; i < 11; i++){
             if(it["it_img"+i] != ""){
               imgArr.push(it["it_img"+i]);
             }
           }
+          setTag(it.it_shop_memo)
           setItem(it);
           setImgList(imgArr);
         }
@@ -71,9 +74,15 @@ function Item({query}){
                     <Link href='/store'>
                         <a className={'item_store'}>
                             <div className={'item_store_img'}>
-                              <img src="/img/shop_01.jpg"/>
+                              <img
+                                src ={
+                                  item.mb_img != ''?
+                                  item.mb_img:
+                                  "/img/no_img.png"
+                                }
+                              />
                             </div>
-                            오스빈 스토어
+                            {item.mb_nick}
                         </a>
                     </Link>
                     <Link href='/qna_write'>
@@ -82,19 +91,29 @@ function Item({query}){
                         </a>
                     </Link>
                 </div>
-                <p className={'item_tit'}>도리 믹스 패턴 박시 핏 니트</p>
+                <p className={'item_tit'}>{item.it_name}</p>
                 <div className={'price_flex'}>
                   <div className={'detail_price'}>
                     <div>
                       <p className={'sale_price'}>
-                          51,000원
+                          {item.it_price}원
                       </p>
-                      <p className={'sale_per'}>10%</p>
-                      <p className={'cost'}>56,000원</p>
+                      {
+                      //<p className={'sale_per'}>10%</p>
+                      //<p className={'cost'}>56,000원</p>
+                      }
                     </div>
                     <p className={'item_del_cost'}>
-                      배송비
-                      <span>2500원</span>
+                        {(() => {
+                          switch (item.it_sc_type) {
+                            case '0':
+                              return <>기본배송</>
+                            case '1':
+                              return <>무료배송</>
+                            case '3':
+                              return <>배송비<span>{item.it_sc_price}원</span></>
+                          }
+                        })()}
                     </p>
                   </div>
                   <Link href='/coupon_down'>
@@ -105,46 +124,22 @@ function Item({query}){
                 </div>
             </div>
             <div className={'item_detail'}>
-                <img src="/img/detail_pic.jpg"/>
+
+                <div
+                  dangerouslySetInnerHTML={{ __html: item.it_mobile_explan }}
+                />
+
             </div>
             <div className={'item_tag'}>
                 <p>tag</p>
                 <div className={'hothash'}>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>빈티지목걸이</span>
-                  </a>
-                </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>다이어리</span>
-                  </a>
-                </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>만년필</span>
-                  </a>
-                </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>화장대</span>
-                  </a>
-                </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>엔틱수납장</span>
-                  </a>
-                </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>클래식</span>
-                  </a>
-                </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>빈티지드레스</span>
-                  </a>
-                </Link>
+                {tag.map((val,key) =>(
+                  <Link href={'/search_result?it_shop_memo='+val} key={key}>
+                    <a>
+                        # <span>{val}</span>
+                    </a>
+                  </Link>
+                ))}
                 </div>
             </div>
             <div className={'item_buy'}>
