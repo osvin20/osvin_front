@@ -12,6 +12,7 @@ import OsbinModal from '../layout/OsbinModal';
 import AddressModal from '../layout/AddressModal'
 import axios from 'axios';
 import {useEffect,useState} from 'react';
+
 const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',
@@ -40,13 +41,9 @@ export default function Order(){
     });
   }
   useEffect(() => {
-      // 데이터보냄
-     window.addEventListener(
-       "message",
-       (e) => {
-         // if (e.origin === SERVER_URL && e.data.message) {
-         //   // 생략
-         // }
+    //결제 데이터를받음
+    window.addEventListener("message",(e) => {
+         console.log(e);
        },
        false
      );

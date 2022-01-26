@@ -2,8 +2,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Style.module.css'
 import Link from 'next/link'
+import { useRouter } from "next/router";
+import {useEffect} from 'react';
 
 export default function LoginTheme({children}){
+    const router = useRouter();
+    useEffect(() => {
+      if(typeof(localStorage.mb_token) == "string"){
+        router.push('/');
+      }
+    }, []);
     return (
         <div className={styles.container}>
             <Head>
@@ -12,7 +20,7 @@ export default function LoginTheme({children}){
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className={'login_bg'}>
-                
+
             </div>
 
             {children}

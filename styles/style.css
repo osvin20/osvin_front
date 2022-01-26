@@ -388,6 +388,9 @@
   width: 75%;
   max-width: 400px;
 }
+.login_form .login_input input input{
+  color:#fff;
+}
 .login_logo {
   width: 70px;
   display: flex;
@@ -514,14 +517,15 @@
   border-bottom: 0.5px solid #000;
   width: 100%;
   display: flex;
+  flex-wrap:wrap;
   align-items: center;
   justify-content: space-between;
   padding-bottom: 5px;
   padding-left: 5px;
-  margin-bottom: 25px;
+  margin-bottom: 0;
 }
 .input_btn input {
-  width: 100%;
+  width: 65%;
   font-size: 12px;
   line-height: 1;
   padding-top: 5px;
@@ -777,7 +781,13 @@
   width: 100%;
   overflow: hidden;
 }
-.storefeed_ul li a > img, .zzimlist li a img {
+.searchcate .searchlist .hot_list a {
+  display: flex;
+}
+.searchcate .searchlist .hot_list a img {
+  position: inherit;
+}
+.storefeed_ul li a img, .zzimlist li a img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -894,6 +904,7 @@
   color: #fff;
   top: 0;
   left: 0;
+  z-index:9;
 }
 .view_del {
   position: absolute;
@@ -5767,6 +5778,9 @@
   .ytb_tit {
     font-size: 12px
   }
+  .ss{
+    width:12px;
+  }
   .ytd_date {
     font-size: 11px;
     margin-top: 3px;
@@ -5840,5 +5854,23 @@
   position:fixed;
   z-index: 999;
   top:0px;
-
+}
+.note{
+  width:100%;
+}
+body .swal2-title{
+  font-size: 1.5em;
+  padding: 1.5em 1em 0;
+}
+body .swal2-styled.swal2-confirm{
+  background-color: #ca8756;
+}
+body .swal2-styled.swal2-confirm:focus{
+  box-shadow: 0 0 0 3px #ff9800;
+}
+body .MuiAppBar-root{
+  z-index: 1052;
+}
+.s_result_list{
+  padding-top:0px;
 }

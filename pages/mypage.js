@@ -104,7 +104,7 @@ export default function MyPage() {
                   btn_label ="아니오"
                   dir_label ="네"
                   class_name={"cart_dir"}
-                  modalFun ={()=>router.push("/")}
+                  modalFun ={()=>{router.push("/login");localStorage.clear()}}
                   modal_id={"withdrawal_modal"}
                 >
                   <p className={"phone_modal"}>로그아웃 하시겠습니까?</p>

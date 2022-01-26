@@ -4,7 +4,7 @@ import Link from 'next/link'
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import ItemBox from '../components/ItemBox';
+import ItemBox from '../atomic/ItemBox';
 import {useEffect,useState} from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
@@ -72,7 +72,6 @@ function ItemList({query}){
                   list={itemList}
                 />
             </TabPanel>
-
           </div>
       </SubLayout>
     )

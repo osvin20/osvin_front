@@ -3,12 +3,13 @@ import ItemLayout from '../layout/ItemLayout'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import {useEffect,useState} from 'react';
-import CheckBox from '../layout/CheckBox.js';
+import CheckBox from '../atomic/CheckBox.js';
 import Slider  from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import OsbinModal from '../layout/OsbinModal';
 import AlertModal  from '../layout/OsbinModal';
+import Swal from 'sweetalert2'
 import {reAlert} from '../store/modules/alert_popup';
 import {useDispatch } from 'react-redux';
 import axios from 'axios';
@@ -29,10 +30,23 @@ function Item({query}){
         slidesToShow: 1,
         slidesToScroll: 1
     };
+    const addRemove = () =>{
+      const form = new FormData();
+      form.append('mb_token',localStorage.mb_token);
+      form.append('it_id',it_id);
+      axios.post(process.env.api+"Wish/AddRemove",form
+      ).then((res)=>{
+        Swal.fire(res.data.msg);
+      })
+    }
+
     useEffect(() =>{
       let imgArr = [];
-      axios.get(process.env.api+"Item/Info/"+it_id
-      ).then((res)=>{
+      axios.get(process.env.api+"Item/Info/"+it_id,{
+        params: {
+          mb_token:localStorage.mb_token
+        }
+      }).then((res)=>{
         if(res.data){
           let it = res.data.data;
 
@@ -46,7 +60,6 @@ function Item({query}){
           setImgList(imgArr);
         }
       }).catch((error)=> {
-
       });
     },[]);
     return(
@@ -145,7 +158,7 @@ function Item({query}){
             <div className={'item_buy'}>
                 <CheckBox
                   id={"checkBox4"}
-                  defCk={false}
+                  defCk={item.wi_check}
                   offEl={
                     <div className={'item_heart'}>
                         <img src="/img/heart4.png"/>
@@ -156,6 +169,7 @@ function Item({query}){
                         <img src="/img/heart6.png"/>
                     </div>
                   }
+                  onchangeHandler={addRemove}
                 />
                 <OsbinModal
                   title=""

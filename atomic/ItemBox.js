@@ -1,23 +1,32 @@
 import Link from 'next/link'
 
-export default function ItemBox({list}){
+export default function ItemBox({list,className}){
   return (
-    <div className={'storefeed itemlist'}>
+    <div className={'storefeed itemlist '+className}>
         <ul className={'storefeed_ul'}>
           {list.map((val,key) =>(
             <li key={key}>
                 <Link href={"/item?it_id="+val.it_id}>
+
                     <a>
-                      <img
-                        src ={
-                          val.it_img1 != ''?
-                          process.env.domain+'data/item/'+val.it_img1:
-                          "/img/no_img.png"
+                      <div>
+                        {val.it_stock_qty == 0&&
+                          <div className={'soldout'}>
+                              SOLD OUT
+                          </div>
                         }
-                      />
+                        <img
+                          src ={
+                            val.it_img1 != ''?
+                            process.env.domain+'data/item/'+val.it_img1:
+                            "/img/no_img.png"
+                          }
+                        />
+                      </div>
                     </a>
                 </Link>
-                <Link href="/item">
+
+                <Link href={"/item?it_id="+val.it_id}>
                     <a>
                       <div className={'iteminfo'}>
                           <p className={'itemname'}>{val.it_name}</p>

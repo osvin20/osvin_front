@@ -1,23 +1,62 @@
 import Link from 'next/link'
-import React,{useState} from 'react';
-import CheckBox from '../layout/CheckBox.js';
+import React,{useState,useEffect} from 'react';
+import CheckBox from '../atomic/CheckBox.js';
+import axios from 'axios';
+import Swal from 'sweetalert2'
 
-export default function ViewItem(){
-    const [ck ,setCk] = useState(false);
+export default function ViewItem({api}){
+    const [itemList,setItemList] = useState([]);
+    useEffect(() =>{
+      console.log(localStorage.mb_token)
+      axios.get(process.env.api+"Wish/"+api,{
+      	params: {
+          mb_token:localStorage.mb_token
+        }
+      }).then((res)=>{
+        console.log(res.data.data);
+        if(res.data){
+          setItemList(res.data.data);
+        }
+      }).catch((error)=> {
+      });
+    },[]);
+    const addRemove = (it_id) =>{
+      const form = new FormData();
+      form.append('mb_token',localStorage.mb_token);
+      form.append('it_id',it_id);
+      axios.post(process.env.api+"Wish/AddRemove",form
+      ).then((res)=>{
+        Swal.fire(res.data.msg);
+      })
+    }
+
     return (
       <div className={'storefeed zzimlist'}>
           <ul>
-              <li>
-                  <Link href="/item">
+              {itemList.map((val,key) =>(
+              <li key={key}>
+                  <Link href={"/item?it_id="+val.it_id}>
                       <a>
-                        <img src="/img/storefeed_01.jpg"/>
+                        <img
+                          src ={
+                            val.it_img1 != ''?
+                            process.env.domain+'data/item/'+val.it_img1:
+                            "/img/no_img.png"
+                          }
+                        />
                       </a>
+
                   </Link>
+                  {val.it_stock_qty == 0&&
+                    <div className={'soldout'}>
+                        SOLD OUT
+                    </div>
+                  }
                   <CheckBox
-                    id={"checkBox09"}
-                    defCk={false}
+                    id={"checkBox"+api+val.it_id}
+                    defCk={val.wi_check}
                     offEl={
-                      <div className={'heart_ico heart_click'}>
+                      <div className={'heart_ico'}>
                         <img src="/img/heart2.png"/>
                       </div>
                     }
@@ -26,182 +65,10 @@ export default function ViewItem(){
                         <img src="/img/heart3.png"/>
                       </div>
                     }
+                    onchangeHandler={()=>addRemove(val.it_id)}
                   />
-                  <div className={'view_del'}>
-                    <img src="/img/close.png"/>
-                  </div>
               </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/storefeed_02.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"checkBox10"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-                  <div className={'view_del'}>
-                    <img src="/img/close.png"/>
-                  </div>
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/storefeed_03.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"checkBox11"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-                  <div className={'view_del'}>
-                    <img src="/img/close.png"/>
-                  </div>
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/storefeed_04.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"checkBox12"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-                  <div className={'view_del'}>
-                    <img src="/img/close.png"/>
-                  </div>
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/storefeed_05.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"checkBox13"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-                  <div className={'view_del'}>
-                    <img src="/img/close.png"/>
-                  </div>
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/storefeed_06.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"checkBox14"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-                  <div className={'view_del'}>
-                    <img src="/img/close.png"/>
-                  </div>
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/storefeed_01.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"checkBox15"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-                  <div className={'view_del'}>
-                    <img src="/img/close.png"/>
-                  </div>
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/storefeed_02.jpg"/>
-                      </a>
-                  </Link>
-                  <div className={'soldout'}>
-                      SOLD OUT
-                  </div>
-                  <CheckBox
-                    id={"checkBox16"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-                  <div className={'view_del'}>
-                    <img src="/img/close.png"/>
-                  </div>
-              </li>
+              ))}
           </ul>
       </div>
     );
