@@ -211,7 +211,7 @@ function Item({query}){
               }
               onchangeHandler={addRemove}
             />
-            <span class="cart_dir" onClick={addCart}>장바구니</span>
+            <span className="cart_dir" onClick={addCart}>장바구니</span>
             {/* <OsbinModal
               title=""
               bnt_title ="장바구니"

@@ -7,7 +7,7 @@ import {useEffect,useState,useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'
 
-export default function Join() {
+export default function Join(){
   const router = useRouter();
   const joinFrom = useRef(); //form data값 저장
   const useChange = (init) =>{
