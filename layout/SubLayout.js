@@ -3,8 +3,19 @@ import Image from 'next/image'
 import styles from '../styles/Style.module.css'
 import Link from 'next/link'
 import FootTab from '/layout/FootTab.js'
+import { useRouter } from "next/router";
+import {useEffect,useState,useRef } from 'react';
+import Swal from 'sweetalert2'
 
 export default function SubLayout({children,...props}){
+    // 로그인체크
+    const router = useRouter();
+    useEffect(() => {
+      if(typeof(localStorage.mb_token) != "string" && props.loginCheck == true){
+        Swal.fire("로그인을 해주세요");
+        router.push('/login');
+      }
+    }, []);
     return (
         <div className={styles.container}>
             <Head>

@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import OsbinModal from '../layout/OsbinModal';
 import AddressModal from '../layout/AddressModal'
+import Swal from 'sweetalert2'
 import axios from 'axios';
 import {useEffect,useState} from 'react';
 
@@ -28,11 +29,13 @@ export default function Order(){
   const [mobile_url ,setMobile_url] = useState('');
   const getOrderPg = () =>{
     const form = new FormData();
-    form.append('mb_token', 'sha256:12000:lDYdAJZKCpZBNUwvDC1KrCaOBVNN7vmt:5R5IZnQfzBG5j4J+3I5lYeivC89IGXgY');
+    form.append('mb_token',localStorage.mb_token);
     form.append('od_name', '영준');
     form.append('prduct_name', '오스빈티셔츠');
     axios.post(process.env.api+"Order/GetOrderPg",form
     ).then((res)=>{
+        //
+        console.log(res.data);
         console.log(res.data.mobile_url);
         setMobile_url(res.data.mobile_url)
 
@@ -43,14 +46,21 @@ export default function Order(){
   useEffect(() => {
     //결제 데이터를받음
     window.addEventListener("message",(e) => {
-         console.log(e);
-       },
-       false
-     );
+        if(e.origin == 'https://osvintique.com'){
+          let res = JSON.parse(e.data);
+          if(res.code == "0"){
+
+          }else{
+            Swal.fire(res.message);
+            setMobile_url('');
+          }
+        }
+
+    });
    }, []);
 
   return (
-    <NoneTab>
+    <NoneTab loginCheck={true}>
       {mobile_url != '' &&
         <iframe className={'pg_page'} src={mobile_url} />
       }

@@ -4,9 +4,17 @@ import {useRouter} from 'next/router'
 import styles from '../styles/Style.module.css'
 import Link from 'next/link'
 import FootTab from '/layout/FootTab.js'
+import {useEffect,useState,useRef } from 'react';
+import Swal from 'sweetalert2'
 
-export default function NoneTab({children}){
-    const router = useRouter()
+export default function NoneTab({children,loginCheck}){
+    const router = useRouter();
+    useEffect(() => {
+      if(typeof(localStorage.mb_token) != "string" && loginCheck == true){
+        Swal.fire("로그인을 해주세요");
+        router.push('/login');
+      }
+    }, []);
     return (
         <div className={styles.container}>
             <Head>

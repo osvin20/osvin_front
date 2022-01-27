@@ -14,7 +14,7 @@ export default function Zzim(){
       setValue(newValue);
     };
     return (
-        <SubLayout>
+        <SubLayout loginCheck={true}>
           <div className={'feedcate zzim_cate'}>
               <AppBar position="static" centerTitle="true">
               <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">

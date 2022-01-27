@@ -5859,7 +5859,7 @@
   width:100%;
 }
 body .swal2-title{
-  font-size: 1.5em;
+  font-size: 20px;
   padding: 1.5em 1em 0;
 }
 body .swal2-styled.swal2-confirm{
@@ -5870,6 +5870,10 @@ body .swal2-styled.swal2-confirm:focus{
 }
 body .MuiAppBar-root{
   z-index: 1052;
+}
+body .swal2-styled.swal2-cancel,
+body .swal2-styled.swal2-confirm{
+  font-size: 13px;
 }
 .s_result_list{
   padding-top:0px;

@@ -1,7 +1,12 @@
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
+import {useEffect,useState,useRef } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2'
+import { useRouter } from "next/router";
 
 export default function Cart(){
+  
     return (
         <TitleLayout>
             <div className={'pagetit_div'}>
