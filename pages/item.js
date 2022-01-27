@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import OsbinModal from '../layout/OsbinModal';
 import AlertModal  from '../layout/OsbinModal';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 import {reAlert} from '../store/modules/alert_popup';
 import {useDispatch } from 'react-redux';
 import axios from 'axios';

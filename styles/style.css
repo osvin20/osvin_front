@@ -350,6 +350,7 @@
   background: #fff;
   max-width: 600px;
   justify-content: space-between;
+  z-index: 99;
 }
 .footer_tab li {
   width: 16.5%;
@@ -5866,7 +5867,7 @@ body .swal2-styled.swal2-confirm{
   background-color: #ca8756;
 }
 body .swal2-styled.swal2-confirm:focus{
-  box-shadow: 0 0 0 3px #ff9800;
+  box-shadow: 0 0 0 3px #fff;
 }
 body .MuiAppBar-root{
   z-index: 1052;
