@@ -33,7 +33,7 @@ export default function Main() {
     });
 
   },[])
-  
+
   return (
     <MainLayout pages={"home"}>
       <Link href={'/campaign'}>
@@ -175,7 +175,7 @@ export default function Main() {
         </h3>
         <ul className={"offshop offshop_list"}>
           {evList.map((val, key) => (
-            <li>
+            <li key={key}>
               <Link href="/event_detail">
                 <a>
                 <div>
