@@ -5,6 +5,10 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {useEffect,useState} from 'react';
+import Swal from 'sweetalert2'
+import axios from 'axios';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,50 +19,50 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: theme.typography.fontWeightRegular,
     },
   }));
+
   export default function SimpleAccordion() {
-    const classes = useStyles();
+    const classes = useStyles(0);
+    const [evList ,setEvList] = useState([]);
+    useEffect(() =>{
+      axios.get(process.env.api+'Borad/BoradEventList?limit=5'
+      ).then((res)=>{
+        if(typeof(res.data.data) == 'object'){
+          setEvList(res.data.data);
+        }
+        console.log(res.date.date);
+      }).catch((error)=> {
+
+      });
+    },[]);
   
     return (
         <div className={'notice_list'}>
             <div className={classes.root}>
-                <Accordion>
+              {evList.map((val, key) => (
+                <Accordion key={key}>
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                     >
                         <Typography className={classes.heading}>
-                            <p className={'notice_tit'}>택배사 별 배송 지연 안내</p>
-                            <span className={'notice_date'}>2021-08-20</span>
+                            <p className={'notice_tit'}>{val.ev_subject}</p>
+                            <span className={'notice_date'}>{val.ev_time}</span>
                         </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
-                            <img src="/img/event_01.jpg"/>
-                            회원등급 확인은 로그인, 마이페이지에서 확인 가능합니다. 최근 1년간 배송 완료 주문건 실 결제 금액 기준으로 등급이 조정됩니다. 등급은 매월 1일 자동 등록되며 1개월간 유지됩니다. 배송비 혜택은 기본 배송비
+                          <img src={
+                              val.ev_img != ''?
+                              val.ev_img:
+                              '/img/no_img.png'
+                            }
+                          />
+                          {val.ev_subject}
                         </Typography>
                     </AccordionDetails>
-                </Accordion>
-            </div>
-            <div className={classes.root}>
-                <Accordion>
-                    <AccordionSummary
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                    >
-                        <Typography className={classes.heading}>
-                            <p className={'notice_tit'}>택배사 별 배송 지연 안내</p>
-                            <span className={'notice_date'}>2021-08-20</span>
-                        </Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography>
-                            <img src="/img/event_02.jpg"/>
-                            회원등급 확인은 로그인, 마이페이지에서 확인 가능합니다. 최근 1년간 배송 완료 주문건 실 결제 금액 기준으로 등급이 조정됩니다. 등급은 매월 1일 자동 등록되며 1개월간 유지됩니다. 배송비 혜택은 기본 배송비
-                        </Typography>
-                    </AccordionDetails>
-                </Accordion>
+                </Accordion> 
+              ))}
             </div>
         </div>
     );

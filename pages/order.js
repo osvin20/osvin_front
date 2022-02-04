@@ -228,10 +228,8 @@ export default function Order(){
                     <li className={'order_input order_sel'}>
                       <p>배송메모</p>
                       <div className={'order_input_div'}>
-                          <select>
-                              <option style={{color: "red"}}>배송메모를 선택해주세요.</option>
-                          </select>
-                          <img src="/img/arrow_10.png"/>
+                          <input type='text' placeholder="배송메모를 입력해주세요."/>
+
                       </div>
                     </li>
                   </ul>

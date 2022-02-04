@@ -312,8 +312,7 @@
   background-size: cover;
   position: relative;
   height: 100px;
-  margin-bottom: 52.5px;
-  margin-top: 40px;
+  margin-top: 0px;
 }
 .donation_banner a {
   color: #fff;
@@ -335,6 +334,16 @@
 .donation_banner a img {
   width: 13px;
   margin-left: 5px;
+}
+.footerinfo {
+  margin-bottom: 52.5px;
+  background: #e9e9e9;
+  padding: 15px;
+  font-size: 11px;
+}
+.footerinfo .company_info p {
+  font-weight: 600;
+  min-width: 90px;
 }
 
 /* 하단 탭 */
@@ -2677,6 +2686,7 @@
   padding: 0;
 }
 .notice_list .MuiAccordionDetails-root > p {
+  width:100%;
   font-size: 13px;
   background: #f5f1ee;
   padding: 15px;

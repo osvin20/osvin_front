@@ -9,6 +9,7 @@ import Event from './event'
 import TabPanel from '../layout/TabPanel'
 import { useRouter } from 'next/router';
 
+
 export default function NoticeEvent(){
     const router = useRouter();
     const {tabnumber} = router.query;

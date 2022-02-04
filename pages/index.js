@@ -1,11 +1,39 @@
 import MainLayout from "../layout/MainLayout";
 import Link from "next/link";
 import NumberInput from "../layout/NumberInput";
+import FooterInfo from "../atomic/FooterInfo";
 import styled from "styled-components";
 import { useSelector, useDispatch } from 'react-redux';
 import {setTabNumber} from '../store/modules/tab_number';
+import {useEffect,useState} from 'react';
+import Swal from 'sweetalert2'
+import axios from 'axios';
+
+
 export default function Main() {
   const dispatch = useDispatch();
+  const [evList ,setEvList] = useState([]);
+  const [ytubeList, setYtubeList] = useState([]);
+  useEffect(() => {
+    axios.get(process.env.api+'Borad/BoradEventList?limit=3'
+    ).then((res, yres) => {
+      if(typeof(res.data.data) == 'object'){
+        setEvList(res.data.data);
+      }
+    }).catch((error) => {
+
+    });
+    axios.get(process.env.api+'Borad/YoutubeList'
+    ).then((res) => {
+      if(typeof(res.data.data) == 'object'){
+        setYtubeList(res.data.data);
+      }
+    }).catch((error) => {
+
+    });
+
+  },[])
+  
   return (
     <MainLayout pages={"home"}>
       <Link href={'/campaign'}>
@@ -119,20 +147,20 @@ export default function Main() {
         </Link>
         </h3>
         <ul className={"offshop ytblist"}>
-          <li>
-            <Link href="/">
-              <a>
-                <img src="/img/ytb_01.jpg" />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/">
-              <a>
-                <img src="/img/ytb_02.jpg" />
-              </a>
-            </Link>
-          </li>
+          {ytubeList.map((val, key)=>(
+            <li key={key}>
+              <Link href={val.yo_url}>
+                <a>
+                  <img src={
+                      val.yo_img != ''?
+                      val.yo_img:
+                      '/img/no_img.png'
+                    }
+                  />
+                </a>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className={"main_offshop"}>
@@ -146,36 +174,23 @@ export default function Main() {
           </Link>
         </h3>
         <ul className={"offshop offshop_list"}>
-          <li>
-            <Link href="/event_detail">
-              <a>
-              <div>
-                <img src="/img/event_01.jpg"/>
-              </div>
-                <p className={"offshop_name"}>굿바이 어텀 50% 세일</p>
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/event_detail">
-              <a>
-              <div>
-                <img src="/img/event_02.jpg"/>
-              </div>
-                <p className={"offshop_name"}>가을 신상 20% 할인</p>
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/event_detail">
-              <a>
-              <div>
-                <img src="/img/event_01.jpg"/>
-              </div>
-                <p className={"offshop_name"}>굿바이 어텀 50% 세일</p>
-              </a>
-            </Link>
-          </li>
+          {evList.map((val, key) => (
+            <li>
+              <Link href="/event_detail">
+                <a>
+                <div>
+                <img src={
+                    val.ev_img != ''?
+                    val.ev_img:
+                    '/img/no_img.png'
+                  }
+                />
+                </div>
+                  <p className={"offshop_name"}>{val.ev_subject}</p>
+                </a>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className={"eco_banner"}>
@@ -189,6 +204,7 @@ export default function Main() {
           </a>
         </Link>
       </div>
+      <FooterInfo/>
     </MainLayout>
   );
 }

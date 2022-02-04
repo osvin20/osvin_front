@@ -1,7 +1,24 @@
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
+import Swal from 'sweetalert2'
+import {reAlert} from '../store/modules/alert_popup';
+import {useDispatch } from 'react-redux';
+import {useEffect,useState} from 'react';
+import axios from 'axios';
 
 export default function Donation(){
+    const [donaList, setDoneList] = useState([]);
+    useEffect(() => {
+      axios.get(process.env.api+'Borad/DonationList'
+      ).then((res) => {
+        if(typeof(res.data.data) == 'object'){
+          setDoneList(res.data.data)
+        }
+      }).catch((error) => {
+
+      });
+    },[]);
+    
     return (
         <TitleLayout>
             <div className={'pagetit_div'}>
@@ -9,50 +26,24 @@ export default function Donation(){
             </div>
             <div className={'borderfix'}></div>
             <ul className={'donation_list'}>
-              <li>
-                <Link href='/donation_detail'>
-                  <a>
-                    <div className={'donation_thumb'}>
-                      <img src='img/donation3.jpg'/>
-                    </div>
-                    <p className={'donation_tit'}>
-                      오스빈과 함께하는 친환경 기부 캠페인
-                    </p>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href='/donation_detail'>
-                  <a>
-                    <div className={'donation_thumb'}>
-                      <img src='img/donation2.jpg'/>
-                    </div>
-                    <p className={'donation_tit'}>오스빈과 함께하는 캠페인</p>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href='/donation_detail'>
-                  <a>
-                    <div className={'donation_thumb'}>
-                      <img src='img/donation1.jpg'/>
-                    </div>
-                    <p className={'donation_tit'}>
-                      오스빈과 함께하는 친환경 기부 캠페인
-                    </p>
-                  </a>
-                </Link>
-              </li>
-              <li>
-                <Link href='/donation_detail'>
-                  <a>
-                    <div className={'donation_thumb'}>
-                      <img src='img/donation4.jpg'/>
-                    </div>
-                    <p className={'donation_tit'}>4월은 지구의 달입니다. 오스빈과 지구를 위한 친환경 캠페인에 동참해보세요.</p>
-                  </a>
-                </Link>
-              </li>
+              {donaList.map((val, key) => (
+                <li key={key}>
+                  <Link href={val.wr_link1}>
+                    <a>
+                      <div className={'donation_thumb'}>
+                        <img src={
+                          val.bf_file != ''?
+                          val.bf_file:
+                          '/img/no_img.png'
+                        }/>
+                      </div>
+                      <p className={'donation_tit'}>
+                        {val.wr_seo_title}
+                      </p>
+                    </a>
+                  </Link>
+                </li>
+              ))}
             </ul>
         </TitleLayout>
     )

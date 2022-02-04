@@ -8,14 +8,13 @@ import axios from 'axios';
 
 function EventDetail({query}) {
   const {ev_id} = query;
-  const [evList, setEvList] = useState([]);
+  const [evDetail, setEvDetail] = useState([]);
   useEffect(() =>{
     axios.get(process.env.api+"Borad/BoradEventInfo/1643189844",{
     }
       ).then((res)=>{
         if(typeof(res.data.data) == "object"){
-          console.log(res.data.data)
-          setEvList(res.data.data);
+          setEvDetail(res.data.data);
       }
       }).catch((error)=> {
 
@@ -30,15 +29,15 @@ function EventDetail({query}) {
       </div>
       <div className={'event_div'}>
         <p className={'event_tit'}>
-          {evList.ev_subject}
+          {evDetail.ev_subject}
         </p>
         <div className={'event_date'}>
-          {evList.ev_time}
+          {evDetail.ev_time}
         </div>
         <div className={'event_txt'}>
           <img src={
-            evList.ev_img != ''?
-            evList.ev_img:
+            evDetail.ev_img != ''?
+            evDetail.ev_img:
             "/img/no_img.png"
             }
             />
