@@ -13,7 +13,6 @@ import AddressModal from '../layout/AddressModal'
 import Swal from 'sweetalert2'
 import axios from 'axios';
 import {useEffect,useState} from 'react';
-
 const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',

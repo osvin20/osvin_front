@@ -4,9 +4,15 @@ import { useRouter } from "next/router";
 import styles from "../styles/Style.module.css";
 import Link from "next/link";
 import FootTab from "/layout/FootTab.js";
+import Swal from 'sweetalert2';
+import {loginCheckFun} from './Common.js';
+import {useEffect,useState,useRef } from 'react';
 
-export default function TitleLayout({ children }) {
+function TitleLayout({children,query,loginCheck}) {
   const router = useRouter();
+  useEffect(() => {
+    loginCheckFun(loginCheck,router);
+  }, []);
   return (
     <div className={styles.container}>
       <Head>
@@ -40,3 +46,6 @@ export default function TitleLayout({ children }) {
     </div>
   );
 }
+
+
+export default TitleLayout;

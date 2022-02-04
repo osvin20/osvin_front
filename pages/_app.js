@@ -3,7 +3,11 @@ import  '../styles/style.css'
 import { wrapper } from "../store";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    
+    <Component {...pageProps} />
+
+  )
 }
 
 

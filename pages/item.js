@@ -9,20 +9,20 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import OsbinModal from '../layout/OsbinModal';
 import AlertModal  from '../layout/OsbinModal';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+import Swal from 'sweetalert2'
 import {reAlert} from '../store/modules/alert_popup';
 import {useDispatch } from 'react-redux';
 import axios from 'axios';
 
-
 function Item({query}){
+
     const {it_id} = query;
     const router = useRouter();
     const dispatch = useDispatch();
     const [ck ,setCk] = useState(false);
     const [item ,setItem] = useState([]);
     const [tag ,setTag] = useState([]);
-    const [imgList ,setImgList] = useState([]);
+    const [imgList ,setImgList] = useState(['/img/no_img.png ']);
     let settings = {
         dots: true,
         infinite: true,
@@ -47,19 +47,21 @@ function Item({query}){
         router.push('/login');
       }
       const ct_qty = 1;
-      const ct_price = Number(item.it_price);
+
       form.append('mb_token',localStorage.mb_token);
       form.append('it_id',item.it_id);
       form.append('it_name',item.it_name);
       form.append('ct_option',item.it_name); // 옵션구현전까지는
       form.append('it_sc_price',item.it_sc_price);
-      form.append('ct_price',ct_price);
+      form.append('ct_price',item.it_price);
       form.append('ct_qty',ct_qty);
+      form.append('it_sc_type',item.it_sc_type);
       form.append('mb_sell_id',item.mb_id);
 
       axios.post(process.env.api+"Cart/Add",form
       ).then((res)=>{
         if(res.data.state){
+          console.log('ss');
           Swal.fire({
             title:'장바구니',
             html:res.data.msg,

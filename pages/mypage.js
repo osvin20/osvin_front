@@ -144,14 +144,37 @@ export default function MyPage() {
             <li>
               <img src="/img/call.png" />
               <p>@오스빈</p>
-              <span>월~금 9:00~18:00</span>
+              <span>월~금 10:30~18:00<br/>(점심시간 13:00~14:00)</span>
             </li>
             <li>
               <img src="/img/chat2.png" />
               <p>010-0000-0000</p>
-              <span>월~금 9:00~18:00</span>
+              <span>월~금 10:30~18:00<br/>(점심시간 13:00~14:00)</span>
             </li>
           </ul>
+          <p>사업자정보</p>
+          <div className={"company_info"}>
+            <div>
+              <p>사업자번호</p>
+              <span>104-81-13766</span>
+            </div>
+            <div>
+              <p>사업자명</p>
+              <span>(주)남흥</span>
+            </div>
+            <div>
+              <p>대표자명</p>
+              <span>김정규</span>
+            </div>
+            <div>
+              <p>주소(본사)</p>
+              <span>서울특별시 중구 소월로 10, 19층(남대문로5가, 단암딜빙)</span>
+            </div>
+            <div>
+              <p>주소(이커머스 사업부)</p>
+              <span>경기도 고양시 킨텍스로 255 일산 디엠시티 스카이뷰 104동 1410호</span>
+            </div>
+          </div>
         </div>
       </div>
     </SubLayout>

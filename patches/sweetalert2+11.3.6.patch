@@ -69,7 +69,7 @@ index af29a8a..02e16be 100644
  
      // @ts-ignore
 diff --git a/node_modules/sweetalert2/src/utils/params.js b/node_modules/sweetalert2/src/utils/params.js
-index 61802f6..01caf9e 100644
+index 61802f6..2748297 100644
 --- a/node_modules/sweetalert2/src/utils/params.js
 +++ b/node_modules/sweetalert2/src/utils/params.js
 @@ -31,12 +31,12 @@ export const defaultParams = {
@@ -83,7 +83,7 @@ index 61802f6..01caf9e 100644
    preConfirm: undefined,
    preDeny: undefined,
 -  confirmButtonText: 'OK',
-+  confirmButtonText: '확인',
++  confirmButtonText: '확인11',
    confirmButtonAriaLabel: '',
    confirmButtonColor: undefined,
    denyButtonText: 'No',

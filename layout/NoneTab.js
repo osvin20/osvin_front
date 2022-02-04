@@ -31,13 +31,9 @@ export default function NoneTab({children,loginCheck}){
                     </a>
                 </Link>
             </div>
-
             <div className={'mt55'}></div>
-
             {children}
-
             <div className={'mt55'}></div>
-
         </div>
     )
 }

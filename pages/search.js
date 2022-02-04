@@ -1,15 +1,30 @@
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
 import TabPanel from '../layout/TabPanel'
-import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import HotKeyword from './hotkeyword'
 import HotStore from './hotstore'
 
+import {useEffect,useState} from 'react';
+import Swal from 'sweetalert2'
+import axios from 'axios';
+
 export default function Search(){
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
+    const [preList ,setPreList] = useState([]);
+    useEffect(() =>{
+      axios.get(process.env.api+"Popular/PreList"
+      ).then((res)=>{
+        if(typeof(res.data.data) == "object"){
+          setPreList(res.data.data);
+        }
+      }).catch((error)=> {
+
+      });
+    },[]);
+
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
@@ -34,41 +49,15 @@ export default function Search(){
               </div>
             </div>
             <div className={'hothash'}>
-                <Link href='/search_result'>
+              {preList.map((val,key) =>(
+                <Link href={'/search_result?it_shop_memo='+val.pp_word} key={key}>
                   <a>
-                      # <span>빈티지목걸이</span>
+                      # <span>{val.pp_word}</span>
                   </a>
                 </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>다이어리</span>
-                  </a>
-                </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>만년필</span>
-                  </a>
-                </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>화장대</span>
-                  </a>
-                </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>엔틱수납장</span>
-                  </a>
-                </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>클래식</span>
-                  </a>
-                </Link>
-                <Link href='/search_result'>
-                  <a>
-                      # <span>빈티지드레스</span>
-                  </a>
-                </Link>
+              ))}
+
+
             </div>
             <div className={'feedcate searchcate'}>
                 <AppBar position="static" centerTitle="true">
