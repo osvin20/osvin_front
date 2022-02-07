@@ -28,7 +28,7 @@ export default function Donation(){
             <ul className={'donation_list'}>
               {donaList.map((val, key) => (
                 <li key={key}>
-                  <Link href={val.wr_link1}>
+                  <Link href={`/donation_detail?wr_id=${val.wr_id}`}>
                     <a>
                       <div className={'donation_thumb'}>
                         <img src={

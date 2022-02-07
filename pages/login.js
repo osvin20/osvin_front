@@ -60,16 +60,12 @@ export default function Login(){
             <span></span>
           </div>
           <div className={'sns_ico'}>
-            <Link href='/storestory'>
               <a>
                 <img src="/img/kakao.png"/>
               </a>
-            </Link>
-            <Link href='/storestory'>
               <a>
                 <img src="/img/apple.png"/>
               </a>
-            </Link>
           </div>
         </div>
       </div>

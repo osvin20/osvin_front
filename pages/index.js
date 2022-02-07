@@ -9,30 +9,29 @@ import {useEffect,useState} from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 
-
 export default function Main() {
-  const dispatch = useDispatch();
-  const [evList ,setEvList] = useState([]);
-  const [ytubeList, setYtubeList] = useState([]);
-  useEffect(() => {
-    axios.get(process.env.api+'Borad/BoradEventList?limit=3'
-    ).then((res, yres) => {
-      if(typeof(res.data.data) == 'object'){
-        setEvList(res.data.data);
-      }
-    }).catch((error) => {
-
-    });
-    axios.get(process.env.api+'Borad/YoutubeList'
-    ).then((res) => {
-      if(typeof(res.data.data) == 'object'){
-        setYtubeList(res.data.data);
-      }
-    }).catch((error) => {
-
-    });
-
-  },[])
+    const dispatch = useDispatch();
+    const [evList ,setEvList] = useState([]);
+    const [ytubeList, setYtubeList] = useState([]);
+    useEffect(() => {
+      axios.get(process.env.api+'Borad/BoradEventList?limit=3'
+      ).then((res) => {
+        if(typeof(res.data.data) == 'object'){
+          setEvList(res.data.data);
+        }
+      }).catch((error) => {
+  
+      });
+      axios.get(process.env.api+'Borad/YoutubeList'
+      ).then((res) => {
+        if(typeof(res.data.data) == 'object'){
+          setYtubeList(res.data.data);
+        }
+      }).catch((error) => {
+  
+      });
+  
+    },[])
 
   return (
     <MainLayout pages={"home"}>
@@ -176,7 +175,7 @@ export default function Main() {
         <ul className={"offshop offshop_list"}>
           {evList.map((val, key) => (
             <li key={key}>
-              <Link href="/event_detail">
+              <Link href={`/event_detail?ev_id=${val.ev_id}`}>
                 <a>
                 <div>
                 <img src={

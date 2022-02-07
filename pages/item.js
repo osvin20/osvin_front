@@ -1,16 +1,16 @@
 
 import ItemLayout from '../layout/ItemLayout'
 import Link from 'next/link'
-import {useRouter} from 'next/router'
-import {useEffect,useState} from 'react';
 import CheckBox from '../atomic/CheckBox.js';
 import Slider  from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import OsbinModal from '../layout/OsbinModal';
 import AlertModal  from '../layout/OsbinModal';
-import Swal from 'sweetalert2'
 import {reAlert} from '../store/modules/alert_popup';
+import {useRouter} from 'next/router'
+import {useEffect,useState} from 'react';
+import Swal from 'sweetalert2'
 import {useDispatch } from 'react-redux';
 import axios from 'axios';
 
@@ -33,6 +33,11 @@ function Item({query}){
     };
     const addRemove = () =>{
       const form = new FormData();
+      if(typeof(localStorage.mb_token) != "string"){
+        Swal.fire("로그인이 필요합니다");
+        router.push('/login');
+        return false;
+      }
       form.append('mb_token',localStorage.mb_token);
       form.append('it_id',it_id);
       axios.post(process.env.api+"Wish/AddRemove",form
@@ -45,6 +50,7 @@ function Item({query}){
       if(typeof(localStorage.mb_token) != "string"){
         Swal.fire("로그인이 필요합니다");
         router.push('/login');
+        return false;
       }
       const ct_qty = 1;
 
@@ -61,7 +67,6 @@ function Item({query}){
       axios.post(process.env.api+"Cart/Add",form
       ).then((res)=>{
         if(res.data.state){
-          console.log('ss');
           Swal.fire({
             title:'장바구니',
             html:res.data.msg,
@@ -84,22 +89,26 @@ function Item({query}){
 
     useEffect(() =>{
       let imgArr = [];
+      // 없는 상품시 액박방지
+      if(it_id == undefined){it_id = "1640855921";}
       axios.get(process.env.api+"Item/Info/"+it_id,{
         params: {
           mb_token:localStorage.mb_token
         }
       }).then((res)=>{
-        if(res.data){
-          let it = res.data.data;
+        if(res.data.state){
+          if(res.data){
+            let it = res.data.data;
 
-          for (var i = 1; i < 11; i++){
-            if(it["it_img"+i] != ""){
-              imgArr.push(it["it_img"+i]);
+            for (var i = 1; i < 11; i++){
+              if(it["it_img"+i] != ""){
+                imgArr.push(it["it_img"+i]);
+              }
             }
+            setTag(it.it_shop_memo)
+            setItem(it);
+            setImgList(imgArr);
           }
-          setTag(it.it_shop_memo)
-          setItem(it);
-          setImgList(imgArr);
         }
       }).catch((error)=> {
       });

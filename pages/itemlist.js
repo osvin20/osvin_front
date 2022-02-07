@@ -7,10 +7,11 @@ import Tab from '@material-ui/core/Tab';
 import ItemBox from '../atomic/ItemBox';
 import {useEffect,useState} from 'react';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import useHistoryState from '../hook/useHistoryState';
 import {setTabNumber} from '../store/modules/tab_number';
-import axios from 'axios';
+
 function ItemList({query}){
     const {ca_id} = query;
     const [cata,setCata] = useState(ca_id);

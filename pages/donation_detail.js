@@ -21,7 +21,7 @@ export default function DonationDetail({query}){
     return (
         <NoneLayout>
             <div className="donation_img">
-            <img src="img/donation2.jpg"/>
+              <img src={doneDtaList.bf_file}/>
             </div>
             <div className={'donation_content'}>
             <h2 className={'dona_tit extra_bold'}>{doneDtaList.wr_subject}</h2>

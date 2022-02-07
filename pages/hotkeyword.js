@@ -1,110 +1,37 @@
 import Link from 'next/link'
+import {useDispatch } from 'react-redux';
+import {useEffect,useState} from 'react';
+import axios from 'axios';
+import { number } from 'prop-types';
 
 export default function HotKeyword(){
-    return (
-      <div className={'storefeed zzimlist searchlist'}>
-          <ul className={'hot_list'}>
-            <li>
-                <p className={'hot_num'}>1</p>
-                <div>
-                    <Link href="/search_result">
-                        <a>
-                            <p className={'hotkw'}>크리스마스 선물</p>
-                        </a>
-                    </Link>
-                </div>
-            </li>
-            <li>
-                <p className={'hot_num'}>2</p>
-                <div>
-                    <Link href="/search_result">
-                        <a>
-                            <p className={'hotkw'}>카페 인테리어 소품</p>
-                        </a>
-                    </Link>
-                </div>
-            </li>
-            <li>
-                <p className={'hot_num'}>3</p>
-                <div>
-                    <Link href="/search_result">
-                        <a>
-                            <p className={'hotkw'}>넥타이</p>
-                        </a>
-                    </Link>
-                </div>
-            </li>
-            <li>
-                <p className={'hot_num'}>4</p>
-                <div>
-                    <Link href="/search_result">
-                        <a>
-                            <p className={'hotkw'}>부모님 선물</p>
-                        </a>
-                    </Link>
-                </div>
-            </li>
-            <li>
-                <p className={'hot_num'}>5</p>
-                <div>
-                    <Link href="/search_result">
-                        <a>
-                            <p className={'hotkw'}>엔틱 의자</p>
-                        </a>
-                    </Link>
-                </div>
-            </li>
-            <li>
-                <p className={'hot_num'}>6</p>
-                <div>
-                    <Link href="/search_result">
-                        <a>
-                            <p className={'hotkw'}>크리스마스 선물</p>
-                        </a>
-                    </Link>
-                </div>
-            </li>
-            <li>
-                <p className={'hot_num'}>7</p>
-                <div>
-                    <Link href="/search_result">
-                        <a>
-                            <p className={'hotkw'}>카페 인테리어 소품</p>
-                        </a>
-                    </Link>
-                </div>
-            </li>
-            <li>
-                <p className={'hot_num'}>8</p>
-                <div>
-                    <Link href="/search_result">
-                        <a>
-                            <p className={'hotkw'}>넥타이</p>
-                        </a>
-                    </Link>
-                </div>
-            </li>
-            <li>
-                <p className={'hot_num'}>9</p>
-                <div>
-                    <Link href="/search_result">
-                        <a>
-                            <p className={'hotkw'}>부모님 선물</p>
-                        </a>
-                    </Link>
-                </div>
-            </li>
-            <li>
-                <p className={'hot_num'}>10</p>
-                <div>
-                    <Link href="/search_result">
-                        <a>
-                            <p className={'hotkw'}>엔틱 의자</p>
-                        </a>
-                    </Link>
-                </div>
-            </li>
-        </ul>
-      </div>
-    );
-  }
+  const [hotkeywd, SetHotkeywd] = useState([]);
+  useEffect(() => {
+    axios.get(process.env.api+'Popular/List'
+    ).then( (res) => {
+      if(typeof(res.data.data) == 'object'){
+        SetHotkeywd(res.data.data)
+      }
+    }).catch( (error) => {
+
+    })
+  },[]);
+  return (
+    <div className={'storefeed zzimlist searchlist'}>
+      <ul className={'hot_list'}>
+        {hotkeywd.map((val, key) => (
+          <li key={key}>
+            <p className={'hot_num'}>{key+1}</p>
+            <div>
+              <Link href={`/search_result?it_shop_memo=${val.pp_word}`}>
+                <a>
+                  <p className={'hotkw'}>{val.pp_word}</p>
+                </a>
+              </Link>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}

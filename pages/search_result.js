@@ -14,7 +14,7 @@ function SearchResult({query}){
     const {it_shop_memo} = query;
     const text = useChange(it_shop_memo);
     const getItemList = (val) =>{
-       console.log(0)
+      console.log(0)
       axios.get(process.env.api+"Item/List",{
         params: {
           key_text:'it_shop_memo',

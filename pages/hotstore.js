@@ -1,125 +1,42 @@
 import Link from 'next/link'
+import {useDispatch } from 'react-redux';
+import {useEffect,useState} from 'react';
+import axios from 'axios';
 
 export default function HotStore(){
+
+    const [hotstores, SetHotstores] = useState([]);
+    useEffect(() => {
+      axios.get(process.env.api+'Popular/TopStore'
+      ).then((res) => {
+        if(typeof(res.data.data) == 'object'){
+          SetHotstores(res.data.data)
+        }
+      }).catch((error) => {
+
+      })
+    },[]);
   
     return (
       <div className={'storefeed zzimlist searchlist'}>
             <ul className={'hot_list'}>
-                <li>
-                    <p className={'hot_num'}>1</p>
-                    <Link href="/store">
+              {hotstores.map((val, key) => (
+                <li key={key}>
+                    <p className={'hot_num'}>{key+1}</p>
+                    <Link href={`/store?mb_no=${val.mb_no}`}>
                         <a className={'hotstore'}>
                         <div className={'hotstoreimg'}>
-                            <img src="/img/shop_01.jpg" />
+                            <img src={
+                              val.mb_img != ''?
+                              val.mb_img:
+                              '/img/no_img.png'
+                              }/>
                         </div>
-                        <p className={'hotkw'}>오스빈빈티지</p>
+                        <p className={'hotkw'}>{val.mb_nick}</p>
                         </a>
                     </Link>
                 </li>
-                <li>
-                    <p className={'hot_num'}>2</p>
-                    <Link href="/store">
-                        <a className={'hotstore'}>
-                            <div className={'hotstoreimg'}>
-                                <img src="/img/shop_02.jpg" />
-                            </div>
-                            <p className={'hotkw'}>페이지원</p>
-                        </a>
-                    </Link>
-
-                </li>
-                <li>
-                    <p className={'hot_num'}>3</p>
-                    <Link href="/store">
-                        <a className={'hotstore'}>
-                            <div className={'hotstoreimg'}>
-                                <img src="/img/shop_03.jpg" />
-                            </div>
-                            <p className={'hotkw'}>옴니피플</p>
-                        </a>
-                    </Link>
-
-                </li>
-                <li>
-                    <p className={'hot_num'}>4</p>
-                    <Link href="/store">
-                        <a className={'hotstore'}>
-                            <div className={'hotstoreimg'}>
-                                <img src="/img/shop_04.jpg" />
-                            </div>
-                            <p className={'hotkw'}>굿럭차차</p>
-                        </a>
-                    </Link>
-                </li>
-                <li>
-                    <p className={'hot_num'}>5</p>
-                    <Link href="/store">
-                        <a className={'hotstore'}>
-                            <div className={'hotstoreimg'}>
-                                <img src="/img/shop_05.jpg" />
-                            </div>
-                            <p className={'hotkw'}>빈티지앤</p>
-                        </a>
-                    </Link>
-
-                </li>
-                <li>
-                    <p className={'hot_num'}>6</p>
-                    <Link href="/store">
-                        <a className={'hotstore'}>
-                            <div className={'hotstoreimg'}>
-                                <img src="/img/shop_06.jpg" />
-                            </div>
-                            <p className={'hotkw'}>As you like</p>
-                        </a>
-                    </Link>
-
-                </li>
-                <li>
-                    <p className={'hot_num'}>7</p>
-                    <Link href="/store">
-                        <a className={'hotstore'}>
-                            <div className={'hotstoreimg'}>
-                                <img src="/img/shop_01.jpg" />
-                            </div>
-                            <p className={'hotkw'}>라보 빈티지</p>
-                        </a>
-                    </Link>
-
-                </li>
-                <li>
-                    <p className={'hot_num'}>8</p>
-                    <Link href="/store">
-                        <a className={'hotstore'}>
-                            <div className={'hotstoreimg'}>
-                                <img src="/img/shop_02.jpg" />
-                            </div>
-                            <p className={'hotkw'}>빈티지무무</p>
-                        </a>
-                    </Link>
-                </li>
-                <li>
-                    <p className={'hot_num'}>9</p>
-                    <Link href="/store">
-                        <a className={'hotstore'}>
-                            <div className={'hotstoreimg'}>
-                                <img src="/img/shop_03.jpg" />
-                            </div>
-                            <p className={'hotkw'}>순수빈티지</p>
-                        </a>
-                    </Link>
-                </li>
-                <li>
-                    <p className={'hot_num'}>10</p>
-                    <Link href="/store">
-                        <a className={'hotstore'}>
-                            <div className={'hotstoreimg'}>
-                                <img src="/img/shop_04.jpg" />
-                            </div>
-                            <p className={'hotkw'}>빈티지율</p>
-                        </a>
-                    </Link>
-                </li>
+              ))}
             </ul>
       </div>
     );

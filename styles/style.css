@@ -419,6 +419,11 @@
   color: #fff;
   width: 100%;
 }
+.login_input input[type="password"]{
+  font-family:"돋움";
+}
+
+
 .login_input input:first-child {
   margin-bottom: 25px;
 }
@@ -5893,6 +5898,19 @@
   position:fixed;
   z-index: 999;
   top:0px;
+}
+.daumPostCode{
+  width:100%;
+  max-width:600px;
+  height:100vh;
+  padding:5vh 10px;
+  background-color:#fff;
+  position:fixed;
+  z-index: 999;
+  top:0px;
+}
+.daumPostCode .adrs_btn{
+  margin-top:30px;
 }
 .note{
   width:100%;
