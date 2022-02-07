@@ -35,7 +35,7 @@ export default function AddressList(){
           </div>
           <ul className={'adrs_list'}>
             {list.map((val,key) =>(
-              <li>
+              <li key={key}>
                 <div className={'adrs_flex_div'}>
                   <div className={'address_check'}>
                     {key == 0 &&
@@ -52,26 +52,25 @@ export default function AddressList(){
                 <div className={'adrs_div'}>
                   <p>이름</p>
                   <div>
-                    <input type="text" placeholder="오스빈" />
+                    <input type="text" value={val.ad_name} />
                   </div>
                 </div>
                 <div className={'adrs_div'}>
                   <p>휴대폰 번호</p>
                   <div>
-                    <input type="text" placeholder="010-0000-0000" />
+                    <input type="text" value={val.ad_tel} />
                   </div>
                 </div>
                 <div className={'adrs_div adrs_height'}>
                   <p>주소</p>
                   <div className={'adrs_flex'}>
-                    <input type="text" placeholder="145236" />
-
+                    <input type="text" value={val.ad_addr1} />
                   </div>
                 </div>
                 <div className={'adrs_div'}>
                   <p>상세주소</p>
                   <div>
-                    <input type="text" placeholder="00아파트 101동 105호" />
+                    <input type="text" value={val.ad_addr2} />
                   </div>
                 </div>
 

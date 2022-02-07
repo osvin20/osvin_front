@@ -92,13 +92,13 @@ export default function AddressForm(){
               <div className={'adrs_div'}>
                 <p>주소</p>
                 <div>
-                  <input type="text" name={'ad_address1'} value={ad_address1}/>
+                  <input type="text" name={'ad_addr1'} value={ad_address1}/>
                 </div>
               </div>
               <div className={'adrs_div'}>
                 <p>상세주소</p>
                 <div>
-                  <input type="text" name={'ad_address2'}/>
+                  <input type="text" name={'ad_addr2'}/>
                 </div>
               </div>
             </div>
