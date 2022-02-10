@@ -301,7 +301,7 @@ export default function Order(){
                   <li className={'order_input'}>
                     <p></p>
                     <div className={'order_input_div'}>
-                      <input type='text' placeholder="" placeholder="주소"  name='od_b_addr1' {...od_b_addr1} readOnly/>
+                      <input type='text' placeholder="주소"  name='od_b_addr1' {...od_b_addr1} readOnly/>
                     </div>
                   </li>
                   <li className={'order_input'}>

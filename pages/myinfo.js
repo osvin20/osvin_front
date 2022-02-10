@@ -165,8 +165,8 @@ export default function MyInfo(){
                   </div>
                 </li> */}
               </ul>
-              <div class="osbinModal" onClick={submitForm}>
-                <span class="info_submit">수정완료</span>
+              <div className="osbinModal" onClick={submitForm}>
+                <span className="info_submit">수정완료</span>
               </div>
 
               <Link href='withdrawal'>
