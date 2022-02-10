@@ -13,7 +13,6 @@ export default function AddressForm(){
   const handleComplete = (data) => {
     let fullAddress = data.address;
     let extraAddress = '';
-
     if (data.addressType === 'R'){
         if (data.bname !== '') {
             extraAddress += data.bname;
@@ -25,7 +24,6 @@ export default function AddressForm(){
         console.log(fullAddress);
         setOpen(false)
     }
-
     setAd_zip(data.zonecode);
     setAd_address1(fullAddress);
     //fullAddress -> 전체 주소반환

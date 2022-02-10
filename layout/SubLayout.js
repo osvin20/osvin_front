@@ -6,10 +6,26 @@ import FootTab from '/layout/FootTab.js'
 import { useRouter } from "next/router";
 import {useEffect,useState,useRef } from 'react';
 import Swal from 'sweetalert2'
-
+import axios from 'axios';
+import useSWR from 'swr';
 export default function SubLayout({children,...props}){
     // 로그인체크
     const router = useRouter();
+    const [count , setCount] = useState(0);
+    // 장바구니 카운터
+    if(typeof window !== 'undefined') {
+      const { data, error } = useSWR(
+        process.env.api+'/Cart/Count?mb_token='+localStorage.mb_token,
+        axios
+      )
+      useEffect(() => {
+        if(typeof data == 'object'){
+          if(data.data.state){
+            setCount(data.data.data);
+          }
+        }
+      },[data]);
+    }
     useEffect(() => {
       if(typeof(localStorage.mb_token) != "string" && props.loginCheck == true){
         Swal.fire("로그인을 해주세요");
@@ -35,7 +51,7 @@ export default function SubLayout({children,...props}){
                     <Link href='/cart'>
                         <a>
                             <img src="/img/cart2.png"/>
-                            <span className={'cart_count'}>7</span>
+                            <span className={'cart_count'}>{count}</span>
                         </a>
                     </Link>
                 </div>

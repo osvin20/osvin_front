@@ -2,17 +2,40 @@ import SubLayout from "../layout/SubLayout";
 import Link from "next/link";
 import OsbinModal from "../layout/OsbinModal";
 import {useRouter} from 'next/router'
+import {useEffect,useState,useRef } from 'react';
+import axios from 'axios';
 
 export default function MyPage() {
   const router = useRouter()
+  // 스토리지 로드
+  const [mb_id , setMb_id] = useState('');
+  const [userImg , setUserImg] = useState('/img/no_prof.png');
+  useEffect(() => {
+    setMb_id(localStorage.mb_id);
+    axios.get(process.env.api+"Member/Info",{
+      params: {
+        mb_token:localStorage.mb_token
+      }
+    }).then((res)=>{
+      if(res.data.state){
+        console.log(res.data.data.mb_img);
+        setUserImg(res.data.data.mb_img);
+      }
+    }).catch((error)=> {
+    });
+  },[]);
+  
   return (
-    <SubLayout>
+    <SubLayout loginCheck={true}>
       <div className={"mypage_div"}>
         <div className={"mypage_prof"}>
-          <img src="/img/prof_01.jpg"/>
+          <img
+            src={userImg}
+            onError={(e)=>{e.target.src = '/img/no_prof.png'}}
+          />
         </div>
         <div>
-          <p className={"user_name"}>sohee1203</p>
+          <p className={"user_name"}>{mb_id}</p>
           <Link href="/myinfo">
             <a className={"info_btn"}>회원정보수정</a>
           </Link>
@@ -87,16 +110,16 @@ export default function MyPage() {
                   <a>배송지 등록</a>
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/cardlist">
                   <a>신용카드 관리</a>
                 </Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link href="/setting">
                   <a>알림 설정</a>
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <OsbinModal
                   title=""

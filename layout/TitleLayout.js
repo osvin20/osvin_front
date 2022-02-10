@@ -7,12 +7,30 @@ import FootTab from "/layout/FootTab.js";
 import Swal from 'sweetalert2';
 import {loginCheckFun} from './Common.js';
 import {useEffect,useState,useRef } from 'react';
-
+import axios from 'axios';
+import useSWR from 'swr';
 function TitleLayout({children,query,loginCheck}) {
   const router = useRouter();
+  const [count , setCount] = useState(0);
+  // 장바구니 카운터
+  if (typeof window !== 'undefined') {
+    const { data, error } = useSWR(
+      process.env.api+'/Cart/Count?mb_token='+localStorage.mb_token,
+      axios
+    )
+    useEffect(() => {
+      if(typeof data == 'object'){
+        if(data.data.state){
+          setCount(data.data.data);
+        }
+      }
+    },[data]);
+  }
+
   useEffect(() => {
     loginCheckFun(loginCheck,router);
   }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -29,7 +47,7 @@ function TitleLayout({children,query,loginCheck}) {
         <Link href="/cart">
           <a className={"cart_ico"}>
             <img src="/img/cart2.png" />
-            <span className={"cart_count"}>7</span>
+            <span className={"cart_count"}>{count}</span>
           </a>
         </Link>
       </div>

@@ -38,7 +38,7 @@ export default function Donation(){
                         }/>
                       </div>
                       <p className={'donation_tit'}>
-                        {val.wr_seo_title}
+                        {val.wr_subject}
                       </p>
                     </a>
                   </Link>

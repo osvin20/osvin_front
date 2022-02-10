@@ -10,7 +10,7 @@ function EventDetail({query}) {
   const {ev_id} = query;
   const [evDetail, setEvDetail] = useState([]);
   useEffect(() =>{
-    axios.get(process.env.api+"Borad/BoradEventInfo/1643189844",{
+    axios.get(process.env.api+"Borad/BoradEventInfo/"+ev_id,{
     }
       ).then((res)=>{
         if(typeof(res.data.data) == "object"){

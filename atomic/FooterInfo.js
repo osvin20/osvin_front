@@ -27,6 +27,10 @@ export default function FooterInfo(){
               <p>고객센터</p>
               <span>070-8801-7712~3</span>
             </div>
+            <div>
+              <p>통신판매업번호</p>
+              <span>2020서울중구1510</span>
+            </div>
           </div>
         </div>
     )

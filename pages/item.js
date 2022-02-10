@@ -45,7 +45,7 @@ function Item({query}){
         Swal.fire(res.data.msg);
       })
     }
-    const addCart = () =>{
+    const addCart = (ct_select) =>{
       const form = new FormData();
       if(typeof(localStorage.mb_token) != "string"){
         Swal.fire("로그인이 필요합니다");
@@ -63,9 +63,17 @@ function Item({query}){
       form.append('ct_qty',ct_qty);
       form.append('it_sc_type',item.it_sc_type);
       form.append('mb_sell_id',item.mb_id);
-
+      form.append('ct_select',ct_select);
       axios.post(process.env.api+"Cart/Add",form
       ).then((res)=>{
+        if(ct_select == 1){
+          if(res.data.state){
+            router.push('/order');
+          }else {
+            Swal.fire(res.data.msg);
+          }
+          return false;
+        }
         if(res.data.state){
           Swal.fire({
             title:'장바구니',
@@ -125,6 +133,7 @@ function Item({query}){
                       process.env.domain+'data/item/'+val:
                       "/img/no_img.png"
                     }
+                    onError={(e)=>{e.target.src =  "/img/no_img.png"}}
                   />
                 </div>
               ))}
@@ -144,12 +153,13 @@ function Item({query}){
                         item.mb_img:
                         "/img/no_img.png"
                       }
+                      onError={(e)=>{e.target.src =  "/img/no_img.png"}}
                     />
                   </div>
                   {item.mb_nick}
                 </a>
               </Link>
-              <Link href='/qna_write'>
+              <Link href={'/qna_write?it_id='+item.it_id}>
                 <a className={'store_qna'}>
                   <img src="/img/chat2.png"/>문의하기
                 </a>
@@ -180,7 +190,7 @@ function Item({query}){
                   })()}
                 </p>
               </div>
-              <Link href='/coupon_down'>
+              <Link href={'/coupon_down?it_id='+item.it_id}>
                 <a>
                   <img src='img/coupon2.png'/>
                 </a>
@@ -222,24 +232,10 @@ function Item({query}){
               }
               onchangeHandler={addRemove}
             />
-            <span className="cart_dir" onClick={addCart}>장바구니</span>
-            {/* <OsbinModal
-              title=""
-              bnt_title ="장바구니"
-              btn_label ="쇼핑 계속하기"
-              action_label ="장바구니로 가기"
-              class_name={"cart_dir"}
-              modalFun ={()=>router.push("/cart")}
-              modal_id={"withdrawal_modal"}
-              modal_class={"cart_modal"}
-              >
-              <p className={"phone_modal"}>상품을 장바구니에 담았습니다.</p>
-            </OsbinModal> */}
-            <Link href='/order'>
-              <a>
-                구매하기
-              </a>
-            </Link>
+            <span className="cart_dir" onClick={()=>addCart(0)}>장바구니</span>
+            <a onClick={()=>addCart(1)}>
+              구매하기
+            </a>
           </div>
         </ItemLayout>
     )

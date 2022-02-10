@@ -10,28 +10,44 @@ import Swal from 'sweetalert2'
 import axios from 'axios';
 
 export default function Main() {
-    const dispatch = useDispatch();
-    const [evList ,setEvList] = useState([]);
-    const [ytubeList, setYtubeList] = useState([]);
-    useEffect(() => {
-      axios.get(process.env.api+'Borad/BoradEventList?limit=3'
-      ).then((res) => {
-        if(typeof(res.data.data) == 'object'){
-          setEvList(res.data.data);
-        }
-      }).catch((error) => {
-  
-      });
-      axios.get(process.env.api+'Borad/YoutubeList'
-      ).then((res) => {
-        if(typeof(res.data.data) == 'object'){
-          setYtubeList(res.data.data);
-        }
-      }).catch((error) => {
-  
-      });
-  
-    },[])
+  const dispatch = useDispatch();
+  const [evList ,setEvList] = useState([]);
+  const [ofstore, setOfstore] = useState([]);
+  const [ytubeList, setYtubeList] = useState([]);
+  useEffect(() => {
+    axios.get(process.env.api+'Borad/BoradEventList',{
+      params: {
+        limit:3
+      }
+    }).then((res) => {
+      if(typeof(res.data.data) == 'object'){
+        setEvList(res.data.data);
+      }
+    }).catch((error) => {
+
+    });
+    axios.get(process.env.api+'Borad/YoutubeList'
+    ).then((res) => {
+      if(typeof(res.data.data) == 'object'){
+        setYtubeList(res.data.data);
+      }
+    }).catch((error) => {
+
+    });
+
+    axios.get(process.env.api+'Borad/MemberOfflineList',{
+      params: {
+        limit:5
+      }
+    }).then((res) => {
+      if(typeof(res.data.data) == 'object'){
+        setOfstore(res.data.data);
+      }
+    }).catch((error) => {
+
+    });
+
+  },[])
 
   return (
     <MainLayout pages={"home"}>
@@ -95,45 +111,25 @@ export default function Main() {
           </Link>
         </h3>
         <ul className={"offshop offshop_list"}>
-          <li>
-            <Link href="/store">
-              <a>
-                <div>
-                  <img src="/img/off_shop_01.jpg"/>
-                </div>
-                <p className={"offshop_name"}>VINTAGE STORE</p>
-                <p className={"off_address"}>
-                  부산시 금정구 장전3동 장전로 12번길 54 지하1층
-                </p>
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/store">
-              <a>
-                <div>
-                  <img src="/img/off_shop_03.jpg"/>
-                </div>
-                <p className={"offshop_name"}>VINTAGE STORE</p>
-                <p className={"off_address"}>
-                  부산시 금정구 장전3동 장전로 12번길 54 지하1층
-                </p>
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/store">
-              <a>
-                <div>
-                  <img src="/img/off_shop_02.jpg"/>
-                </div>
-                <p className={"offshop_name"}>VINTAGE STORE</p>
-                <p className={"off_address"}>
-                  부산시 금정구 장전3동 장전로 12번길 54 지하1층
-                </p>
-              </a>
-            </Link>
-          </li>
+          {ofstore.map((val, key) => (
+            <li key={key}>
+              <Link href={`/store?of_idx=${val.of_idx}`}>
+                <a>
+                  <div>
+                    <img src={
+                      val.of_img != ''?
+                      val.of_img:
+                      '/img/no_img.png'
+                    }/>
+                  </div>
+                  <p className={"offshop_name"}>{val.of_name}</p>
+                  <p className={"off_address"}>
+                    {val.of_address1} {val.of_address2}
+                  </p>
+                </a>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className={"main_offshop"}>
