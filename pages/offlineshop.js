@@ -16,7 +16,7 @@ export default function OfflineShop(){
       }).catch((error) => {
 
       })
-    })
+    },[])
     return (
         <TitleLayout>
             <div className={'pagetit_div'}>
@@ -31,7 +31,9 @@ export default function OfflineShop(){
                         <input type="text"/>
                         <img src="/img/search.png"/>
                     </div>
-                    <div className={'search_sel'}>
+                    <div c
+                    
+                    lassName={'search_sel'}>
                         <select>
                             <option>1km 미만</option>
                         </select>

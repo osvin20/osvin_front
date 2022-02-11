@@ -1,14 +1,33 @@
 import TitleLayout from "../layout/TitleLayout";
 import Link from "next/link";
 import React from 'react';
+import {useEffect,useState} from 'react';
+import Swal from 'sweetalert2'
+import axios from 'axios';
 
-export default function OrderDetail() {
-  // 주문완료 배송중 배송완료
-  const [od_con ,setOd_con] = React.useState("주문완료");
+function OrderList({query}) {
   // 일반배송 탁송 방문수령
   const [od_del ,setOd_del] = React.useState("일반배송");
 
+  const {od_id} = query;
+  const [odlist, setOdlist] = useState([]);
+  const [order, setOrder] = useState([]);
+  useEffect(() => {
+    axios.get(process.env.api+'Order/Info/'+od_id,{
+      params: {
+        mb_token:localStorage.mb_token
+      }
+    }).then((res) => {
+      if(typeof(res.data.data) == 'object'){
+        setOdlist(res.data.data.list[0]);
+        setOrder(res.data.data.order);
+      }
+    }).catch((error) => {
+
+    });
+  },[])
   return (
+
     <TitleLayout>
       <div className={'pagetit_div'}>
         <h1 className={"page_tit"}>ORDER DETAIL</h1>
@@ -16,56 +35,56 @@ export default function OrderDetail() {
       <div className={'borderfix'}></div>
       <div className={"od_div"}>
         <div className={"od_flex"}>
-          <p className={"od_num extra_bold"}>2021112654785</p>
-          <p className={"od_date"}>2021-08-20 10:10</p>
+          <p className={"od_num extra_bold"}>{order.od_id}</p>
+          <p className={"od_date"}>{order.od_time}</p>
         </div>
         {/* 상태값에 따라 변경 */}
         {od_del == "일반배송"?<div className={'order_del'}>일반배송</div>:""}
         {od_del == "탁송"?<div className={'order_del'}>탁송</div>:""}
         {od_del == "방문수령"?<div className={'order_del'}>방문수령</div>:""}
-        <div className={"oditem_info"}>
+          <div className={"oditem_info"}>
           <div className={"od_thumb"}>
-            <img src="img/item03.jpg" />
+            <img src={
+              odlist.it_img1 != ''?
+              odlist.it_img1:
+              '/img/no_img.png'
+            } />
           </div>
           <div className={"odinfo_txt"}>
             <div>
-              <p>오스빈스토어</p>
+              <p>{odlist.mb_nick}</p>
               <p className={"oditem_name extra_bold"}>
-                지아 울 레이어드 니트 블라우스
+                {odlist.it_name}
               </p>
-              {/* 상태값에 따라 변경 */}
-              {od_con == "주문완료"?<p className={"od_state bold_txt"}>주문완료</p>:""}
-              {od_con == "배송중"?
               <p className={"od_state bold_txt del_state"}>
-                배송중
-                <Link href="/">
+                {order.od_status}
+                {order.od_status == '배송'? <Link href="/">
                   <a className={''}>배송조회</a>
-                </Link>
-              </p>:""}
-              {od_con == "배송완료"?<p className={"od_state bold_txt"}>구매확정</p>:""}
+                </Link>:""}
+              </p>
             </div>
             <div className={"odinfo_price"}>
               <p>
-                배송비<span>2500원</span>
+                배송비<span>{order.od_send_cost}원</span>
               </p>
-              <p className={"extra_bold"}>30,000원</p>
+              <p className={"extra_bold"}>{order.od_receipt_price}원</p>
             </div>
           </div>
-        </div>
-        {od_con == "주문완료"?
+          </div>
+        {order.od_status == "주문"?
         <div className={"order_cancle"}>
           <Link href='/order_cancle'>
             <a>주문취소</a>
           </Link>
         </div>:""}
-        {od_con == "배송중"?
+        {order.od_status == "배송"?
         <div className={"order_cancle order_decide"}>
           <Link href='/item_return'>
             <a>교환 및 환불</a>
           </Link>
           <button className={'decide_btn'}>구매확정</button>
         </div>:""}
-        {od_con == "배송완료"?
+        {order.od_status == "완료"?
         <div className={"order_cancle order_review"}>
         <Link href='/post_write'>
           <a>리뷰쓰기</a>
@@ -78,11 +97,11 @@ export default function OrderDetail() {
         </div>
         <p>
           이름
-          <span>홍길동</span>
+          <span>{order.od_name}</span>
         </p>
         <p>
           연락처
-          <span>010-0000-0000</span>
+          <span>{order.od_tel}</span>
         </p>
       </div>
       <div className={"od_div oddel_info"}>
@@ -91,19 +110,19 @@ export default function OrderDetail() {
         </div>
         <p>
           수령인
-          <span>홍길동</span>
+          <span>{order.od_b_name}</span>
         </p>
         <p>
           연락처
-          <span>010-0000-0000</span>
+          <span>{order.od_b_tel}</span>
         </p>
         <p>
           주소
-          <span>부산광역시 금정구 금정로225 00아파트 110동 402호</span>
+          <span>{order.od_b_addr1} {order.od_b_addr2} {order.od_b_addr3}</span>
         </p>
         <p>
           배송메모
-          <span>문 앞에 놓아주세요.</span>
+          <span>{order.od_memo}</span>
         </p>
       </div>
       <div className={"od_div oddel_info"}>
@@ -112,15 +131,15 @@ export default function OrderDetail() {
         </div>
         <p>
           쿠폰 할인
-          <span>-5,000원</span>
+          <span>-{order.od_send_coupon}원</span>
         </p>
         <p>
           에코포인트 사용
-          <span>-500원</span>
+          <span>-{order.od_receipt_point}원</span>
         </p>
         <p className={'sale_total'}>
           할인 합계
-          <span>-5,500원</span>
+          <span>-원</span>
         </p>
       </div>
       <div className={"od_div oddel_info odtotal"}>
@@ -129,27 +148,32 @@ export default function OrderDetail() {
         </div>
         <p>
           총 상품금액
-          <span>125,000원</span>
+          <span>{order.od_cart_price}원</span>
         </p>
         <p>
           총 배송비
-          <span>5,000원</span>
+          <span>{order.od_send_cost}원</span>
         </p>
         <p>
           할인 합계
-          <span>-5,000원</span>
+          <span>- 원</span>
         </p>
         <p className={'od_total'}>
           총 결제금액
-          <span className={'extra_bold'}>125,500원</span>
+          <span className={'extra_bold'}>{order.od_receipt_price}원</span>
         </p>
         <p className={'od_means'}>
-          결제수단
+          {order.od_settle_case}
           <span>
-            국민카드 745896******1452 (3개월)
+          {order.od_bank_account}
           </span>
         </p>
       </div>
     </TitleLayout>
   );
 }
+OrderList.getInitialProps = async ({req, query}) => {
+  return {query}
+}
+
+export default OrderList;

@@ -79,6 +79,10 @@ export default function Order(){
     return {onChange,checked}
   }
   const getOrderPg = () =>{
+    if(!payagree1 || !payagree2 || !payagree3){
+      Swal.fire("약관에 동의해주세요");
+      return false;
+    }
     const form = new FormData(formRef.current);
     const amount = allPrice.replace(',','');
     const od_send_cost = sum.sc_sum.replace(',','');
@@ -90,13 +94,16 @@ export default function Order(){
     form.append('od_cart_count',itemList.length);
     form.append('od_send_cost',od_send_cost);
     form.append('od_cart_price',od_cart_price);
-
     form.append('prduct_name', itemList[0].it_name+"외 "+itemList.length+"건");
+
     axios.post(process.env.api+"Order/GetOrderPg",form
     ).then((res)=>{
         if(res.data.state){
-          console.log(res.data.data);
-          setMobile_url(res.data.data.mobile_url)
+          if(isMobile()){
+            setMobile_url(res.data.data.mobile_url)
+          }else {
+            setMobile_url(res.data.data.online_url)
+          }
         }else{
           Swal.fire(msg);
         }
@@ -111,6 +118,11 @@ export default function Order(){
   const od_b_addr2 = useChange('');
   const od_memo = useChange('');
   const mb_point = useChange(0);
+  const [payagree1,setPayagree1] = useState(false);
+  const [payagree2,setPayagree2] = useState(false);
+  const [payagree3,setPayagree3] = useState(false);
+
+
   useEffect(() => {
     // 배송지 조회
     axios.get(process.env.api+"Order/AddressList",{
@@ -547,7 +559,7 @@ export default function Order(){
               <Typography>
                 <ul className={'pay_agree'}>
                   <li>
-                    <input type="checkbox" id="payagree1"/>
+                    <input type="checkbox" id="payagree1" onChange={(e)=>setPayagree1(e.target.checked)}/>
                     <label htmlFor="payagree1">오스빈 약관 동의</label>
                     <OsbinModal
                       title=""
@@ -557,12 +569,12 @@ export default function Order(){
                       modal_id={"agree_modal"}
                     >
                       <p className={"agree_txt"}>
-                        오스빈 약관 동의
+                        <iframe src={process.env.domain+'/agreement.php'} />
                       </p>
                     </OsbinModal>
                   </li>
                   <li>
-                    <input type="checkbox" id="payagree2"/>
+                    <input type="checkbox" id="payagree2" onChange={(e)=>setPayagree2(e.target.checked)}/>
                     <label htmlFor="payagree2">개인정보 수집 및 이용에 대한 안내</label>
                     <OsbinModal
                       title=""
@@ -572,12 +584,12 @@ export default function Order(){
                       modal_id={"agree_modal"}
                     >
                       <p className={"agree_txt"}>
-                        개인정보 수집 및 이용에 대한 안내
+                        <iframe src={process.env.domain+'/privacy.php'} />
                       </p>
                     </OsbinModal>
                   </li>
                   <li>
-                    <input type="checkbox" id="payagree3"/>
+                    <input type="checkbox" id="payagree3" onChange={(e)=>setPayagree3(e.target.checked)}/>
                     <label htmlFor="payagree3">구매조건 및 개인정보 제3자 제공</label>
                     <OsbinModal
                       title=""
@@ -586,7 +598,7 @@ export default function Order(){
                       modal_id={"agree_modal"}
                     >
                       <p className={"agree_txt"}>
-                        오스빈 구매조건 및 개인정보 제3자 제공
+                        <iframe src={process.env.domain+'/agreement3.php'} />
                       </p>
                     </OsbinModal>
                   </li>
@@ -610,4 +622,11 @@ export default function Order(){
       }
     </NoneTab>
   )
+}
+export function isMobile() {
+  var user = navigator.userAgent; var is_mobile = false;
+  if( user.indexOf("iPhone") > -1 || user.indexOf("Android") > -1 ) {
+    is_mobile = true;
+  }
+  return is_mobile;
 }

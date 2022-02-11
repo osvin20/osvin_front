@@ -10,6 +10,7 @@ import axios from 'axios';
 export default function OrderList() {
   // 일반배송 탁송 방문수령
   const [od_del ,setOd_del] = React.useState("일반배송");
+  
   const [odlist, setOdlist] = useState([]);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ export default function OrderList() {
         <Link href={`/order_detail?od_id=${val.od_id}`}>
           <a className={"od_flex"}>
             <p className={"od_num extra_bold"}>{val.od_id}</p>
-            <p className={"od_date"}>{val.it_time}
+            <p className={"od_date"}>{val.od_time}
               <span className={'order_arrow'}>
                 <img src="img/arrow_11.png" />
               </span>
@@ -74,7 +75,7 @@ export default function OrderList() {
             </div>
             <div className={"odinfo_price"}>
               <p>
-                배송비<span>{val.it_sc_price}원</span>
+                배송비<span>{val.od_send_cost}원</span>
               </p>
               <p className={"extra_bold"}>{val.od_receipt_price}원</p>
             </div>
@@ -94,7 +95,7 @@ export default function OrderList() {
         {val.od_status == "완료"?
         <div className={"order_cancle order_review"}>
           <Link href='/post_write'>
-            <a>리뷰쓰기</a>
+            <a>상품피드작성</a>
           </Link>
         </div>:""}
         </div>
