@@ -288,9 +288,10 @@ export default function Post({query}){
                 />
                 <button
                   className={'extra_bold'}
-                  children={<span>게시</span>}
                   onClick={commentAdd}
-                />
+                >
+                  <span>게시</span>
+              </button>
               </div>
             </div>
           </div>
