@@ -39,12 +39,10 @@ export default function CheckBox(props){
     },[]);
     useEffect(()=>{
       setCk(props.defCk)
-      console.log(props.defCk);
     },[props.defCk]);
 
     const onchangeCk = (e) =>{
       setCk(!ck);
-      console.log(ck);
       if(props.onchangeHandler){
         props.onchangeHandler(e);
       }
@@ -58,7 +56,7 @@ export default function CheckBox(props){
         value={val}
         checked={ck}
         onChange={(e)=>onchangeCk(e.target.checked)}
-        onClick={()=>console.log('s')}
+        // onClick={()=>console.log('s')}
         {...props}
       />
       <BoxLabel htmlFor={props.id}>

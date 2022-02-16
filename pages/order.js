@@ -83,6 +83,10 @@ export default function Order(){
       Swal.fire("약관에 동의해주세요");
       return false;
     }
+    if(od_b_addr1.value == ''){
+      Swal.fire("주소를 입력해주세요");
+      return false;
+    }
     const form = new FormData(formRef.current);
     const amount = allPrice.replace(',','');
     const od_send_cost = sum.sc_sum.replace(',','');

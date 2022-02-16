@@ -7,7 +7,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import StoreFeed from './storefeed'
 import MonthFeed from './monthfeed'
-import MyFeed from './myfeed'
+import AllFeed from './allfeed'
 import OsbinFeed from './osbinfeed'
 import TabPanel from '../layout/TabPanel';
 import { useSelector, useDispatch } from 'react-redux';
@@ -48,7 +48,7 @@ export default function Feed(){
                     <MonthFeed></MonthFeed>
                 </TabPanel>
                 <TabPanel value={pageNumber} index={2}>
-                    <MyFeed></MyFeed>
+                    <AllFeed></AllFeed>
                 </TabPanel>
                 <TabPanel value={pageNumber} index={3}>
                     <OsbinFeed></OsbinFeed>

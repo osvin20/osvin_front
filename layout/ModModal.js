@@ -4,11 +4,11 @@ import {useRouter} from 'next/router'
 
 export let txt1 =
   "리뷰를 삭제하시겠습니까?";
-export default function ModModal(){
+export default function ModModal({wr_id}){
     const router = useRouter()
     return (
         <div className={'modification'}>
-          <Link href='/post_write'>
+          <Link href={'/post_update?wr_id='+wr_id}>
             <a className={'mod_dir'}>수정</a>
           </Link>
           <OsbinModal

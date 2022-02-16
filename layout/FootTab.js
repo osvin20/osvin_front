@@ -23,7 +23,7 @@ export default function FootTab({children,...props}){
     const arr2 = ["/zzim"];
     const arr3 = ["/search"];
     const arr4 = ["/category","/itemlist"];
-    const arr5 = ["/userfeed","/post","/addpost"];
+    const arr5 = ["/userfeed","/post","/addpost","/myfeed"];
     const arr6 = ["/mypage","/followingstore","/myreview","/address_list","/setting","/notice_event","/cardlist","/faq","/qnalist"];
     const [tabNav,setTabNav] = useState();
     useEffect(() => {
@@ -77,7 +77,7 @@ export default function FootTab({children,...props}){
                     </Link>
                 </li>
                 <li className={'userfeed_ico'}>
-                    <Link href="/userfeed">
+                    <Link href="/myfeed">
                         <a>
                             {tabNav==5?
                             <img src="/img/camera_tab.png"/>

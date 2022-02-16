@@ -19,7 +19,7 @@ function OrderList({query}) {
       }
     }).then((res) => {
       if(typeof(res.data.data) == 'object'){
-        setOdlist(res.data.data.list[0]);
+        setOdlist(res.data.data.list);
         setOrder(res.data.data.order);
       }
     }).catch((error) => {
@@ -42,35 +42,37 @@ function OrderList({query}) {
         {od_del == "일반배송"?<div className={'order_del'}>일반배송</div>:""}
         {od_del == "탁송"?<div className={'order_del'}>탁송</div>:""}
         {od_del == "방문수령"?<div className={'order_del'}>방문수령</div>:""}
-          <div className={"oditem_info"}>
-          <div className={"od_thumb"}>
-            <img src={
-              odlist.it_img1 != ''?
-              odlist.it_img1:
-              '/img/no_img.png'
-            } />
-          </div>
-          <div className={"odinfo_txt"}>
-            <div>
-              <p>{odlist.mb_nick}</p>
-              <p className={"oditem_name extra_bold"}>
-                {odlist.it_name}
-              </p>
-              <p className={"od_state bold_txt del_state"}>
-                {order.od_status}
-                {order.od_status == '배송'? <Link href="/">
-                  <a className={''}>배송조회</a>
-                </Link>:""}
-              </p>
+        {odlist.map((val, key) => (
+          <div className={"oditem_info"} key={key}>
+            <div className={"od_thumb"}>
+              <img src={
+                val.it_img1 != ''?
+                val.it_img1:
+                '/img/no_img.png'
+              } />
             </div>
-            <div className={"odinfo_price"}>
-              <p>
-                배송비<span>{order.od_send_cost}원</span>
-              </p>
-              <p className={"extra_bold"}>{order.od_receipt_price}원</p>
+            <div className={"odinfo_txt"}>
+              <div>
+                <p>{val.mb_nick}</p>
+                <p className={"oditem_name extra_bold"}>
+                  {val.it_name}
+                </p>
+                <p className={"od_state bold_txt del_state"}>
+                  {val.ct_status}
+                  {val.ct_status == '배송'? <Link href="/">
+                    <a className={''}>배송조회</a>
+                  </Link>:""}
+                </p>
+              </div>
+              <div className={"odinfo_price"}>
+                <p>
+                  배송비<span>{val.ct_send_cost}원</span>
+                </p>
+                <p className={"extra_bold"}>{val.it_price}원</p>
+              </div>
             </div>
           </div>
-          </div>
+        ))}
         {order.od_status == "주문"?
         <div className={"order_cancle"}>
           <Link href='/order_cancle'>
@@ -139,7 +141,7 @@ function OrderList({query}) {
         </p>
         <p className={'sale_total'}>
           할인 합계
-          <span>-원</span>
+          <span>-0원</span>
         </p>
       </div>
       <div className={"od_div oddel_info odtotal"}>
@@ -156,7 +158,7 @@ function OrderList({query}) {
         </p>
         <p>
           할인 합계
-          <span>- 원</span>
+          <span>-0원</span>
         </p>
         <p className={'od_total'}>
           총 결제금액
@@ -165,7 +167,7 @@ function OrderList({query}) {
         <p className={'od_means'}>
           {order.od_settle_case}
           <span>
-          {order.od_bank_account}
+          {/* order.od_bank_account */}
           </span>
         </p>
       </div>

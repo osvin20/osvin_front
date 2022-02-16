@@ -5,7 +5,9 @@ export default function AddCard() {
 
   return (
     <TitleLayout>
-      <h1 className={"page_tit"}>MY CARD</h1>
+      <div className={'pagetit_div'}>
+        <h1 className={'page_tit'}>MY CARD</h1>
+      </div>
       <div>
         <Link href='/cardform'>
           <a className={'add_card'}>

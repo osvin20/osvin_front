@@ -6,14 +6,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import OsbinModal from '../layout/OsbinModal';
 import ModModal from '../layout/ModModal'
-import React,{useState} from 'react';
-import CheckBox from '../layout/CheckBox.js';
+import CheckBox from '../atomic/CheckBox.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {useEffect,useState,useRef} from 'react';
+import Swal from 'sweetalert2'
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,9 +27,20 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function Post(){
+export default function Post({query}){
+    const {wr_id} = query;
     const [ck ,setCk] = useState(false);
+    const [good ,setGood] = useState(false);
+    const [wr_cnt ,setWr_cnt] = useState(0);
+    const [feed,setFeed] = useState([]);
+    const [item,setItem] = useState([]);
+    const [wr_content,setWr_content] = useState('');
+    const [mb_id,setMb_id] = useState([]);
+    const [feedImg,setFeedImg] = useState([{bf_file:"/img/no_img.png"}]);
+    const [commentList,setCommentList] = useState([]);
+    const [comment_cnt,setComment_cnt] = useState(0);
     const classes = useStyles();
+    const [heart,setHeart] = useState(false);
     let settings = {
         dots: true,
         infinite: true,
@@ -35,292 +48,255 @@ export default function Post(){
         arrows:false,
         slidesToShow: 1,
         slidesToScroll: 1
-      };
+    };
+    const addRemove = () =>{
+      axios.get(process.env.api+"Feed/AddRemoveGood/"+wr_id,{
+        params: {
+          mb_token:localStorage.mb_token
+        }
+      }).then((res)=>{
+        //Swal.fire(res.data.msg);
+        if(res.data.msg == "피드에 좋아요가 되었습니다."){
+          setWr_cnt(wr_cnt+1);
+          setHeart(true);
+          setTimeout(() =>setHeart(false), 400);
+        }else {
+          setWr_cnt(wr_cnt-1);
+        }
+      })
+    }
+    const commentAddRemove = (wr_id) =>{
+      axios.get(process.env.api+"Feed/AddRemoveGood/"+wr_id,{
+        params: {
+          mb_token:localStorage.mb_token
+        }
+      }).then((res)=>{
+        if(res.data.msg == "피드에 좋아요가 되었습니다."){
+          setHeart(true);
+          setTimeout(() =>setHeart(false), 400);
+        }
+        getCommentList();
+      })
+    }
+    const commentAdd = () => {
+      const form = new FormData()
+      form.append('mb_token',localStorage.mb_token);
+      form.append('wr_content',wr_content);
+      form.append('wr_id',wr_id);
+      axios.post(process.env.api+"Feed/CommentAdd",form
+      ).then((res)=>{
+        Swal.fire(res.data.msg);
+        setWr_content('');
+        getCommentList();
+        setComment_cnt(comment_cnt+1);
+        }).catch((error)=>{
+      });
+    }
+    const getCommentList = () => {
+      axios.get(process.env.api+"Feed/CommentList/"+wr_id,{
+        params: {
+          mb_token:localStorage.mb_token
+        }
+      }).then((res)=>{
+        if(res.data.state){
+          setCommentList(res.data.data);
+        }
+      }).catch((error)=> {});
+    }
+
+    useEffect(() =>{
+      setMb_id(localStorage.mb_id);
+      axios.get(process.env.api+"Feed/Info/"+wr_id,{
+        params: {
+          mb_token:localStorage.mb_token
+        }
+      }).then((res)=>{
+        if(res.data.state){
+          setFeed(res.data.data.feed);
+          setItem(res.data.data.item)
+          setWr_cnt(res.data.data.feed.wr_cnt)
+          setComment_cnt(res.data.data.feed.comment_cnt)
+          if(res.data.data.feed.cnt > 0){
+            setGood(true)
+          }
+          if(res.data.data.file.length > 0){
+            setFeedImg(res.data.data.file)
+          }
+        }
+      }).catch((error)=> {});
+      getCommentList();
+    },[]);
     return (
         <TitleLayout>
-            <div className={'pagetit_div'}>
-              <h1 className={'page_tit'}>POST</h1>
+          {heart &&
+            <div className='heart_box'>
+              <div className='heart'>
+              </div>
             </div>
-            <div className={'borderfix'}></div>
-            <div className={'post_content'}>
-                <div className={'rv_prof'}>
-                  <Link href="/userfeed">
-                    <a className={'user_prof_div'}>
-                      <div className={'user_prof_img'}><img src="/img/prof_01.jpg"/></div>
-                      <p>sohee1203</p>
-                    </a>
-                  </Link>
-                  <p className={'rv_date'}>2021-08-20
-                    <OsbinModal
-                      title=""
-                      bnt_title =""
-                      dir_label ="네"
-                      btn_label ="아니오"
-                      class_name={"rv_mod_btn"}
-                      modal_id={"review_detail_modal"}
-                    >
-                      <ModModal/>
-                    </OsbinModal>
-                  </p>
-                </div>
-                <div className={'item_pic'}>
-                    <Slider {...settings}>
-                        <div className={'content_box'}>
-                            <img src="/img/post_01.jpg"/>
-                        </div>
-                        <div className={'content_box'}>
-                            <img src="/img/post_02.jpg"/>
-                        </div>
-                        <div className={'content_box'}>
-                            <img src="/img/post_03.jpg"/>
-                        </div>
-                    </Slider>
-                </div>
-                <ul className={'post_info'}>
-                    <li>
-                        <p>스토어명</p>
-                        <Link href="/store">
-                            <a>오스빈스토어</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <p>상품명</p>
-                        <Link href="/item">
-                            <a>울 모헤어 보카시 니트 가디건</a>
-                        </Link>
-                    </li>
-                </ul>
-                <div className={'post_txt'}>
-                    맨살에 착용해도 아주 부드럽고 포근하게 감기는 촉감으로 피부가 예민하신 분들도 부담없이 착용하실 수 있어요~! 루즈한 핏이지만 부해보이지 않고 여리여리하게 떨어지는 핏감이고 V넥이 깊게 파이지 않아서 단독으로도 부담 없었어요:) 보온성이 정말 뛰어나서 하나만 입어도 따뜻 포근 그 자체입니다~!
-                </div>
-                <div className={'post_react'}>
-                    <div>
-                        <CheckBox
-                          id={"checkBox4"}
-                          defCk={false}
-                          offEl={
-                            <div className={'comment_heart'}>
-                                <img src="/img/heart5.png"/>
-                            </div>
-                          }
-                          onEl={
-                            <div className={'comment_heart'}>
-                              <img src="/img/heart6.png"/>
-                            </div>
-                          }
-                        />
-                        <p>51</p>
-                    </div>
-                    <div>
-                        <img src="/img/chat.png"/>
-                        <p>7</p>
-                    </div>
-                </div>
+          }
+          <div className={'pagetit_div'}>
+            <h1 className={'page_tit'}>POST</h1>
+          </div>
+          <div className={'borderfix'}></div>
+          <div className={'post_content'}>
+            <div className={'rv_prof'}>
+              <Link href={"/userfeed?mb_id="+feed.mb_id}>
+                <a className={'user_prof_div'}>
+                  <div className={'user_prof_img'}>
+                    <img
+                      src={feed.wr_img}
+                      onError={(e)=>{e.target.src =  "/img/no_img.png"}}
+                    />
+                  </div>
+                  <p>{feed.wr_name}</p>
+                </a>
+              </Link>
+              <p className={'rv_date'}>{feed.wr_datetime}
+                {feed.mb_id == mb_id&&
+                  <OsbinModal
+                    title=""
+                    bnt_title =""
+                    dir_label ="네"
+                    btn_label ="아니오"
+                    class_name={"rv_mod_btn"}
+                    modal_id={"review_detail_modal"}
+                  >
+                    <ModModal wr_id={wr_id}/>
+                  </OsbinModal>
+                }
+              </p>
             </div>
-            <div className={'post_comment'}>
-                <ul>
-                    <li>
-                        <div className={'comment_div'}>
-                            <div className={'user_comment'}>
-                                <Link href='/userfeed'>
-                                  <a className={'comment_prof'}>
-                                    <img src="/img/prof_02.jpg"/>
-                                  </a>
-                                </Link>
-                                <div>
-                                    <div className={'comment'}>
-                                      <Link href='/userfeed'>
-                                        <a>
-                                          hyeri0820
-                                        </a>
-                                      </Link>
-                                      <Link href='/comment'>
-                                        <a className={'comment_dir'}>
-                                          가디건이 너무 이뻐요!ㅜㅜ
-                                        </a>
-                                      </Link>
-                                    </div>
-                                    <div className={'comment_info'}>
-                                        <p className={'comment_date'}>2021-08-20</p>
-                                        <p className={'comment_like'}>
-                                            좋아요 10개
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <CheckBox
-                              id={"checkBox1"}
-                              defCk={false}
-                              offEl={
-                                <div className={'comment_heart'}>
-                                    <img src="/img/heart5.png"/>
-                                </div>
-                              }
-                              onEl={
-                                <div className={'comment_heart'}>
-                                  <img src="/img/heart6.png"/>
-                                </div>
-                              }
-                            />
-                        </div>
-                        <ul>
-                            <li>
-                                <div className={'user_comment'}>
-                                    <Link href='/userfeed'>
-                                      <a className={'comment_prof'}>
-                                        <img src="/img/prof_03.jpg"/>
-                                      </a>
-                                    </Link>
-                                    <div>
-                                        <div className={'comment'}>
-                                          <Link href='/userfeed'>
-                                            <a>
-                                              minah1121
-                                            </a>
-                                          </Link>
-                                          <Link href='/comment'>
-                                            <a className={'comment_dir'}>
-                                              저도 얼른 장만하고싶네요!
-                                            </a>
-                                          </Link>
-                                        </div>
-                                        <div className={'comment_info'}>
-                                            <p className={'comment_date'}>2021-08-20</p>
-                                            <p className={'comment_like'}>
-                                                좋아요 10개
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <CheckBox
-                                  id={"checkBox2"}
-                                  defCk={false}
-                                  offEl={
-                                    <div className={'comment_heart'}>
-                                        <img src="/img/heart5.png"/>
-                                    </div>
-                                  }
-                                  onEl={
-                                    <div className={'comment_heart'}>
-                                      <img src="/img/heart6.png"/>
-                                    </div>
-                                  }
-                                />
-                            </li>
-                        </ul>
-                        <Link href='/comment'>
-                            <a className={'more_comment'}>
-                                답글 5개 보기
-                                <img src="/img/arrow_07.png"/>
-                            </a>
-                        </Link>
-                    </li>
-                    <li>
-                        <div className={'comment_div'}>
-                            <div className={'user_comment'}>
-                                <Link href='/userfeed'>
-                                  <a className={'comment_prof'}>
-                                    <img src="/img/prof_02.jpg"/>
-                                  </a>
-                                </Link>
-                                <div>
-                                    <div className={'comment'}>
-                                      <Link href='/userfeed'>
-                                        <a>
-                                          hyeri0820
-                                        </a>
-                                      </Link>
-                                      <Link href='/comment'>
-                                        <a className={'comment_dir'}>
-                                          가디건이 너무 이뻐요!ㅜㅜ
-                                        </a>
-                                      </Link>
-                                    </div>
-                                    <div className={'comment_info'}>
-                                        <p className={'comment_date'}>2021-08-20</p>
-                                        <p className={'comment_like'}>
-                                            좋아요 10개
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <CheckBox
-                              id={"checkBox3"}
-                              defCk={false}
-                              offEl={
-                                <div className={'comment_heart'}>
-                                    <img src="/img/heart5.png"/>
-                                </div>
-                              }
-                              onEl={
-                                <div className={'comment_heart'}>
-                                  <img src="/img/heart6.png"/>
-                                </div>
-                              }
-                            />
-                        </div>
-                        <ul>
-                            <li>
-                                <div className={'user_comment'}>
-                                    <Link href='/userfeed'>
-                                      <a className={'comment_prof'}>
-                                        <img src="/img/prof_03.jpg"/>
-                                      </a>
-                                    </Link>
-                                    <div>
-                                        <div className={'comment'}>
-                                          <Link href='/userfeed'>
-                                            <a>
-                                              minah1121
-                                            </a>
-                                          </Link>
-                                          <Link href='/comment'>
-                                            <a className={'comment_dir'}>
-                                              저도 얼른 장만하고싶네요!
-                                            </a>
-                                          </Link>
+            <div className={'item_pic'}>
+              <Slider {...settings}>
+                {feedImg.map((val,key) =>(
+                  <div className={'content_box'} key={key}>
+                    <img
+                      src={val.bf_file}
+                      onError={(e)=>{e.target.src =  "/img/no_img.png"}}
+                    />
+                  </div>
+                ))}
 
-                                        </div>
-                                        <div className={'comment_info'}>
-                                            <p className={'comment_date'}>2021-08-20</p>
-                                            <p className={'comment_like'}>
-                                                좋아요 10개
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <CheckBox
-                                  id={"checkBox4"}
-                                  defCk={false}
-                                  offEl={
-                                    <div className={'comment_heart'}>
-                                        <img src="/img/heart5.png"/>
-                                    </div>
-                                  }
-                                  onEl={
-                                    <div className={'comment_heart'}>
-                                      <img src="/img/heart6.png"/>
-                                    </div>
-                                  }
-                                />
-                            </li>
-                        </ul>
-                        <Link href='/comment'>
-                            <a className={'more_comment'}>
-                                답글 5개 보기
-                                <img src="/img/arrow_07.png"/>
-                            </a>
-                        </Link>
-                    </li>
-                </ul>
-                <div className={'comment_input'}>
-                    <img src="/img/prof_01.jpg"/>
-                    <div>
-                        <textarea placeholder="댓글 달기..." />
-                        <button className={'extra_bold'}>게시</button>
-                    </div>
-                </div>
+              </Slider>
             </div>
+            <ul className={'post_info'}>
+              <li>
+                <p>스토어명</p>
+                <Link href="/store">
+                  <a>오스빈스토어</a>
+                </Link>
+              </li>
+              <li>
+                <p>상품명</p>
+                <Link href="/item">
+                  <a>{item.it_name}</a>
+                </Link>
+              </li>
+            </ul>
+            <div className={'post_txt'}>
+              {feed.wr_content}
+            </div>
+            <div className={'post_react'}>
+              <div>
+                <CheckBox
+                  id={"checkBox4"}
+                  defCk={good}
+                  offEl={
+                    <div className={'comment_heart'}>
+                      <img src="/img/heart5.png"/>
+                    </div>
+                  }
+                  onEl={
+                    <div className={'comment_heart'}>
+                      <img src="/img/heart6.png"/>
+                    </div>
+                  }
+                  onchangeHandler={addRemove}
+                />
+                <p>{wr_cnt}</p>
+              </div>
+              <div>
+                <img src="/img/chat.png"/>
+                <p>{comment_cnt}</p>
+              </div>
+            </div>
+          </div>
+          <div className={'post_comment'}>
+            <ul>
+              {commentList.map((val,key) =>(
+                <li key={key}>
+                  <div className={'comment_div'}>
+                    <div className={'user_comment'}>
+                      <Link href={'/userfeed?mb_id='+val.mb_id}>
+                        <a className={'comment_prof'}>
+                          <img
+                            src={val.mb_img}
+                            onError={(e)=>{e.target.src = "/img/no_img.png"}}
+                          />
+                        </a>
+                      </Link>
+                      <div>
+                        <div className={'comment'}>
+                          <Link href='/userfeed'>
+                            <a>
+                              {val.wr_name}
+                            </a>
+                          </Link>
+                          <Link href='/comment'>
+                            <a className={'comment_dir'}>
+                              {val.wr_content}
+                            </a>
+                          </Link>
+                        </div>
+                        <div className={'comment_info'}>
+                          <p className={'comment_date'}>{val.wr_datetime}</p>
+                          <p className={'comment_like'}>
+                            좋아요 {val.cnt}개
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <CheckBox
+                      id={"checkBoxLike"+key}
+                      defCk={val.mb_cnt}
+                      offEl={
+                        <div className={'comment_heart'}>
+                          <img src="/img/heart5.png"/>
+                        </div>
+                      }
+                      onEl={
+                        <div className={'comment_heart'}>
+                          <img src="/img/heart6.png"/>
+                        </div>
+                      }
+                      onchangeHandler={()=>commentAddRemove(val.wr_id)}
+                    />
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className={'comment_input'}>
+              <img
+                src={feed.mb_img}
+                onError={(e)=>{e.target.src =  "/img/no_img.png"}}
+              />
+              <div>
+                <textarea
+                  placeholder="댓글 달기..."
+                  value={wr_content}
+                  onChange={e=>setWr_content(e.target.value)}
+                />
+                <button
+                  className={'extra_bold'}
+                  children={"게시"}
+                  onClick={commentAdd}
+                />
+              </div>
+            </div>
+          </div>
         </TitleLayout>
     )
+}
+Post.getInitialProps = async ({ req ,query }) => {
+  return {query}
 }

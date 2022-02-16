@@ -24,7 +24,7 @@ export default function MyPage() {
     }).catch((error)=> {
     });
   },[]);
-  
+
   return (
     <SubLayout loginCheck={true}>
       <div className={"mypage_div"}>

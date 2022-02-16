@@ -8,12 +8,16 @@ import Following from './following'
 import Follower from './follower'
 import TabPanel from '../layout/TabPanel'
 import { useRouter } from 'next/router';
-
+import Swal from 'sweetalert2'
 export default function FollowList(){
     const router = useRouter();
-    const {tabnumber} = router.query;
+    const {tabnumber,mb_id} = router.query;
     const [pageNumber, setPageNumber] = React.useState(0);
     useEffect(() =>{
+      if(typeof(localStorage.mb_token) != "string"){
+        Swal.fire("로그인을 해주세요");
+        router.push('/login');
+      }
         if(typeof tabnumber != "undefined"){
             setPageNumber(Number(tabnumber));
         }
@@ -34,10 +38,10 @@ export default function FollowList(){
                 </Tabs>
                 </AppBar>
                 <TabPanel value={pageNumber} index={0}>
-                    <Following/>
+                    <Following mb_id={mb_id}/>
                 </TabPanel>
                 <TabPanel value={pageNumber} index={1}>
-                    <Follower/>
+                    <Follower mb_id={mb_id}/>
                 </TabPanel>
             </div>
         </TitleLayout>

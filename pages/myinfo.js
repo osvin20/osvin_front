@@ -56,7 +56,9 @@ export default function MyInfo(){
   const imgPreView = (e) =>{
     const fileBlob = e.target.files[0]
     const reader = new FileReader();
-    reader.readAsDataURL(fileBlob);
+    if(fileBlob){
+      reader.readAsDataURL(fileBlob);
+    }
     return new Promise((resolve) => {
       reader.onload = () => {
         setUserImg(reader.result);
@@ -95,7 +97,6 @@ export default function MyInfo(){
                 <input
                   type="file"
                   name="mb_img"
-                  accept="img/*"
                   id="prof_file"
                   onChange={imgPreView}
                 />

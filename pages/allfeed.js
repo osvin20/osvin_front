@@ -2,14 +2,13 @@ import Link from 'next/link'
 import {useEffect,useState,useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'
-export default function MonthFeed(){
+
+export default function AllFeed(){
   const [list , setList] = useState([]);
   const [page , setPage] = useState([]);
   useEffect(() => {
     axios.get(process.env.api+"Feed/List/0",{
-      params:{
-        orderBy:"cnt"
-      }
+
     }).then((res)=>{
       if(res.data.state){
         setList(res.data.data);
@@ -28,7 +27,6 @@ export default function MonthFeed(){
                     src={val.bf_file}
                     onError={(e)=>{e.target.src = '/img/no_img.png'}}
                   />
-                  <span className={'item_ranking extra_bold'}>{key+1}</span>
                 </a>
               </Link>
             </li>

@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
         ...initialProps,
         styles: (
           <>
+            <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=59248c71ebc85b261033ea9d37d68249"/>
             <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
             {initialProps.styles}
             {sheet.getStyleElement()}
