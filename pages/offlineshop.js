@@ -4,33 +4,39 @@ import Link from 'next/link'
 import {useEffect,useState} from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
-
+import Script from 'next/script'
 export default function OfflineShop(){
     const [ofshopdetail, setOfshopdetail] = useState([]);
     const [lat, setLat] = useState(37.5182479131886);
     const [lng, setlng] = useState(127.023139471153);
     const [idx, setIdx] = useState(false);
-    useEffect(() => {
-      if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition (function(pos) {
-          setLat(pos.coords.latitude);
-          setlng(pos.coords.longitude);
+
+      useEffect(() => {
+        if(navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition (function(pos) {
+            setLat(pos.coords.latitude);
+            setlng(pos.coords.longitude);
+          });
+        }
+         window.kakao.maps.load(() => {
+          let container = document.getElementById("map");
+
+          let latLng = new window.kakao.maps.LatLng(lat, lng);
+          let options = {
+            center:latLng,
+            level: 7,
+          };
+          let map = new window.kakao.maps.Map(container, options);
+          kakao.maps.event.addListener(map, 'dragend', function() {
+            memberOfflineList(map);
+          });
+          kakao.maps.event.addListener(map, 'zoom_changed', function() {
+            memberOfflineList(map);
+          });
+          memberOfflineList(map);
         });
-      }
-      let container = document.getElementById("map");
-      let options = {
-        center: new window.kakao.maps.LatLng(lat, lng),
-        level: 7,
-      };
-      let map = new window.kakao.maps.Map(container, options);
-      kakao.maps.event.addListener(map, 'dragend', function() {
-        memberOfflineList(map);
-      });
-      kakao.maps.event.addListener(map, 'zoom_changed', function() {
-        memberOfflineList(map);
-      });
-      memberOfflineList(map);
-    },[])
+
+      },[])
 
 
     const memberOfflineList = (map) =>{
@@ -78,6 +84,10 @@ export default function OfflineShop(){
 
     return (
         <TitleLayout>
+          <Script
+            strategy="beforeInteractive"
+            src={"//dapi.kakao.com/v2/maps/sdk.js?appkey=59248c71ebc85b261033ea9d37d68249&autoload=false"}
+          />
           <div className={'pagetit_div'}>
             <h1 className={'page_tit'}>OFFLINESHOP </h1>
           </div>

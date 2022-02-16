@@ -5,6 +5,7 @@ import styles from "../styles/Style.module.css";
 import Link from "next/link";
 import FootTab from "/layout/FootTab.js";
 import Swal from 'sweetalert2';
+import Script from 'next/script'
 import {loginCheckFun} from './Common.js';
 import {useEffect,useState,useRef } from 'react';
 import axios from 'axios';
@@ -38,6 +39,7 @@ function TitleLayout({children,query,loginCheck}) {
         <meta name="description" content="오스빈" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      
       <div className={"head back_hd"}>
         <img
           className={"back_ico"}
