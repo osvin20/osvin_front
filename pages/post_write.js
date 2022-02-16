@@ -112,7 +112,7 @@ export default function PostWrite({query}) {
           </div>
           <div className={"file_thumb"}>
             {img.map((val,key) =>(
-              <div>
+              <div key={key}>
                 <label htmlFor={"bf_file"+key}>
                   <img
                     src={val}
