@@ -4,10 +4,13 @@ import styles from '../styles/Style.module.css'
 import Link from 'next/link'
 import FootTab from '/layout/FootTab.js'
 import { useRouter } from "next/router";
-import {useEffect,useState,useRef } from 'react';
+import {useEffect,useState,useRef,useLayoutEffect} from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 import useSWR from 'swr';
+import { useSelector, useDispatch } from 'react-redux';
+import {setScrollVal} from '../store/modules/scroll';
+
 export default function SubLayout({children,...props}){
     // 로그인체크
     const router = useRouter();
@@ -32,6 +35,24 @@ export default function SubLayout({children,...props}){
         router.push('/login');
       }
     }, []);
+    if(props.historyScroll == true){
+      const dispatch = useDispatch();
+      const scrollVal = useSelector(({scroll}) => scroll.scroll);
+      const handleScroll = () => {
+        const position = window.pageYOffset;
+        dispatch(setScrollVal(position));
+      };
+      useLayoutEffect(() => {
+        setTimeout(()=>{
+          window.scrollTo(0,scrollVal);
+        },500)
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+          window.removeEventListener("scroll", handleScroll);
+        };
+      }, []);
+    }
+
     return (
         <div className={styles.container}>
             <Head>

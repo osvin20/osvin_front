@@ -1,6 +1,6 @@
 import { createSlice ,PayloadAction } from '@reduxjs/toolkit';
 
-const initialState = { value:null};
+const initialState = { value:0};
  // 초기 상태 정의
 const tabSlice = createSlice({
  name: 'tab_number',

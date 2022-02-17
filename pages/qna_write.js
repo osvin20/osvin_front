@@ -58,7 +58,7 @@ export default function QnaWrite({query}) {
     form.append('iq_question',iq_question.value);
     form.append('iq_secret',iq_secret.value);
     form.append('mb_token',localStorage.mb_token);
-    form.append('mb_sell_id',item.mb_sell_id);
+    form.append('mb_sell_id',item.mb_id);
     form.append('it_id',it_id);
     axios.post(process.env.api+"Item/QaAdd",form
     ).then((res)=>{

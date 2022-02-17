@@ -1,7 +1,7 @@
 
 import SubLayout from '../layout/SubLayout'
 import Link from 'next/link'
-import React,{useEffect} from 'react';
+import {useEffect,useState,useRef } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -18,18 +18,23 @@ export default function Feed(){
     const router = useRouter();
     const dispatch = useDispatch();
     const tab_number = useSelector(({tab_number}) => tab_number.value);
-    const [pageNumber, setPageNumber] = React.useState(0);
+    const [pageNumber, setPageNumber] = useState(0);
     useEffect(() =>{
         if(tab_number != null){
           setPageNumber(tab_number);
         }
+
     },[tab_number]);
     const handleChange = (event, newValue) => {
         setPageNumber(newValue);
         dispatch(setTabNumber(newValue));
+        window.scrollTo(0,0);
     };
+
+    //스크롤값 세팅
+
     return (
-        <SubLayout>
+        <SubLayout historyScroll={true}>
             <div className={'feedcate'}>
                 <AppBar position="static" centerTitle="true">
                 <Tabs value={pageNumber} onChange={handleChange} aria-label="simple tabs example">

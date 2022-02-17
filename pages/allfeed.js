@@ -2,20 +2,32 @@ import Link from 'next/link'
 import {useEffect,useState,useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'
-
+import useHistoryState from '../hook/useHistoryState';
+import restoreScrollPosition  from 'next-restore-scroll'
+import { useRouter } from 'next/router';
 export default function AllFeed(){
-  const [list , setList] = useState([]);
-  const [page , setPage] = useState([]);
-  useEffect(() => {
-    axios.get(process.env.api+"Feed/List/0",{
-
+  const [list , setList] = useHistoryState([],'list');
+  const [offset , setOffset] = useHistoryState(0,'offset');
+  const [ck,setCk] = useState(list.length != 0 ? false:true); //useEffect가 재랜더 하는 부분을 막아줌
+  const router = useRouter();
+  const allfeedList = () =>{
+    axios.get(process.env.api+"Feed/List/"+offset,{
     }).then((res)=>{
-      if(res.data.state){
-        setList(res.data.data);
+      if(res.data.state && res.data.data.length != 0){
+        setList([...list,...res.data.data]);
+      }else{
+        Swal.fire('마지막 페이지입니다.')
       }
     }).catch((error)=> {
     });
-  },[page]);
+  }
+  useEffect(() => {
+    if(ck){
+      allfeedList();
+    }else{
+      setCk(true)
+    }
+  },[offset]);
     return (
       <div className={'storefeed'}>
         <ul className={'storefeed_ul'}>
@@ -32,6 +44,9 @@ export default function AllFeed(){
             </li>
           ))}
         </ul>
+        <div className={"info_btn_box"}>
+          <button className={"info_btn"} onClick={()=>setOffset(offset+1)}>더보기</button>
+        </div>
       </div>
     );
   }

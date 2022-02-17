@@ -3399,7 +3399,10 @@
   border-bottom: none;
   text-align: center;
 }
-
+.info_btn_box{
+  padding:10px;
+  text-align:center;
+}
 /* faq */
 
 .borderfix {

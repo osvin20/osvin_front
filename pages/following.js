@@ -6,7 +6,7 @@ import {useEffect,useState,useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'
 
-export default function Following({mb_id}){
+export default function Following({mb_id,pageNumber}){
     const [ck ,setCk] = useState(false);
     const [list ,setList] = useState([]);
     const [text ,setText] = useState('');
@@ -19,7 +19,7 @@ export default function Following({mb_id}){
         Swal.fire(res.data.msg);
       })
     }
-    const followerwingList = (val) =>{
+    const followingList = (val) =>{
       axios.get(process.env.api+"Feed/FollowerwingList/"+mb_id,{
         params: {
           sc_text:val
@@ -31,7 +31,9 @@ export default function Following({mb_id}){
       }).catch((error)=> {
       });
     }
-    
+    useEffect(() => {
+      followingList(text)
+    },[pageNumber]);
     return(
         <div className={'followlist'}>
           <div className={'search_div'}>
@@ -42,7 +44,7 @@ export default function Following({mb_id}){
             />
             <img
               src="/img/search_tab.png"
-              onClick={()=>followerwingList(text)}
+              onClick={()=>followingList(text)}
             />
           </div>
           <ul>

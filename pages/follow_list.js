@@ -38,10 +38,10 @@ export default function FollowList(){
                 </Tabs>
                 </AppBar>
                 <TabPanel value={pageNumber} index={0}>
-                    <Following mb_id={mb_id}/>
+                    <Following mb_id={mb_id} pageNumber={pageNumber}/>
                 </TabPanel>
                 <TabPanel value={pageNumber} index={1}>
-                    <Follower mb_id={mb_id}/>
+                    <Follower mb_id={mb_id} pageNumber={pageNumber}/>
                 </TabPanel>
             </div>
         </TitleLayout>

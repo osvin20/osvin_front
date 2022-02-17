@@ -6,7 +6,7 @@ import {useEffect,useState,useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'
 
-export default function Follower({mb_id}){
+export default function Follower({mb_id,pageNumber}){
     const [ck ,setCk] = useState(false);
     const [list ,setList] = useState([]);
     const [text ,setText] = useState('');
@@ -32,8 +32,9 @@ export default function Follower({mb_id}){
       });
     }
     useEffect(() => {
+      console.log('ss11')
       followerwerList(text)
-    },[]);
+    },[pageNumber]);
     return (
         <div className={'followlist'}>
           <div className={'search_div'}>
