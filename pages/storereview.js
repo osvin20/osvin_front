@@ -1,97 +1,80 @@
 import Link from 'next/link'
+import {useEffect,useState} from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2'
 
-export default function StoreReview(){
+
+export default function StoreReview({mb_id}){
+  const [list ,setList] = useState([]);
+  const imgList = ['bf_file0','bf_file1','bf_file2','bf_file3','bf_file4'];
+  useEffect(() =>{
+    axios.get(process.env.api+"Store/FeedList/"+mb_id
+    ).then((res)=>{
+
+      if(typeof(res.data.data) == "object"){
+        setList(res.data.data);
+      }
+    }).catch((error)=> {
+
+    });
+  },[]);
     return (
     <ul className={'reviewlist storereview'}>
+      {list.map((val,key) =>(
         <li>
-            <Link href='/userfeed'>
-              <a className={'storereview_img'}>
-                <div className={'storereview_prof'}>
-                  <img src="/img/prof_01.jpg"/>
-                </div>
+          <Link href='/userfeed'>
+            <a className={'storereview_img'}>
+              <div className={'storereview_prof'}>
+                <img
+                  src={val.mb_img}
+                  onError={(e)=>{e.target.src = '/img/no_img.png'}}
+                />
+              </div>
+              <div>
+                <p className={'rl_name'}>{val.wr_name}</p>
+                <p className={'rl_shop'}>{val.wr_last}</p>
+              </div>
+            </a>
+          </Link>
+          <Link href={'/post?wr_id='+val.wr_id}>
+            <a>
+              <p className={'review_txt'}>
+                {val.wr_content}
+              </p>
+              <div className={'review_img'}>
+                {imgList.map((vals,key) =>(
+                  <>
+                    {val[vals] != process.env.domain+"data/file/feed/" &&
+                      <div key={key}>
+                        <img
+                          key={key}
+                          src={val[vals]}
+                          onError={(e)=>{e.target.src = '/img/no_img.png'}}
+                        />
+                      </div>
+                    }
+                  </>
+                ))}
+              </div>
+            </a>
+          </Link>
+          <Link href={'/item?it_id='+val.it_id}>
+            <a>
+              <div className={'storereview_info'}>
+                <img
+                  src={process.env.domain+'data/item/'+val.it_img1}
+                  onError={(e)=>{e.target.src = '/img/no_img.png'}}
+
+                />
                 <div>
-                  <p className={'rl_name'}>sohee1203</p>
-                  <p className={'rl_shop'}>2021-08-20</p>
+                  <p>{val.it_name}</p>
+                  <p className={'extra_bold'}>{val.it_price_text}원</p>
                 </div>
-              </a>
-            </Link>
-            <Link href='/post'>
-                <a>
-                  <p className={'review_txt'}>
-                    사이즈 루즈하니 예쁘게 잘 맞고 핏도 정말 예뻐요! 재질도 앙고라라 보들보들하고 좋습니다! 브이넥라인이라 여성스럽게 안에 폴라티를 레이어드해서 입으면 연말룩에도 정말 좋고, 그냥 흰티에 레이어드하면 데일리룩으로 캠퍼스룩으로 정말 좋아요! 저는 캠퍼스에서도, 연말모임에서도 잘 입었어요! 굳굳!
-                  </p>
-                  <div className={'review_img'}>
-                    <div>
-                      <img src="/img/item09.jpg"/>
-                    </div>
-                    <div>
-                      <img src="/img/item10.jpg"/>
-                    </div>
-                    <div>
-                      <img src="/img/item11.jpg"/>
-                    </div>
-                    <div>
-                      <img src="/img/item12.jpg"/>
-                    </div>
-                  </div>
-                </a>
-            </Link>
-            <Link href='/item'>
-              <a>
-                <div className={'storereview_info'}>
-                  <img src="/img/item11.jpg"/>
-                  <div>
-                    <p>앙고라 V넥 니트</p>
-                    <p className={'extra_bold'}>31,000원</p>
-                  </div>
-                </div>
-              </a>
-            </Link>
+              </div>
+            </a>
+          </Link>
         </li>
-        <li>
-            <Link href='/userfeed'>
-                <a className={'storereview_img'}>
-                    <div className={'storereview_prof'}>
-                        <img src="/img/prof_02.jpg"/>
-                    </div>
-                    <div>
-                        <p className={'rl_name'}>hyeri9512</p>
-                        <p className={'rl_shop'}>2021-08-20</p>
-                    </div>
-                </a>
-            </Link>
-            <Link href='/post'>
-                <a>
-                  <p className={'review_txt'}>
-                  검정색 가방 밖에 없어서 밝은 색 사려고 둘러보던 중 너무 이뻐서 홀린듯 샀어요! 우선 색깔이 너무 맘에 들어요. 윗부분이랑 아랫부분이 살짝 다른 색인데 그게 또 너무 이쁩니다. 그리고 수납공간이 너무 좋아요!! 3칸이나 있어서 화장품 지갑 보조배터리 다 들어갔어요 진짜!! 너무 좋습니다!!
-                  </p>
-                  <div className={'review_img'}>
-                      <div>
-                          <img src="/img/item13.jpg"/>
-                      </div>
-                      <div>
-                          <img src="/img/item14.jpg"/>
-                      </div>
-                      <div>
-                          <img src="/img/item15.jpg"/>
-                      </div>
-                  </div>
-                </a>
-            </Link>
-
-            <Link href='/item'>
-              <a>
-                <div className={'storereview_info'}>
-                    <img src="/img/item08.jpg"/>
-                    <div>
-                        <p>레터 스퀘어 레더 백</p>
-                        <p className={'extra_bold'}>21,000원</p>
-                    </div>
-                </div>
-              </a>
-            </Link>
-
-        </li>
+      ))}
     </ul>
     );
 }

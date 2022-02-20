@@ -39,7 +39,7 @@ function TitleLayout({children,query,loginCheck}) {
         <meta name="description" content="오스빈" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
+
       <div className={"head back_hd"}>
         <img
           className={"back_ico"}

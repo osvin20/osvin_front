@@ -41,7 +41,7 @@ export default function Feed(){
                     <Tab label="판매스토어 피드" id={"simple-tab-0"} aria-controls={"simple-tabpanel-0"}/>
                     <Tab label="월간 인기피드" id={"simple-tab-1"} aria-controls={"simple-tabpanel-1"} />
                     <Tab label="전체 피드" id={"simple-tab-2"} aria-controls={"simple-tabpanel-2"} />
-                    <Link href='/store'>
+                    <Link href='/store?mb_id=admin'>
                       <a className={'osvin_dir'}>오스빈피드</a>
                     </Link>
                 </Tabs>

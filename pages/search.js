@@ -6,13 +6,14 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import HotKeyword from './hotkeyword'
 import HotStore from './hotstore'
+import useHistoryState from '../hook/useHistoryState';
 
 import {useEffect,useState} from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 
 export default function Search(){
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useHistoryState(0);
     const [preList ,setPreList] = useState([]);
     const [text,setText] = useState([]);
 

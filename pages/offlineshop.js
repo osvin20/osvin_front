@@ -1,7 +1,7 @@
 
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
-import {useEffect,useState} from 'react';
+import {useEffect,useState,useLayoutEffect } from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 import Script from 'next/script'
@@ -11,33 +11,34 @@ export default function OfflineShop(){
     const [lng, setlng] = useState(127.023139471153);
     const [idx, setIdx] = useState(false);
 
-      useEffect(() => {
-        if(navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition (function(pos) {
-            setLat(pos.coords.latitude);
-            setlng(pos.coords.longitude);
-          });
-        }
-         window.kakao.maps.load(() => {
-          let container = document.getElementById("map");
+    useLayoutEffect(() => {
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition (function(pos) {
+          setLat(pos.coords.latitude);
+          setlng(pos.coords.longitude);
+        });
+      }
+      getMapLoad();
+    },[])
+    const getMapLoad = () =>{
+      window.kakao.maps.load(() => {
+        let container = document.getElementById("map");
 
-          let latLng = new window.kakao.maps.LatLng(lat, lng);
-          let options = {
-            center:latLng,
-            level: 7,
-          };
-          let map = new window.kakao.maps.Map(container, options);
-          kakao.maps.event.addListener(map, 'dragend', function() {
-            memberOfflineList(map);
-          });
-          kakao.maps.event.addListener(map, 'zoom_changed', function() {
-            memberOfflineList(map);
-          });
+        let latLng = new window.kakao.maps.LatLng(lat, lng);
+        let options = {
+          center:latLng,
+          level: 7,
+        };
+        let map = new window.kakao.maps.Map(container, options);
+        kakao.maps.event.addListener(map, 'dragend', function() {
           memberOfflineList(map);
         });
-
-      },[])
-
+        kakao.maps.event.addListener(map, 'zoom_changed', function() {
+          memberOfflineList(map);
+        });
+        memberOfflineList(map);
+      });
+    }
 
     const memberOfflineList = (map) =>{
       //마커 초기화

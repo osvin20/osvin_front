@@ -36,7 +36,6 @@ export default function UserFeed({query}){
         setList(res.data.data.list);
         setMember(res.data.data.member);
         setFollow(res.data.data.member.follow);
-
       }
     }).catch((error)=> {
     });

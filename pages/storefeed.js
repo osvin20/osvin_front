@@ -1,177 +1,60 @@
 import Link from "next/link";
+import {useEffect,useState,useRef } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2'
+import useHistoryState from '../hook/useHistoryState';
+import restoreScrollPosition  from 'next-restore-scroll'
+import { useRouter } from 'next/router';
+
 
 export default function StoreFeed() {
+  const [list , setList] = useHistoryState([],'sellList');
+  const storeFeedList = () =>{
+    axios.get(process.env.api+"Feed/SellerFeedList",
+    ).then((res)=>{
+      if(res.data.state && res.data.data.length != 0){
+        setList(res.data.data);
+      }else{
+        Swal.fire('마지막 페이지입니다.')
+      }
+    }).catch((error)=> {
+    });
+  }
+  useEffect(() => {
+    storeFeedList();
+  },[]);
   return (
     <div className={"storefeed"}>
       <ul className={"storefeed_ul"}>
+      {list.map((val,key) =>(
         <li>
-          <Link href="/item">
+          <Link href={"/item?it_id="+val.it_id}>
             <a className={"storefeed_thumb"}>
-              <img src="/img/storefeed_01.jpg" />
+              <img
+                src={process.env.domain+'data/item/'+val.it_img}
+                onError={(e)=>{e.target.src = '/img/no_img.png'}}
+              />
             </a>
           </Link>
-          <Link href="/store">
+          <Link href={"/store?mb_id="+val.mb_id}>
             <a className={"store_div"}>
               <div className="shop_thumb">
-                <img src="/img/shop_01.jpg" />
+                <img
+                  src={val.mb_img}
+                  onError={(e)=>{e.target.src = '/img/no_img.png'}}
+                 />
               </div>
               <div>
-                <p>VINTAGE STORE</p>
+                <p>{val.mb_nick}</p>
                 <div className={"store_follow"}>
                   <img src="/img/user2.png" />
-                  <span>51</span>
+                  <span>{val.follow_cnt}</span>
                 </div>
               </div>
             </a>
           </Link>
         </li>
-        <li>
-          <Link href="/item">
-            <a className={"storefeed_thumb"}>
-              <img src="/img/storefeed_02.jpg" />
-            </a>
-          </Link>
-          <Link href="/store">
-            <a className={"store_div"}>
-              <div className="shop_thumb">
-                <img src="/img/shop_02.jpg" />
-              </div>
-              <div>
-                <p>VINTAGE STORE</p>
-                <div className={"store_follow"}>
-                  <img src="/img/user2.png" />
-                  <span>51</span>
-                </div>
-              </div>
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/item">
-            <a className={"storefeed_thumb"}>
-              <img src="/img/storefeed_03.jpg" />
-            </a>
-          </Link>
-          <Link href="/store">
-            <a className={"store_div"}>
-              <div className="shop_thumb">
-                <img src="/img/shop_03.jpg" />
-              </div>
-              <div>
-                <p>VINTAGE STORE</p>
-                <div className={"store_follow"}>
-                  <img src="/img/user2.png" />
-                  <span>51</span>
-                </div>
-              </div>
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/item">
-            <a className={"storefeed_thumb"}>
-              <img src="/img/storefeed_04.jpg" />
-            </a>
-          </Link>
-          <Link href="/store">
-            <a className={"store_div"}>
-              <div className="shop_thumb">
-                <img src="/img/shop_04.jpg" />
-              </div>
-              <div>
-                <p>VINTAGE STORE</p>
-                <div className={"store_follow"}>
-                  <img src="/img/user2.png" />
-                  <span>51</span>
-                </div>
-              </div>
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/item">
-            <a className={"storefeed_thumb"}>
-              <img src="/img/storefeed_05.jpg" />
-            </a>
-          </Link>
-          <Link href="/store">
-            <a className={"store_div"}>
-              <div className="shop_thumb">
-                <img src="/img/shop_05.jpg" />
-              </div>
-              <div>
-                <p>VINTAGE STORE</p>
-                <div className={"store_follow"}>
-                  <img src="/img/user2.png" />
-                  <span>51</span>
-                </div>
-              </div>
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/item">
-            <a className={"storefeed_thumb"}>
-              <img src="/img/storefeed_06.jpg" />
-            </a>
-          </Link>
-          <Link href="/store">
-            <a className={"store_div"}>
-              <div className="shop_thumb">
-                <img src="/img/shop_06.jpg" />
-              </div>
-              <div>
-                <p>VINTAGE STORE</p>
-                <div className={"store_follow"}>
-                  <img src="/img/user2.png" />
-                  <span>51</span>
-                </div>
-              </div>
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/item">
-            <a className={"storefeed_thumb"}>
-              <img src="/img/storefeed_01.jpg" />
-            </a>
-          </Link>
-          <Link href="/store">
-            <a className={"store_div"}>
-              <div className="shop_thumb">
-                <img src="/img/shop_01.jpg" />
-              </div>
-              <div>
-                <p>VINTAGE STORE</p>
-                <div className={"store_follow"}>
-                  <img src="/img/user2.png" />
-                  <span>51</span>
-                </div>
-              </div>
-            </a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/item">
-            <a className={"storefeed_thumb"}>
-              <img src="/img/storefeed_02.jpg" />
-            </a>
-          </Link>
-          <Link href="/store">
-            <a className={"store_div"}>
-              <div className="shop_thumb">
-                <img src="/img/shop_02.jpg" />
-              </div>
-              <div>
-                <p>VINTAGE STORE</p>
-                <div className={"store_follow"}>
-                  <img src="/img/user2.png" />
-                  <span>51</span>
-                </div>
-              </div>
-            </a>
-          </Link>
-        </li>
+        ))}
       </ul>
     </div>
   );

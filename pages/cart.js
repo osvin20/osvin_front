@@ -181,9 +181,7 @@ export default function Cart(){
               </div>
             </div>
             <div className={'pay_btn'} onClick={orderCart}>
-
               <a>구매하기</a>
-
             </div>
           </div>
         </TitleLayout>

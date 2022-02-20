@@ -10,7 +10,7 @@ import axios from 'axios';
 export default function OrderList() {
   // 일반배송 탁송 방문수령
   const [od_del ,setOd_del] = React.useState("일반배송");
-  
+
   const [odlist, setOdlist] = useState([]);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function OrderList() {
         <h1 className={"page_tit"}>ORDER DETAIL</h1>
       </div>
       <div className={'borderfix'}></div>
-      {odlist.map((val, key) => (
+      {odlist.map((val,key) =>(
         <div className={"od_div"} key={key}>
         <Link href={`/order_detail?od_id=${val.od_id}`}>
           <a className={"od_flex"}>

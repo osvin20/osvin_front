@@ -12,15 +12,20 @@ function OrderList({query}) {
   const {od_id} = query;
   const [odlist, setOdlist] = useState([]);
   const [order, setOrder] = useState([]);
+
   useEffect(() => {
     axios.get(process.env.api+'Order/Info/'+od_id,{
       params: {
         mb_token:localStorage.mb_token
       }
     }).then((res) => {
-      if(typeof(res.data.data) == 'object'){
-        setOdlist(res.data.data.list);
-        setOrder(res.data.data.order);
+
+      if(typeof(res.data.data.order) == 'object'){
+        setOdconfm(res.data.data.order);
+      }
+      if(typeof(res.data.data.list) == 'object'){
+        setOdconfmlist(res.data.data.list);
+        console.log(res.data.data.list);
       }
     }).catch((error) => {
 
@@ -42,7 +47,7 @@ function OrderList({query}) {
         {od_del == "일반배송"?<div className={'order_del'}>일반배송</div>:""}
         {od_del == "탁송"?<div className={'order_del'}>탁송</div>:""}
         {od_del == "방문수령"?<div className={'order_del'}>방문수령</div>:""}
-        {odlist.map((val, key) => (
+        {odlist.map((val, key) =>(
           <div className={"oditem_info"} key={key}>
             <div className={"od_thumb"}>
               <img src={

@@ -8,22 +8,21 @@ export default function HotStore(){
     const [hotstores, SetHotstores] = useState([]);
     useEffect(() => {
       axios.get(process.env.api+'Popular/TopStore'
+      
       ).then((res) => {
         if(typeof(res.data.data) == 'object'){
           SetHotstores(res.data.data)
         }
-      }).catch((error) => {
-
-      })
+      }).catch((error) => {})
     },[]);
-  
+
     return (
       <div className={'storefeed zzimlist searchlist'}>
             <ul className={'hot_list'}>
               {hotstores.map((val, key) => (
                 <li key={key}>
                     <p className={'hot_num'}>{key+1}</p>
-                    <Link href={`/store?mb_no=${val.mb_no}`}>
+                    <Link href={`/store?mb_id=${val.mb_id}`}>
                         <a className={'hotstore'}>
                         <div className={'hotstoreimg'}>
                             <img src={

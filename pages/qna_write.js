@@ -7,7 +7,7 @@ import {useEffect,useState} from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 
-export default function QnaWrite({query}) {
+export default function QnaWrite({query}){
   const {it_id} = query;
   const router = useRouter()
   // 체크박스 있는버전

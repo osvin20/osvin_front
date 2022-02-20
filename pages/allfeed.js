@@ -33,6 +33,7 @@ export default function AllFeed(){
         <ul className={'storefeed_ul'}>
           {list.map((val,key) =>(
             <li key={key}>
+
               <Link href={'/post?wr_id='+val.wr_id}>
                 <a>
                   <img

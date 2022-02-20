@@ -1,187 +1,70 @@
 import Link from 'next/link'
-import React,{useState} from 'react';
-import CheckBox from '../layout/CheckBox.js';
+import CheckBox from '../atomic/CheckBox.js';
+import {useEffect,useState} from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2'
 
-export default function StoreItem(){
+
+export default function StoreItem({mb_id}){
     const [ck ,setCk] = useState(false);
+    const [list ,setList] = useState([]);
+    const addRemove = (it_id) =>{
+      const form = new FormData();
+      form.append('mb_token',localStorage.mb_token);
+      form.append('it_id',it_id);
+      axios.post(process.env.api+"Wish/AddRemove",form
+      ).then((res)=>{
+        Swal.fire(res.data.msg);
+      })
+    }
+    useEffect(() =>{
+      axios.get(process.env.api+"Store/ItemList/"+mb_id,{
+      params: {
+        mb_token:localStorage.mb_token
+      }
+      }).then((res)=>{
+        console.log(res.data.data);
+        if(typeof(res.data.data) == "object"){
+          setList(res.data.data);
+        }
+      }).catch((error)=> {
+
+      });
+    },[]);
     return (
       <div className={'storefeed zzimlist storeitem'}>
-          <div className={'storeitem_count'}>
-              <p>15</p>개의 판매상품
-          </div>
-          <ul>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/item15.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"likeCheck1"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
+        <div className={'storeitem_count'}>
+          <p>15</p>개의 판매상품
+        </div>
+        <ul>
+          {list.map((val,key) =>(
+            <li>
+              <Link href={"/item?it_id="+val.it_id}>
+                <a>
+                  <img
+                    src={process.env.domain+'data/item/'+val.it_img1}
+                    onError={(e)=>{e.target.src = '/img/no_img.png'}}
                   />
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/item11.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"likeCheck2"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/item13.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"likeCheck3"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/feed_01.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"likeCheck4"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/item16.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"likeCheck5"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/item18.jpg"/>
-                      </a>
-                  </Link>
-                  <div className={'soldout'}>
-                      SOLD OUT
+                </a>
+              </Link>
+              <CheckBox
+                id={"likeCheck"+key}
+                defCk={val.zzimCk}
+                offEl={
+                  <div className={'heart_ico'}>
+                    <img src="/img/heart2.png"/>
                   </div>
-                  <CheckBox
-                    id={"likeCheck6"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/storefeed_04.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"likeCheck7"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-              </li>
-              <li>
-                  <Link href="/item">
-                      <a>
-                        <img src="/img/item02.jpg"/>
-                      </a>
-                  </Link>
-                  <CheckBox
-                    id={"likeCheck8"}
-                    defCk={false}
-                    offEl={
-                      <div className={'heart_ico'}>
-                        <img src="/img/heart2.png"/>
-                      </div>
-                    }
-                    onEl={
-                      <div className={'heart_ico heart_click'}>
-                        <img src="/img/heart3.png"/>
-                      </div>
-                    }
-                  />
-              </li>
-          </ul>
+                }
+                onEl={
+                  <div className={'heart_ico heart_click'}>
+                    <img src="/img/heart3.png"/>
+                  </div>
+                }
+                onchangeHandler={()=>addRemove(val.it_id)}
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }

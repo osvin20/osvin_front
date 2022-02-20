@@ -1,8 +1,33 @@
 
 import TitleLayout from '../layout/TitleLayout'
 import Link from 'next/link'
+import {useEffect,useState} from 'react';
+import Swal from 'sweetalert2'
+import axios from 'axios';
 
-export default function OrderConfirm(){
+function OrderConfirm({query}){
+    const {od_id} = query;
+    const [odconfm, setOdconfm] = useState([]);
+    const [odconfmlist, setOdconfmlist] = useState([]);
+
+    useEffect(() => {
+      axios.get(process.env.api+'Order/Info/'+od_id,{
+        params: {
+          mb_token:localStorage.mb_token
+        }
+      }).then((res) => {
+        if(typeof(res.data.data.order) == 'object'){
+          setOdconfm(res.data.data.order);
+        }
+        if(typeof(res.data.data.list) == 'object'){
+          setOdconfmlist(res.data.data.list);
+          console.log(res.data.data.list);
+        }
+      }).catch((error) => {
+
+      });
+    },[])
+
     return (
         <div className="orderconfirm">
             <div className={'success'}>
@@ -15,67 +40,56 @@ export default function OrderConfirm(){
                 <p className={'tit'}>배송지 정보</p>
                 <ul className={'del_info'}>
                     <li>
-                        <p>홍길동</p>
-                        <span>010-0000-0000</span>
+                        <p>{odconfm.od_b_name}</p>
+                        <span>{odconfm.od_b_tel}</span>
                     </li>
                     <li>
-                        <p>478569</p>
-                        <span>부산 금정구 금정로 225 101동 701호</span>
+                        <p>{odconfm.od_b_zip1}{odconfm.od_b_zip2}</p>
+                        <span>{odconfm.od_b_addr1}{odconfm.od_b_addr2}{odconfm.od_b_addr3}</span>
                     </li>
                     <li>
-                        문 앞에 놓아 주세요.
+                        {odconfm.od_memo}
                     </li>
                 </ul>
             </div>
             <div className={'oc_div'}>
                 <p className={'tit'}>상품 정보</p>
                 <ul className={'oc_item'}>
-                    <li>
-                        <div className={'item_img'}>
-                            <img src="img/item03.jpg"/>
-                        </div>
-                        <div className={'oc_info'}>
-                            <div>
-                                <p>오스빈 스토어</p>
-                                <p className={'oc_itemname extra_bold'}>지아 울 레이어드 니트 블라우스</p>
-                            </div>
-                            <div className={'oc_price'}>
-                                <p>
-                                    배송비<span>2500</span>
-                                </p>
-                                <p className={'extra_bold'}>25,000원</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className={'item_img'}>
-                            <img src="img/item16.jpg"/>
-                        </div>
-                        <div className={'oc_info'}>
-                            <div>
-                                <p>오스빈 스토어</p>
-                                <p className={'oc_itemname extra_bold'}>컬러링 펄 버튼 니트 가디건</p>
-                            </div>
-                            <div className={'oc_price'}>
-                                <p>
-                                    배송비<span>2500</span>
-                                </p>
-                                <p className={'extra_bold'}>25,000원</p>
-                            </div>
-                        </div>
-                    </li>
+                    {odconfmlist.map((val, key) =>(
+                      <li key={key}>
+                          <div className={'item_img'}>
+                              <img src={
+                                val.it_img1 != ''?
+                                val.it_img1:
+                                '/img/no_img.png'
+                              }/>
+                          </div>
+                          <div className={'oc_info'}>
+                              <div>
+                                  <p>{val.mb_nick}</p>
+                                  <p className={'oc_itemname extra_bold'}>{val.it_name}</p>
+                              </div>
+                              <div className={'oc_price'}>
+                                  <p>
+                                      배송비<span>{val.ct_send_cost}원</span>
+                                  </p>
+                                  <p className={'extra_bold'}>{val.it_price}원</p>
+                              </div>
+                          </div>
+                      </li>
+                    ))}
                 </ul>
             </div>
             <div className={'oc_div oc_pay'}>
                 <div>
                     <p className={'extra_bold'}>총 결제금액</p>
                     <div className={'extra_bold'}>
-                        60,000원
+                        {odconfm.od_receipt_price}원
                     </div>
                 </div>
             </div>
             <div className={'oc_btn'}>
-                <Link href="/order_detail">
+                <Link href={`/order_detail?od_id=${odconfm.od_id}`}>
                     <a className={'detail_dir'}>주문 상세보기</a>
                 </Link>
                 <Link href="/">
@@ -85,3 +99,7 @@ export default function OrderConfirm(){
         </div>
     )
 }
+OrderConfirm.getInitialProps = async ({req, query}) => {
+  return {query}
+}
+export default OrderConfirm;

@@ -83,8 +83,8 @@ export default function Main() {
             <a>전체 피드</a>
           </Link>
         </li>
-        <li onClick={()=>dispatch(setTabNumber(3))}>
-          <Link href="/store">
+        <li>
+          <Link href='/store?mb_id=admin'>
             <a>오스빈 피드</a>
           </Link>
         </li>

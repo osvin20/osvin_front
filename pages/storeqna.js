@@ -6,6 +6,9 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import {useEffect,useState} from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -17,54 +20,27 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function StoreQna(){
+export default function StoreQna({mb_id}){
+
+  const [list ,setList] = useState([]);
+
+  useEffect(() =>{
+    axios.get(process.env.api+"Store/QnaList/"+mb_id
+    ).then((res)=>{
+      console.log(res.data.data);
+      if(typeof(res.data.data) == "object"){
+        setList(res.data.data);
+      }
+    }).catch((error)=> {
+
+    });
+  },[]);
+
   const classes = useStyles();
   return (
   <div>
     <ul className={'notice_list storereqna'}>
-      <li>
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography className={classes.heading}>
-            <div className={'store_q'}>
-              <div className={'q_state'}>
-                  답변예정
-              </div>
-              <div className={'qna_lock'}>
-                  <img src="/img/lock.png"/>
-              </div>
-              <div className={'q_tit'}>
-                <p className={'bold_txt'}>
-                    비공개글입니다.
-                </p>
-                <p>
-                    상품
-                </p>
-              </div>
-              <div className={'q_date'}>
-                <p>
-                    2021-08-20
-                </p>
-                <p>
-                    als******
-                </p>
-              </div>
-            </div>
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>
-            <div className={'store_a secret_a'}>
-                비밀글입니다.
-            </div>
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-      </li>
+    {list.map((val,key) =>(
       <li className={'q_confirm'}>
         <Accordion>
           <AccordionSummary
@@ -74,14 +50,21 @@ export default function StoreQna(){
           >
             <Typography className={classes.heading}>
               <div className={'store_q'}>
-                <div className={'q_state'}>
-                    답변완료
-                </div>
+                {val.iq_answer == ""?
+                  <div className={'q_state'}>
+                      답변예정
+                  </div>:
+                  <div className={'q_state'}>
+                      답변완료
+                  </div>
+                }
+
+
                 <div className={'qna_lock'}>
                 </div>
                 <div className={'q_tit'}>
                   <p className={'bold_txt'}>
-                      배송 문의합니다.
+                      {val.iq_subject.substr(0,10)}
                   </p>
                   <p>
                       상품
@@ -89,10 +72,10 @@ export default function StoreQna(){
                 </div>
                 <div className={'q_date'}>
                   <p>
-                      2021-08-20
+                      {val.iq_time.substr(0,10)}
                   </p>
                   <p>
-                      als******
+                      {val.mb_id.substr(0,3)}***
                   </p>
                 </div>
               </div>
@@ -102,10 +85,10 @@ export default function StoreQna(){
             <Typography>
               <div className={'q_detail'}>
                 <p className={'extra_bold'}>
-                    Q. 배송 관련 문의합니다.
+                    Q. {val.iq_subject}
                 </p>
                 <p>
-                    안녕하세요 어제 결제완료했는데 예상 출고일이 궁금합니다.
+                    {val.iq_question}
                 </p>
               </div>
               <div className={'store_a'}>
@@ -113,18 +96,17 @@ export default function StoreQna(){
                     <div className={'extra_bold'}>
                         A.
                     </div>
-                    오스빈 스토어
+                    판매자 답변
                 </div>
                 <div>
-                안녕하세요 오스빈스토어입니다.<br/>
-                문의 주신 상품은 11월 1일 정상출고 될 예정입니다.<br/>
-                감사합니다. 
+                {val.iq_answer}
                 </div>
               </div>
             </Typography>
           </AccordionDetails>
         </Accordion>
       </li>
+      ))}
     </ul>
   </div>
   );

@@ -25,7 +25,6 @@ export default function ItemBox({list,className}){
                       </div>
                     </a>
                 </Link>
-
                 <Link href={"/item?it_id="+val.it_id}>
                     <a>
                       <div className={'iteminfo'}>
