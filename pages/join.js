@@ -148,7 +148,7 @@ export default function Join(){
                   modal_id={"agree_modal"}
                 >
                   <p className={"agree_txt"}>
-                    (필수) 서비스 이용약관에 동의
+                    <iframe src={process.env.domain+'/agreement.php'} />
                   </p>
                 </OsbinModal>
               </div>
@@ -164,14 +164,14 @@ export default function Join(){
                   modal_id={"agree_modal"}
                 >
                   <p className={"agree_txt"}>
-                    (필수) 개인 정보 수집이용에 동의
+                    <iframe src={process.env.domain+'/privacy.php'} />
                   </p>
                 </OsbinModal>
               </div>
               <div className={"join_view"}>
                 <input type="checkbox" id="all_agree4" {...agg4}/>
                 <label htmlFor="all_agree4">
-                  (선택) 홍보 및 마케팅 이용에 동의
+                  (필수) 홍보 및 마케팅 이용에 동의
                 </label>
                 <OsbinModal
                   title=""
@@ -180,7 +180,7 @@ export default function Join(){
                   modal_id={"agree_modal"}
                 >
                   <p className={"agree_txt"}>
-                    (선택) 홍보 및 마케팅 이용에 동의
+                    <iframe src={process.env.domain+'/agreement3.php'} />
                   </p>
                 </OsbinModal>
               </div>

@@ -21,7 +21,7 @@ export default function StoreReview({mb_id}){
     return (
     <ul className={'reviewlist storereview'}>
       {list.map((val,key) =>(
-        <li>
+        <li key={key}>
           <Link href='/userfeed'>
             <a className={'storereview_img'}>
               <div className={'storereview_prof'}>

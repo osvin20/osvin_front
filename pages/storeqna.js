@@ -41,7 +41,7 @@ export default function StoreQna({mb_id}){
   <div>
     <ul className={'notice_list storereqna'}>
     {list.map((val,key) =>(
-      <li className={'q_confirm'}>
+      <li className={'q_confirm'} key={key}>
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
