@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     return (
       <div className={'notice_list store_notice'}>
         {list.map((val,key) =>(
-          <div className={classes.root}>
+          <div className={classes.root} key={key}>
             <Accordion>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}

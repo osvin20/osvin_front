@@ -27,7 +27,7 @@ export default function StoreFeed() {
     <div className={"storefeed"}>
       <ul className={"storefeed_ul"}>
       {list.map((val,key) =>(
-        <li>
+        <li key={key}>
           <Link href={"/item?it_id="+val.it_id}>
             <a className={"storefeed_thumb"}>
               <img

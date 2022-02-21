@@ -38,7 +38,7 @@ export default function StoreItem({mb_id}){
         </div>
         <ul>
           {list.map((val,key) =>(
-            <li>
+            <li key={key}>
               <Link href={"/item?it_id="+val.it_id}>
                 <a>
                   <img
