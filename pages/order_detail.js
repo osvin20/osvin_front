@@ -21,10 +21,10 @@ function OrderList({query}) {
     }).then((res) => {
 
       if(typeof(res.data.data.order) == 'object'){
-        setOdconfm(res.data.data.order);
+        setOrder(res.data.data.order);
       }
       if(typeof(res.data.data.list) == 'object'){
-        setOdconfmlist(res.data.data.list);
+        setOdlist(res.data.data.list);
         console.log(res.data.data.list);
       }
     }).catch((error) => {

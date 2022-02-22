@@ -22,6 +22,7 @@ export default function Join(){
   const mb_password = useChange('');
   const mb_password_ck = useChange('');
   const mb_hp = useChange('');
+  const mb_auth = useChange('');
   const [allAgg,setAllAgg] = useState('');
   const [msgOvj,setMsgOvj] = useState('');
 
@@ -46,6 +47,17 @@ export default function Join(){
     agg3.onChange(es);
     agg4.onChange(es);
   }, [aggAll.checked]);
+
+  const smsAuth = () =>{
+    const form = new FormData();
+    form.append('mb_hp',mb_hp.value);
+    axios.post(process.env.api+"Member/SmsAuth",form
+    ).then((res)=>{
+      Swal.fire(res.data.msg);
+    }).catch((error)=> {
+
+    });
+  }
 
   const submitForm = () =>{
     const form = new FormData(joinFrom.current);
@@ -102,17 +114,11 @@ export default function Join(){
 
             <div className={"input_btn input_send"}>
               <input placeholder="휴대폰 번호를 입력해주세요." name="mb_hp"  {...mb_hp}/>
-              <OsbinModal
-                title=""
-                bnt_title ="인증번호 발송"
-                modal_id={"join_modal"}
-              >
-                <p className={"phone_modal"}>인증번호를 발송하였습니다.</p>
-              </OsbinModal>
+              <div className="osbinModal" onClick={smsAuth}><span>인증번호 발송</span></div>
             </div>
             <Note noteText={msgOvj.mb_hp}/>
             <div className={"input_btn"}>
-              <input placeholder="인증번호를 입력해주세요."/>
+              <input placeholder="인증번호를 입력해주세요." name={'mb_auth'} {...mb_auth}/>
             </div>
             <Note/>
             <div className={"join_agree"}>
@@ -178,6 +184,7 @@ export default function Join(){
                   bnt_title ="보기"
                   class_name={"bnt"}
                   modal_id={"agree_modal"}
+                  oncl
                 >
                   <p className={"agree_txt"}>
                     <iframe src={process.env.domain+'/agreement3.php'} />
