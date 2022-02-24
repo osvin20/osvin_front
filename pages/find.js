@@ -87,7 +87,7 @@ export default function Find(){
                   <p>가입 시 등록한 휴대폰 번호를 입력하면<br/>이메일 주소를 알려드립니다.</p>
                   <div className={'input_btn input_send'}>
                     <input placeholder='휴대폰 번호를 입력해주세요.' {...mb_hp}></input>
-                    <div class="osbinModal" onClick={smsAuth}>
+                    <div className="osbinModal" onClick={smsAuth}>
                       <span>인증번호 발송</span>
                     </div>
                   </div>
@@ -111,7 +111,7 @@ export default function Find(){
                   </div>
                   <div className={'input_btn input_send'}>
                     <input placeholder='휴대폰 번호를 입력해주세요.' {...mb_hp}></input>
-                    <div class="osbinModal" onClick={smsAuth}>
+                    <div className="osbinModal" onClick={smsAuth}>
                       <span>인증번호 발송</span>
                     </div>
                   </div>
