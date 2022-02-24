@@ -626,7 +626,7 @@
   display: flex;
 }
 .findid_btn a {
-  width: 50%;
+  width: 100%;
   border-radius: 0;
   overflow: hidden;
   padding: 0;
@@ -3524,6 +3524,11 @@
   justify-content: space-between;
   width: 100%;
 }
+.orderitem_info select{
+  font-size:12px;
+  padding:5px 0;
+  border-bottom:1px solid #000;
+}
 .order_ul .order_shop {
   font-size: 12px;
 }
@@ -5947,6 +5952,7 @@
 body .swal2-title{
   font-size: 20px;
   padding: 1.5em 1em 0;
+  line-height:21px;
 }
 body .swal2-styled.swal2-confirm{
   background-color: #ca8756;

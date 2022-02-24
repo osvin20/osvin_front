@@ -87,21 +87,21 @@ export default function MyPage() {
       </div>
       <div className={"mypage_list"}>
         <ul>
-          <li>
+          {/* <li>
             <p>내 활동</p>
             <ul>
               <li>
-                <Link href="/followingstore">
-                  <a>팔로잉 스토어</a>
-                </Link>
+            <Link href="/followingstore">
+            <a>팔로잉 스토어</a>
+            </Link>
               </li>
               <li>
-                <Link href="/followfeed">
-                  <a>팔로잉 피드</a>
-                </Link>
+            <Link href="/followfeed">
+            <a>팔로잉 피드</a>
+            </Link>
               </li>
             </ul>
-          </li>
+          </li> */}
           <li>
             <p>설정</p>
             <ul>

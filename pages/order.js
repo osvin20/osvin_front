@@ -205,42 +205,45 @@ export default function Order(){
                 <ul className={'order_ul'}>
                   {itemList.map((val,key) =>(
                     <li key ={key}>
-                      <Link href={'/item?it_id='+val.it_id}>
-                        <a>
-                          <div className={'order_item'}>
+                      <div className={'order_item'}>
+                        <Link href={'/item?it_id='+val.it_id}>
+                          <a>
                             <img
                               src ={
                                 val.it_img != ''?
                                 process.env.domain+'data/item/'+val.it_img:
                                 "/img/no_img.png"
                               }/>
-                          </div>
-                          <div className={'orderitem_info'}>
-                            <div>
-                              <p className={'order_shop'}>{val.mb_nick}</p>
-                              <p className={'order_name bold_txt'}>{val.it_name}</p>
-                            </div>
-                            <div className={'orderitem_price'}>
-                              <p className={'del_cost'}>
-                                배송비
-                                {(() => {
-                                  switch (val.it_sc_type) {
-                                    case '0':
-                                      return <><span>2500원(묶음)</span></>
-                                    case '1':
-                                      return <><span>무료배송</span></>
-                                    case '3':
-                                      return <><span>{val.it_sc_price}원</span></>
-                                  }
-                                })()}
-                              </p>
-                              <p className={'price extra_bold'}>
-                                {val.ct_price_text}원
-                              </p>
-                            </div>
-                          </div>
-                        </a>
-                      </Link>
+                          </a>
+                        </Link>
+                      </div>
+                      <div className={'orderitem_info'}>
+                        <div>
+                          <p className={'order_shop'}>{val.mb_nick}</p>
+                          <p className={'order_name bold_txt'}>{val.it_name}</p>
+                        </div>
+                        <div className={'orderitem_price'}>
+                          <p className={'del_cost'}>
+                            배송비
+                            {(() => {
+                              switch (val.it_sc_type) {
+                                case '0':
+                                  return <><span>2500원(묶음)</span></>
+                                case '1':
+                                  return <><span>무료배송</span></>
+                                case '3':
+                                  return <><span>{val.it_sc_price}원</span></>
+                              }
+                            })()}
+                          </p>
+                          <p className={'price extra_bold'}>
+                            {val.ct_price_text}원
+                          </p>
+                        </div>
+                        <select>
+                          <option>쿠폰을 선택해주세요</option>
+                        </select>
+                      </div>
                     </li>
                   ))}
                 </ul>
