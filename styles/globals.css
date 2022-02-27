@@ -110,7 +110,6 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-transition: background-color #fff0 ease-out;
   -webkit-box-shadow: 0 0 0px 1000px #fff0 inset !important;
-  -webkit-text-fill-color: #000 !important;
 }
 input[type="password"] {
   font-family: "" !important;

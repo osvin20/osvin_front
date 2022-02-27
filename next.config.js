@@ -10,4 +10,10 @@ module.exports = {
     domain: 'https://osvintique.com/',
     headers: securityHeaders,
   },
+  images: {
+      domains: ['osvintique.com'],
+      loader: 'imgix',
+      path: 'https://osvintique.com/',
+
+  },
 }

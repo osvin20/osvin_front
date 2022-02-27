@@ -58,11 +58,15 @@ function OrderConfirm({query}){
                     {odconfmlist.map((val, key) =>(
                       <li key={key}>
                           <div className={'item_img'}>
-                              <img src={
-                                val.it_img1 != ''?
-                                val.it_img1:
-                                '/img/no_img.png'
-                              }/>
+                            <Link href={'/item?it_id='+val.it_id}>
+                              <a>
+                                <img src={
+                                  val.it_img1 != ''?
+                                  val.it_img1:
+                                  '/img/no_img.png'
+                                }/>
+                              </a>
+                            </Link>
                           </div>
                           <div className={'oc_info'}>
                               <div>

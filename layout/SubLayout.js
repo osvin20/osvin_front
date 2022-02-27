@@ -31,7 +31,7 @@ export default function SubLayout({children,...props}){
     }
     useEffect(() => {
       if(typeof(localStorage.mb_token) != "string" && props.loginCheck == true){
-        Swal.fire("로그인을 해주세요");
+        Swal.fire("로그인을 해주세요.");
         router.push('/login');
       }
     }, []);

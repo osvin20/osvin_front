@@ -398,8 +398,8 @@
   width: 75%;
   max-width: 400px;
 }
-.login_form .login_input input input{
-  color:#fff;
+.login_form .login_input input {
+  color:#fff!important;
 }
 .login_logo {
   width: 70px;
@@ -416,8 +416,14 @@
   border-bottom: 1px solid #ffffffa6;
   padding: 0 0 10px 5px;
   font-size: 15px;
-  color: #fff;
+  color: #fff!important;
   width: 100%;
+}
+.login_input input:-webkit-autofill,
+.login_input input:-webkit-autofill:hover,
+.login_input input:-webkit-autofill:focus,
+.login_input input:-webkit-autofill:active {
+  -webkit-text-fill-color: #fff !important;
 }
 .login_input input[type="password"]{
   font-family:"돋움";
@@ -540,7 +546,7 @@
   margin-bottom: 0;
 }
 .find_form .input_btn{
-  margin-bottom:10px;
+  margin-bottom:15px;
 }
 .input_btn input {
   width: 65%;
@@ -2940,7 +2946,7 @@
 .find_id p {
   text-align: left;
   line-height: 1.5;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .find_result {
   font-size: 13px;
@@ -3502,14 +3508,25 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .order_ul li {
   padding: 15px 0;
+}
+.order_ul li > div {
   display: flex;
 }
 .order_ul li a {
   display: flex;
-  width: 100%
+  width: 100%;
+  position: relative;
+}
+.order_ul li a::after {
+  display: block;
+  content: "";
+  padding-bottom: 100%;
 }
 .order_ul li:not(:last-child) {
   border-bottom: 1px solid #ddd;
@@ -3524,10 +3541,22 @@
   justify-content: space-between;
   width: 100%;
 }
-.orderitem_info select{
+.order_ul li .sel_flex{
   font-size:12px;
-  padding:5px 0;
-  border-bottom:1px solid #000;
+  padding:10px;
+  border:1px solid #000;
+  width: 100%;
+  margin-top: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+.order_ul li .sel_flex select {
+  width: 100%;
+}
+.sel_flex img {
+  width: 13px;
+  height: 8px;
+  min-width: 13px;
 }
 .order_ul .order_shop {
   font-size: 12px;
@@ -3556,8 +3585,8 @@
 }
 .order_input p {
   min-width: 60px;
-  padding-top: 3px;
   font-size: 13px;
+  margin-bottom: 5px
 }
 .order_input_div {
   width: 100%;
@@ -3566,6 +3595,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  height: 36px;
 }
 .order_input_div input {
   width: 100%;
@@ -3586,7 +3616,7 @@
   border-bottom: none;
 }
 .order_ul .order_input {
-  padding: 12px 0;
+  padding: 8px 0;
 }
 .order_input_div button {
   background: #ca8756;
@@ -3599,9 +3629,6 @@
 }
 .order_button {
   align-items: center;
-}
-.order_button input {
-  padding-bottom: 5px;
 }
 .order_ul .order_button {
   padding-top: 0;
@@ -5950,8 +5977,8 @@
   width:100%;
 }
 body .swal2-title{
-  font-size: 20px;
-  padding: 1.5em 1em 0;
+  font-size: 16px;
+  padding-top: 30px;
   line-height:21px;
 }
 body .swal2-styled.swal2-confirm{
@@ -6029,4 +6056,13 @@ body .swal2-styled.swal2-confirm{
   z-index:9999;
   justify-content:center;
   align-items: center;
+}
+.swal2-popup {
+  border-radius: 0!important
+}
+.swal2-container {
+  padding: 7%!important
+}
+.agreement_content h2 {
+  font-size: 15px!important
 }

@@ -8,12 +8,16 @@ import {setTabNumber} from '../store/modules/tab_number';
 import {useEffect,useState} from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
+import Image from 'next/image'
 
 export default function Main() {
   const dispatch = useDispatch();
   const [evList ,setEvList] = useState([]);
   const [ofstore, setOfstore] = useState([]);
   const [ytubeList, setYtubeList] = useState([]);
+  const myLoader = (src) => {
+    return src
+  }
   useEffect(() => {
     axios.get(process.env.api+'Borad/BoradEventList',{
       params: {
@@ -113,14 +117,15 @@ export default function Main() {
         <ul className={"offshop offshop_list"}>
           {ofstore.map((val, key) => (
             <li key={key}>
-              <Link href={`/store?of_idx=${val.of_idx}`}>
+              <Link href={`/store?mb_id=${val.mb_id}`}>
                 <a>
                   <div>
-                    <img src={
-                      val.of_img != ''?
-                      val.of_img:
-                      '/img/no_img.png'
-                    }/>
+                    <Image
+                      layout={"fill"}
+                      loader={()=>myLoader(val.of_img)}
+                      src={'/img/no_img.png'}
+                      onError={(e)=>{e.target.src = '/img/no_img.png'}}
+                    />
                   </div>
                   <p className={"offshop_name"}>{val.of_name}</p>
                   <p className={"off_address"}>

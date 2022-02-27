@@ -13,6 +13,7 @@ import StoreQna from './storeqna'
 import TabPanel from '../layout/TabPanel'
 import useHistoryState from '../hook/useHistoryState';
 import {useEffect,useState} from 'react';
+import {useRouter} from 'next/router'
 import axios from 'axios';
 import Swal from 'sweetalert2'
 
@@ -21,6 +22,7 @@ export default function Store({query}){
   const [ck ,setCk] = useState(false);
   const [value, setValue] = useHistoryState(0);
   const [member, setMember] = useState([]);
+  const router = useRouter();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -34,15 +36,22 @@ export default function Store({query}){
     })
   }
   useEffect(() =>{
+    if(mb_id == ''){
+      Swal.fire("올바른접근이 아닙니다.");
+      router.back();
+    }
     axios.get(process.env.api+"Store/Info/"+mb_id,{
       params: {
         mb_token:localStorage.mb_token
       }
     }).then((res)=>{
-      console.log(res.data.data);
-      if(typeof(res.data.data) == "object"){
+      if(res.data.state){
         setMember(res.data.data);
+      }else {
+        Swal.fire("올바른접근이 아닙니다.");
+        router.back();
       }
+
     }).catch((error)=> {
 
     });

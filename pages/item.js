@@ -69,7 +69,7 @@ function Item({query}){
         if(ct_select == 1){
           if(res.data.state){
             router.push('/order');
-          }else {
+          }else{
             Swal.fire(res.data.msg);
           }
           return false;

@@ -47,11 +47,10 @@ export default function Cart(){
     axios.post(process.env.api+"Cart/Remove/"+itemList[key].ct_id,form
     ).then((res)=>{
       if(res.data.state){
-        setItemList(itemList.filter(
-          val=>val.ct_id !== itemList[key].ct_id
-        ));
+        router.reload()
       }
     }).catch((error)=> {});
+
   }
   // 장바구니 일괄구매 합니다.
   const orderCart = () => {
@@ -66,7 +65,7 @@ export default function Cart(){
       }
     }).catch((error)=> {});
   }
-  useEffect(() =>{
+  const getCartList = () =>{
     axios.get(process.env.api+"Cart/List",{
       params: {
         mb_token:localStorage.mb_token
@@ -78,6 +77,9 @@ export default function Cart(){
       }
     }).catch((error)=> {
     });
+  }
+  useEffect(() =>{
+    getCartList();
   },[]);
 
     return (
