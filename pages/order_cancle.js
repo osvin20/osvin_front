@@ -65,7 +65,7 @@ function OrderCancle({query}){
         <div className={'qnawrite itemreturn'}>
           <div>
             {odlist.map((val, key) =>(
-              <div className={'qnaitem'}>
+              <div className={'qnaitem'} key={key}>
                 <div className={'qnaitem_img'}>
                   <img src={
                     val.it_img1 != ''?
@@ -105,8 +105,8 @@ function OrderCancle({query}){
             </div>
           </div>
           <div className={'return_btn'}>
-            <div class="osbinModal">
-              <p onClick={submitForm} class="info_submit">취소 요청하기</p>
+            <div className="osbinModal">
+              <p onClick={submitForm} className="info_submit">취소 요청하기</p>
             </div>
           </div>
         </div>
