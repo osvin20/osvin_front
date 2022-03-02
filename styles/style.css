@@ -5652,7 +5652,11 @@
 .agreement_txt {
   line-height: 1.5
 }
+.agreement iframe{
+  width:100%;
+  height: 80vh;
 
+}
 /* 모달 css */
 
 .osbinModal {

@@ -53,7 +53,7 @@ export default function Point(){
                     <li key={key}>
                         <div>
                             <p>
-                                <span>{val.po_content}</span> 주문 적립
+                                <span>{val.po_content}</span> 
                             </p>
                             <p className={'point_date'}>{val.po_datetime}</p>
                         </div>

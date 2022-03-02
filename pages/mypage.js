@@ -171,7 +171,7 @@ export default function MyPage() {
             </li>
             <li>
               <img src="/img/chat2.png" />
-              <p>010-0000-0000</p>
+              <p>070-8801-7713</p>
               <span>월~금 10:30~18:00<br/>(점심시간 13:00~14:00)</span>
             </li>
           </ul>
