@@ -22,7 +22,6 @@ export default function OfflineShop(){
     const getMapLoad = () =>{
       window.kakao.maps.load(() => {
         let container = document.getElementById("map");
-
         let latLng = new window.kakao.maps.LatLng(lat, lng);
         let options = {
           center:latLng,
@@ -36,14 +35,13 @@ export default function OfflineShop(){
           memberOfflineList(map);
         });
         memberOfflineList(map);
-
         if(navigator.geolocation) {
           navigator.geolocation.getCurrentPosition ((pos)=> {
             map.setCenter(new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            memberOfflineList(map)
           });
         }
       });
-
     }
 
     const memberOfflineList = (map) =>{
