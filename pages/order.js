@@ -120,6 +120,7 @@ export default function Order(){
   }
   const pgcode = useRadioChecked('creditcard');
   const formRef = useRef(); //form data값 저장
+  const modalRef = useRef();
   const selectCp_id = useRef([]); //data값 저장
   const od_b_name = useChange('');
   const od_b_tel = useChange('');
@@ -204,12 +205,21 @@ export default function Order(){
     setCouponPrice(all_cp_price);
     setDisPrice(Number(all_cp_price)+Number(mb_point));
     setAllPrice(tempAmount.format())
-
   }
 
   const [payagree1,setPayagree1] = useState(false);
   const [payagree2,setPayagree2] = useState(false);
   const [payagree3,setPayagree3] = useState(false);
+
+  // 주소를 변경합니다.
+  const selectAddress = (key) =>{
+    od_b_name.onChange(addrList[key].ad_name);
+    od_b_tel.onChange(addrList[key].ad_tel);
+    od_b_zip.onChange(addrList[key].ad_zip1+addrList[key].ad_zip2);
+    od_b_addr1.onChange(addrList[key].ad_addr1);
+    od_b_addr2.onChange(addrList[key].ad_addr2);
+    modalRef.current.closeModal();
+  }
 
   useEffect(() => {
     // 배송지 조회
@@ -245,8 +255,6 @@ export default function Order(){
         setAllPrice(res.data.data.sum.all_sum);
       }
     }).catch((error)=>{});
-
-
 
     //결제 데이터를받음
     window.addEventListener("message",(e) => {
@@ -334,10 +342,10 @@ export default function Order(){
                       {val.cp_list[val.it_id].length != 0 &&
                         <div className={'sel_flex'}>
                           <select
-                             name={'cp_id['+val.it_id+']'}
-                             onChange={(e)=>calPrice(e,val.it_id,key)}
-                             ref={el => (selectCp_id.current[key] = el)}
-                            >
+                            name={'cp_id['+val.it_id+']'}
+                            onChange={(e)=>calPrice(e,val.it_id,key)}
+                            ref={el => (selectCp_id.current[key] = el)}
+                          >
                             <option value='0'>쿠폰을 선택해주세요</option>
                             {val.cp_list[val.it_id].map((vals,key) => (
                               <option key={key} value={vals.cp_id}>
@@ -400,14 +408,7 @@ export default function Order(){
               <Typography className={classes.heading}>
                 <div className={'order_tit extra_bold'}>
                   배송지 정보
-                  <OsbinModal
-                    title=""
-                    //   modalFun ={()=>router.push("/")}
-                    bnt_title ="배송지 목록"
-                    class_name={"del_list"}
-                  >
-                    <AddressModal/>
-                  </OsbinModal>
+
                 </div>
               </Typography>
             </AccordionSummary>
@@ -415,7 +416,17 @@ export default function Order(){
               <Typography>
                 <ul className={'order_ul'}>
                   <li className={'order_input order_button'}>
-                    <p>주소</p>
+                    <p className='address_label'>
+                      <span>주소</span>
+                      <OsbinModal
+                        title=""
+                        ref={modalRef}
+                        bnt_title ="배송지 목록"
+                        class_name={"del_list"}
+                      >
+                        <AddressModal selectAddress={selectAddress}/>
+                      </OsbinModal>
+                    </p>
                     <div className={'order_input_div'}>
                       <input type='text' placeholder="우편번호" {...od_b_zip} name='od_b_zip' readOnly/>
                       <button type='button' onClick={()=>setOpen(true)} className={'adrs_find'}>우편번호 찾기</button>
@@ -683,6 +694,7 @@ export default function Order(){
                       action_label ="확인"
                       class_name ="modal_open"
                       modal_id={"agree_modal"}
+
                     >
                       <p className={"agree_txt"}>
                         <iframe src={process.env.domain+'/agreement.php'} />

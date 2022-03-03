@@ -3,9 +3,11 @@ import React,{useState,useEffect} from 'react';
 import CheckBox from '../atomic/CheckBox.js';
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import {useRouter} from 'next/router'
 
 export default function ViewItem({api}){
     const [itemList,setItemList] = useState([]);
+    const router = useRouter()
     useEffect(() =>{
       console.log(localStorage.mb_token)
       axios.get(process.env.api+"Wish/"+api,{
@@ -13,7 +15,6 @@ export default function ViewItem({api}){
           mb_token:localStorage.mb_token
         }
       }).then((res)=>{
-        console.log(res.data.data);
         if(res.data){
           setItemList(res.data.data);
         }
@@ -27,6 +28,10 @@ export default function ViewItem({api}){
       axios.post(process.env.api+"Wish/AddRemove",form
       ).then((res)=>{
         Swal.fire(res.data.msg);
+        if(api == "List"){
+            router.reload();
+        }
+
       })
     }
 

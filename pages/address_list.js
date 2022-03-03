@@ -8,6 +8,20 @@ import Link from 'next/link'
 
 export default function AddressList(){
   const [list,setList] = useState([]);
+  const router = useRouter();
+  const addressRemove = (ad_id) =>{
+    const form = new FormData();
+    form.append('mb_token',localStorage.mb_token);
+    form.append('ad_id',ad_id);
+    axios.post(process.env.api+"Order/AddressRemove",form
+    ).then((res)=>{
+      if(res.data.state){
+        Swal.fire(res.data.msg);
+        router.reload();
+      }
+    }).catch((error)=> {});
+  }
+
   useEffect(() =>{
     axios.get(process.env.api+"Order/AddressList",{
       params: {
@@ -46,7 +60,12 @@ export default function AddressList(){
                     <Link href="/address_form">
                       <a>수정</a>
                     </Link>
-                    <p className={'adrs_del'}>삭제</p>
+                    <p
+                      className={'adrs_del'}
+                      onClick={()=>addressRemove(val.ad_id)}
+                    >
+                    삭제
+                    </p>
                   </div>
                 </div>
                 <div className={'adrs_div'}>

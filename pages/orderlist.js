@@ -22,8 +22,6 @@ export default function OrderList() {
       if(res.data.state){
         Swal.fire(res.data.msg);
         router.reload();
-      }else{
-        Swal.fire(res.data.msg);
       }
     }).catch((error)=> {});
 

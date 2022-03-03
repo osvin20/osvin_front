@@ -4,7 +4,6 @@ import Link from 'next/link'
 import {useEffect,useState,useLayoutEffect } from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
-import Script from 'next/script'
 
 export default function OfflineShop(){
     const [ofshopdetail, setOfshopdetail] = useState([]);
@@ -13,12 +12,6 @@ export default function OfflineShop(){
     const [idx, setIdx] = useState(false);
 
     useEffect(() => {
-      if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition ((pos)=> {
-          setLat(pos.coords.latitude);
-          setlng(pos.coords.longitude);
-        });
-      }
       const mapScript = document.createElement("script");
       mapScript.async = true;
       mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=59248c71ebc85b261033ea9d37d68249&autoload=false`;
@@ -27,25 +20,29 @@ export default function OfflineShop(){
     },[])
 
     const getMapLoad = () =>{
+      window.kakao.maps.load(() => {
+        let container = document.getElementById("map");
 
-        window.kakao.maps.load(() => {
-          let container = document.getElementById("map");
-
-          let latLng = new window.kakao.maps.LatLng(lat, lng);
-          let options = {
-            center:latLng,
-            level: 7,
-          };
-          let map = new window.kakao.maps.Map(container, options);
-          kakao.maps.event.addListener(map, 'dragend', function() {
-            memberOfflineList(map);
-          });
-          kakao.maps.event.addListener(map, 'zoom_changed', function() {
-            memberOfflineList(map);
-          });
+        let latLng = new window.kakao.maps.LatLng(lat, lng);
+        let options = {
+          center:latLng,
+          level: 7,
+        };
+        let map = new window.kakao.maps.Map(container, options);
+        kakao.maps.event.addListener(map, 'dragend', function() {
           memberOfflineList(map);
         });
+        kakao.maps.event.addListener(map, 'zoom_changed', function() {
+          memberOfflineList(map);
+        });
+        memberOfflineList(map);
 
+        if(navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition ((pos)=> {
+            map.setCenter(new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+          });
+        }
+      });
 
     }
 
@@ -94,7 +91,7 @@ export default function OfflineShop(){
 
     return (
         <TitleLayout>
-        
+
           <div className={'pagetit_div'}>
             <h1 className={'page_tit'}>OFFLINESHOP </h1>
           </div>
