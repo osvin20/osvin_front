@@ -97,12 +97,13 @@ export default function OrderList() {
               </div>
             </div>
           </div>
-          {val.od_status == "주문"?
+          {val.od_status == "주문" || val.od_status == "준비"?
             <div className={"order_cancle"}>
               <Link href={`/order_cancle?od_id=${val.od_id}`} >
                 <a>주문취소</a>
               </Link>
             </div>:""}
+
           {val.od_status == "완료"?
             <div className={"order_cancle order_decide"}>
               <button

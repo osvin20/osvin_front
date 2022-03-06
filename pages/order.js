@@ -93,6 +93,7 @@ export default function Order(){
       return false;
     }
     const form = new FormData(formRef.current);
+    allPrice = String(allPrice);
     const amount = allPrice.replace(',','');
     const od_send_cost = sum.sc_sum.replace(',','');
     const od_cart_price = sum.item_sum.replace(',','');
