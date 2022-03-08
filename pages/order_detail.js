@@ -4,15 +4,28 @@ import React from 'react';
 import {useEffect,useState} from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
+import {useRouter} from 'next/router'
 
 function OrderList({query}) {
   // 일반배송 탁송 방문수령
   const [od_del ,setOd_del] = React.useState("일반배송");
-
+  const router = useRouter();
   const {od_id} = query;
   const [odlist, setOdlist] = useState([]);
   const [order, setOrder] = useState([]);
+  const orderComplete = (od_id) =>{
+    const form = new FormData();
+    form.append('mb_token',localStorage.mb_token);
+    form.append('od_id',od_id);
+    axios.post(process.env.api+"Order/OrderComplete",form
+    ).then((res)=>{
+      if(res.data.state){
+        Swal.fire(res.data.msg);
+        router.reload();
+      }
+    }).catch((error)=> {});
 
+  }
   useEffect(() => {
     axios.get(process.env.api+'Order/Info/'+od_id,{
       params: {
@@ -78,25 +91,25 @@ function OrderList({query}) {
             </div>
           </div>
         ))}
-        {order.od_status == "주문"?
+        {order.od_status == "배송"?
         <div className={"order_cancle"}>
-          <Link href='/order_cancle'>
+          <Link href={`/order_cancle?od_id=${order.od_id}`}>
             <a>주문취소</a>
           </Link>
         </div>:""}
-        {order.od_status == "배송"?
+        {order.od_status == "완료"?
         <div className={"order_cancle order_decide"}>
-          <Link href='/item_return'>
+          <Link href={`/order_cancle?od_id=${order.od_id}`} >
             <a>교환 및 환불</a>
           </Link>
-          <button className={'decide_btn'}>구매확정</button>
+          <button
+            className={'decide_btn'}
+            onClick={()=>orderComplete(order.od_id)}
+          >
+            구매확정
+          </button>
         </div>:""}
-        {order.od_status == "완료"?
-        <div className={"order_cancle order_review"}>
-        <Link href='/post_write'>
-          <a>리뷰쓰기</a>
-        </Link>
-        </div>:""}
+
       </div>
       <div className={"od_div od_user"}>
         <div className={"od_flex"}>
@@ -138,7 +151,7 @@ function OrderList({query}) {
         </div>
         <p>
           쿠폰 할인
-          <span>-{order.od_send_coupon}원</span>
+          <span>-{order.cp_price_sum}원</span>
         </p>
         <p>
           에코포인트 사용
@@ -163,7 +176,7 @@ function OrderList({query}) {
         </p>
         <p>
           할인 합계
-          <span>-0원</span>
+          <span>-{order.od_hal_price}원</span>
         </p>
         <p className={'od_total'}>
           총 결제금액

@@ -68,11 +68,15 @@ export default function OrderList() {
           {od_del == "방문수령"?<div className={'order_del'}>방문수령</div>:""}
           <div className={"oditem_info"}>
             <div className={"od_thumb"}>
-              <img src={
-                val.it_img1 != ''?
-                val.it_img1:
-                '/img/no_img.png'
-              } />
+            <Link href={`/item?it_id=${val.it_id}`}>
+              <a>
+                <img src={
+                  val.it_img1 != ''?
+                  val.it_img1:
+                  '/img/no_img.png'
+                } />
+              </a>
+            </Link>
             </div>
             <div className={"odinfo_txt"}>
               <div>
@@ -83,10 +87,10 @@ export default function OrderList() {
                 {/* 상태값에 따라 변경 */}
                 <p className={"od_state extra_bold del_state"}>
                   {val.od_status}
-                  {val.od_status == "배송"?
+                  {/* {val.od_status == "배송"?
                     <Link href="/">
                       <a>배송조회</a>
-                    </Link>:''}
+                    </Link>:''} */}
                 </p>
               </div>
               <div className={"odinfo_price"}>

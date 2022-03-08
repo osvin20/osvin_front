@@ -6077,3 +6077,7 @@ body .swal2-styled.swal2-confirm{
   justify-content:space-between;
   padding-bottom:5px;
 }
+.mb_nick{
+  margin-top:3px;
+  font-size: 12px;
+}

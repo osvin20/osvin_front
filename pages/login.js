@@ -60,12 +60,15 @@ export default function Login(){
             <span></span>
           </div>
           <div className={'sns_ico'}>
+
+            <Link href={`${process.env.domain}/bbs/login.php?provider=kakao&url=https%3A%2F%2Fosvintique.com%2Fplugin%2Fsocial%2Fpopup.php%3Fprovider%3Dkakao`}>
               <a>
                 <img src="/img/kakao.png"/>
               </a>
-              <a>
-                <img src="/img/apple.png"/>
-              </a>
+            </Link>
+            <a>
+              <img src="/img/apple.png"/>
+            </a>
           </div>
         </div>
       </div>

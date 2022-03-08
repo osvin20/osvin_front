@@ -1,8 +1,25 @@
 import TitleLayout from "../layout/TitleLayout";
 import Link from "next/link";
 import React from "react";
+import {useRouter} from 'next/router'
+import {useEffect,useState,useRef } from 'react';
+import axios from 'axios';
 
 export default function FollowFeed() {
+  const [list ,setList] = useState([]);
+  useEffect(() => {
+    axios.get(process.env.api+"Feed/FollowingFeed",{
+      params: {
+        mb_token:localStorage.mb_token
+      }
+    }).then((res)=>{
+      if(res.data.state){
+        setList(res.data.data);
+      }
+    }).catch((error)=> {
+    });
+  },[]);
+
   return (
     <TitleLayout>
       <div className={'pagetit_div'}>
@@ -10,62 +27,18 @@ export default function FollowFeed() {
       </div>
       <div className={"storefeed followfeed"}>
         <ul className={"storefeed_ul"}>
-          <li>
-            <Link href="/item">
-              <a className={"storefeed_thumb"}>
-                <img src="/img/storefeed_01.jpg" />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/item">
-              <a className={"storefeed_thumb"}>
-                <img src="/img/storefeed_02.jpg" />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/item">
-              <a className={"storefeed_thumb"}>
-                <img src="/img/storefeed_03.jpg" />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/item">
-              <a className={"storefeed_thumb"}>
-                <img src="/img/storefeed_04.jpg" />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/item">
-              <a className={"storefeed_thumb"}>
-                <img src="/img/storefeed_05.jpg" />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/item">
-              <a className={"storefeed_thumb"}>
-                <img src="/img/storefeed_06.jpg" />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/item">
-              <a className={"storefeed_thumb"}>
-                <img src="/img/storefeed_01.jpg" />
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/item">
-              <a className={"storefeed_thumb"}>
-                <img src="/img/storefeed_02.jpg" />
-              </a>
-            </Link>
-          </li>
+          {list.map((val,key) =>(
+            <li key={key}>
+              <Link href="/item">
+                <a className={"storefeed_thumb"}>
+                  <img
+                    src={val.bf_file}
+                    onError={(e)=>{e.target.src = '/img/no_img.png'}}
+                  />
+                </a>
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </TitleLayout>

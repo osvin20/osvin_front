@@ -9,6 +9,7 @@ export default function MyPage() {
   const router = useRouter()
   // 스토리지 로드
   const [mb_id , setMb_id] = useState('');
+  const [mb_nick , setMb_nick] = useState('');
   const [userImg , setUserImg] = useState('/img/no_prof.png');
   useEffect(() => {
     setMb_id(localStorage.mb_id);
@@ -18,8 +19,8 @@ export default function MyPage() {
       }
     }).then((res)=>{
       if(res.data.state){
-        console.log(res.data.data.mb_img);
         setUserImg(res.data.data.mb_img);
+        setMb_nick(res.data.data.mb_nick)
       }
     }).catch((error)=> {
     });
@@ -36,6 +37,7 @@ export default function MyPage() {
         </div>
         <div>
           <p className={"user_name"}>{mb_id}</p>
+          <p className={"mb_nick"}>{mb_nick}</p>
           <Link href="/myinfo">
             <a className={"info_btn"}>회원정보수정</a>
           </Link>
@@ -87,21 +89,26 @@ export default function MyPage() {
       </div>
       <div className={"mypage_list"}>
         <ul>
-          {/* <li>
+          <li>
             <p>내 활동</p>
             <ul>
               <li>
-            <Link href="/followingstore">
-            <a>팔로잉 스토어</a>
-            </Link>
+                <Link href="/followingstore">
+                  <a>팔로잉 스토어</a>
+                </Link>
               </li>
               <li>
-            <Link href="/followfeed">
-            <a>팔로잉 피드</a>
-            </Link>
+                <Link href="/followfeed">
+                  <a>팔로잉 피드</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/myfeed">
+                  <a>나의 후기</a>
+                </Link>
               </li>
             </ul>
-          </li> */}
+          </li>
           <li>
             <p>설정</p>
             <ul>
@@ -166,12 +173,16 @@ export default function MyPage() {
           <ul>
             <li>
               <img src="/img/call.png" />
-              <p>@오스빈</p>
+              <p>
+                <a href='tel:070-8801-7713'>
+                  070-8801-7713
+                </a>
+              </p>
               <span>월~금 10:30~18:00<br/>(점심시간 13:00~14:00)</span>
             </li>
             <li>
               <img src="/img/chat2.png" />
-              <p>070-8801-7713</p>
+              <p>@오스빈</p>
               <span>월~금 10:30~18:00<br/>(점심시간 13:00~14:00)</span>
             </li>
           </ul>
