@@ -77,7 +77,7 @@ export default function CardList(){
         </a>
         <ul>
           {list.map((val,key) =>(
-            <li>
+            <li key={key}>
               <div>
                 <p>{val.card_name}카드</p>
                 <span>{val.card_info}</span>
