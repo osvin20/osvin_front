@@ -6081,3 +6081,15 @@ body .swal2-styled.swal2-confirm{
   margin-top:3px;
   font-size: 12px;
 }
+#appleid-signin{
+  position:relative;
+}
+#appleid-signin > *{
+  overflow: hidden;
+  top:0px;
+  left:0px;
+  position: absolute !important;
+  min-width: 37px !important;
+  max-width: 37px !important;
+  opacity:0;
+}

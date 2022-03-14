@@ -12,7 +12,7 @@ export default function MyPage() {
   const [mb_nick , setMb_nick] = useState('');
   const [userImg , setUserImg] = useState('/img/no_prof.png');
   useEffect(() => {
-    setMb_id(localStorage.mb_id);
+
     axios.get(process.env.api+"Member/Info",{
       params: {
         mb_token:localStorage.mb_token
@@ -20,6 +20,7 @@ export default function MyPage() {
     }).then((res)=>{
       if(res.data.state){
         setUserImg(res.data.data.mb_img);
+        setMb_id(res.data.data.mb_email);
         setMb_nick(res.data.data.mb_nick)
       }
     }).catch((error)=> {
@@ -117,11 +118,11 @@ export default function MyPage() {
                   <a>배송지 등록</a>
                 </Link>
               </li>
-              {/* <li>
+              <li>
                 <Link href="/cardlist">
                   <a>신용카드 관리</a>
                 </Link>
-              </li> */}
+              </li>
               {/* <li>
                 <Link href="/setting">
                   <a>알림 설정</a>

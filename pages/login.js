@@ -8,6 +8,7 @@ import Swal from 'sweetalert2'
 export default function Login(){
   const loginFrom = useRef(); //form data값 저장
   const router = useRouter();
+  const [url,setUrl] = useState("");
   const submitForm = () =>{
     const form = new FormData(loginFrom.current);
     axios.post(process.env.api+"Member/Login",form
@@ -23,8 +24,20 @@ export default function Login(){
       }
     })
   }
+  useEffect(() => {
+    const mapScript = document.createElement("script");
+    mapScript.async = true;
+    mapScript.src = `//appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js`;
+    document.head.appendChild(mapScript);
+    setUrl(window.location.host);
+  },[])
   return (
     <LoginTheme>
+      <meta name="appleid-signin-client-id" content="com.osvin"/>
+      <meta name="appleid-signin-scope" content="email"/>
+      <meta name="appleid-signin-redirect-uri" content="https://osvintique.com/api/Member/AppleLogin"/>
+      <meta name="appleid-signin-state" content={url}/>
+      <meta name="appleid-signin-use-popup" content="false"/>
       <div className={'login_form'}>
         <div className={'login_logo'}>
           <img src="/img/logo3.png"/>
@@ -60,13 +73,13 @@ export default function Login(){
             <span></span>
           </div>
           <div className={'sns_ico'}>
-
             <Link href={`${process.env.domain}/bbs/login.php?provider=kakao&url=https%3A%2F%2Fosvintique.com%2Fplugin%2Fsocial%2Fpopup.php%3Fprovider%3Dkakao`}>
               <a>
                 <img src="/img/kakao.png"/>
               </a>
             </Link>
             <a>
+              <div id="appleid-signin"/>
               <img src="/img/apple.png"/>
             </a>
           </div>
