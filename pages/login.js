@@ -78,7 +78,7 @@ export default function Login(){
                 <img src="/img/kakao.png"/>
               </a>
             </Link>
-            <a>
+            <a className={'apple'}>
               <div id="appleid-signin"/>
               <img src="/img/apple.png"/>
             </a>
