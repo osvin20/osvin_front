@@ -65,6 +65,41 @@ export default function Post({query}){
         }
       })
     }
+    const addSingo = () =>{
+      Swal.fire({
+        title: '정말 신고합니까?',
+        text: "같은건으로 누적신고수가 5건이상이면 게시물이 삭제됩니다.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ca8756',
+        cancelButtonColor: '#ddd',
+        confirmButtonText: '신고합니다',
+        cancelButtonText: '아니오',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const form = new FormData();
+          form.append('bo_wr_id',wr_id);
+          form.append('bo_table',"feed");
+          form.append('bo_link',"https://osvin-front.vercel.app/post?wr_id="+wr_id);
+          form.append('bo_object_id',feed.mb_id);
+          form.append('bo_object_name',feed.wr_name);
+          form.append('mb_token',localStorage.mb_token);
+          axios.post(process.env.api+"Feed/AddSingo",form
+          ).then((res)=>{
+            if(res.data.state){
+              Swal.fire(
+                '성공적으로 신고되었습니다.',
+                '사용자로 인해 불편을 드려서 죄송합니다.',
+                'success'
+              )
+            }else{
+              Swal.fire(res.data.msg);
+            }
+          }).catch((error)=> {
+          });
+        }
+      })
+    }
     const commentAddRemove = (wr_id) =>{
       axios.get(process.env.api+"Feed/AddRemoveGood/"+wr_id,{
         params: {
@@ -219,6 +254,9 @@ export default function Post({query}){
                 <img src="/img/chat.png"/>
                 <p>{comment_cnt}</p>
               </div>
+              <span className={'singo'} onClick={addSingo}>
+                신고하기
+              </span>
             </div>
           </div>
           <div className={'post_comment'}>

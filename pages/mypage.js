@@ -108,6 +108,11 @@ export default function MyPage() {
                   <a>나의 후기</a>
                 </Link>
               </li>
+              <li>
+                <Link href="/blocklist">
+                  <a>차단 계정</a>
+                </Link>
+              </li>
             </ul>
           </li>
           <li>

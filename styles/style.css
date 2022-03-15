@@ -1434,6 +1434,14 @@
   font-family: "NanumSquareEB";
   line-height: 1.5;
 }
+.singo{
+  font-size:11px;
+  font-weight:bold;
+  color:#d64646;
+  position:absolute;
+  top:0px;
+  right:0px;
+}
 .user_txt p {
   line-height: 1.3;
   font-size: 12px;
@@ -1446,6 +1454,15 @@
   color: #ca8756;
   display: inline-block;
 }
+.block_edit {
+  border: 1px solid #ca8756;
+  padding: 7px 15px;
+  font-size: 12px;
+  color: #ca8756;
+  display: inline-block;
+  margin-left:5px;
+}
+
 .userfeed_pic ul {
   display: flex;
   flex-wrap: wrap;
@@ -1555,6 +1572,7 @@
 .post_react {
   display: flex;
   align-items: center;
+  position:relative;
 }
 .post_react > div {
   display: flex;
@@ -2079,6 +2097,15 @@
   font-family: "NanumSquareEB";
   width: 100%;
 }
+
+.info_input li div input[type=password] {
+  font-size: 13px;
+  padding: 10px 5px;
+  padding-bottom: 0;
+  font-family: "NanumSquareEB";
+  width: 100%;
+}
+
 .info_input li button, .info_input .phone_submit {
   padding: 8px 0;
   background: #ca8756;

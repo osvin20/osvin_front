@@ -144,7 +144,7 @@ function Item({query}){
           </div>
           <div className={'detail_info'}>
             <div className={'store_flex'}>
-              <Link href='/store'>
+              <Link href={'/store?mb_id='+item.mb_id}>
                 <a className={'item_store'}>
                   <div className={'item_store_img'}>
                     <img

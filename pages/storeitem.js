@@ -4,7 +4,6 @@ import {useEffect,useState} from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'
 
-
 export default function StoreItem({mb_id}){
     const [ck ,setCk] = useState(false);
     const [list ,setList] = useState([]);
@@ -34,7 +33,7 @@ export default function StoreItem({mb_id}){
     return (
       <div className={'storefeed zzimlist storeitem'}>
         <div className={'storeitem_count'}>
-          <p>15</p>개의 판매상품
+          <p>{list.length}</p>개의 판매상품
         </div>
         <ul>
           {list.map((val,key) =>(
