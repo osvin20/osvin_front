@@ -9,10 +9,17 @@ import axios from 'axios';
 export default function Welcome({query}){
   const {mb_token} = query;
   const [member,setMember] = useState([]);
+
+
   useEffect(() => {
+    let mb_app_token = "";
+    if(typeof getAppToken == "function"){
+      mb_app_token = getAppToken();
+    }
     axios.get(process.env.api+"Member/Info",{
       params: {
-        mb_token:mb_token
+        mb_token:mb_token,
+        mb_app_token:mb_app_token,
       }
     }).then((res)=>{
       if(res.data.state){

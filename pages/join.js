@@ -65,7 +65,10 @@ export default function Join(){
       Swal.fire("약관에 동의해주세요");
       return false;
     }
-
+    if(typeof getAppToken == "function"){
+      let mb_app_token = getAppToken();
+      form.append("mb_app_token",mb_app_token);
+    }
     form.append('mb_level','2');
     axios.post(process.env.api+"Member/Join",form
     ).then((res)=>{

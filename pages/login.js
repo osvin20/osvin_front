@@ -11,6 +11,10 @@ export default function Login(){
   const [url,setUrl] = useState("");
   const submitForm = () =>{
     const form = new FormData(loginFrom.current);
+    if(typeof getAppToken == "function"){
+      let mb_app_token = getAppToken();
+      form.append("mb_app_token",mb_app_token);
+    }
     axios.post(process.env.api+"Member/Login",form
     ).then((res)=>{
       if(res.data.state){
