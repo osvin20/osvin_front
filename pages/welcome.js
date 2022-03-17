@@ -10,27 +10,28 @@ export default function Welcome({query}){
   const {mb_token} = query;
   const [member,setMember] = useState([]);
 
-
   useEffect(() => {
-    let mb_app_token = "";
-    if(typeof getAppToken == "function"){
-      mb_app_token = getAppToken();
-    }
-    axios.get(process.env.api+"Member/Info",{
-      params: {
-        mb_token:mb_token,
-        mb_app_token:mb_app_token,
+    setTimeout(() => {
+      let mb_app_token = 0;
+      if(typeof getAppToken == "function"){
+        mb_app_token = getAppToken();
       }
-    }).then((res)=>{
-      if(res.data.state){
-        setMember(res.data.data);
-        localStorage.setItem('mb_token',res.data.data.mb_token);
-        localStorage.setItem('mb_login_ip',res.data.data.mb_login_ip);
-        localStorage.setItem('mb_today_login',res.data.data.mb_today_login);
-        localStorage.setItem('mb_id',res.data.data.mb_id);
-      }
-    }).catch((error)=> {
-    });
+      axios.get(process.env.api+"Member/Info",{
+        params: {
+          mb_token:mb_token,
+          mb_app_token:mb_app_token,
+        }
+      }).then((res)=>{
+        if(res.data.state){
+          setMember(res.data.data);
+          localStorage.setItem('mb_token',res.data.data.mb_token);
+          localStorage.setItem('mb_login_ip',res.data.data.mb_login_ip);
+          localStorage.setItem('mb_today_login',res.data.data.mb_today_login);
+          localStorage.setItem('mb_id',res.data.data.mb_id);
+        }
+      }).catch((error)=> {
+      });
+    }, 1000);
   },[]);
     return (
         <LoginTheme>
@@ -48,11 +49,16 @@ export default function Welcome({query}){
                         환경캠페인에 동참해보세요!
                     </p>
                 </div>
-                <Link href='/'>
-                        <a className={'join_start'}>
-                            쇼핑하기
-                        </a>
-                </Link>
+                {member.length != 0 ?
+                  <Link href='/'>
+                      <a className={'join_start'}>
+                          쇼핑하기
+                      </a>
+                  </Link>:
+                  <a className={'join_start'}>
+                      로딩중..
+                  </a>
+                }
             </div>
         </LoginTheme>
     )
