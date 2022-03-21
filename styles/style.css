@@ -26,7 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 3;
+  z-index: 15;
 }
 .sub_head {
   background: #fff
@@ -6122,4 +6122,13 @@ body .swal2-styled.swal2-confirm{
   min-width: 37px !important;
   max-width: 37px !important;
   opacity:0;
+}
+#checkBox1{
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  visibility: hidden;
 }

@@ -137,62 +137,62 @@ export default function Main() {
           ))}
         </ul>
       </div>
-      <div className={"main_offshop"}>
+      {/* <div className={"main_offshop"}>
         <h3 className={"main_tit"}>YOUTUBE
-        <Link href="/youtube">
-          <a>
-            채널 바로가기
-            <img src="/img/arrow_02.png" />
-          </a>
-        </Link>
+          <Link href="/youtube">
+        <a>
+        채널 바로가기
+        <img src="/img/arrow_02.png" />
+        </a>
+          </Link>
         </h3>
         <ul className={"offshop ytblist"}>
           {ytubeList.map((val, key)=>(
-            <li key={key}>
-              <Link href={val.yo_url}>
-                <a>
-                  <img src={
-                      val.yo_img != ''?
-                      val.yo_img:
-                      '/img/no_img.png'
-                    }
-                  />
-                </a>
-              </Link>
-            </li>
+        <li key={key}>
+        <Link href={val.yo_url}>
+        <a>
+        <img src={
+        val.yo_img != ''?
+        val.yo_img:
+        '/img/no_img.png'
+        }
+        />
+        </a>
+        </Link>
+        </li>
           ))}
         </ul>
-      </div>
-      <div className={"main_offshop"}>
+      </div> */}
+      {/* <div className={"main_offshop"}>
         <h3 className={"main_tit"}>
           오스빈 SPECIAL EVENT
           <Link href="/notice_event?tabnumber=1">
-            <a>
-              이벤트 모두보기
-              <img src="/img/arrow_02.png" />
-            </a>
+        <a>
+        이벤트 모두보기
+        <img src="/img/arrow_02.png" />
+        </a>
           </Link>
         </h3>
         <ul className={"offshop offshop_list"}>
           {evList.map((val, key) => (
-            <li key={key}>
-              <Link href={`/event_detail?ev_id=${val.ev_id}`}>
-                <a>
-                <div>
-                <img src={
-                    val.ev_img != ''?
-                    val.ev_img:
-                    '/img/no_img.png'
-                  }
-                />
-                </div>
-                  <p className={"offshop_name"}>{val.ev_subject}</p>
-                </a>
-              </Link>
-            </li>
+        <li key={key}>
+        <Link href={`/event_detail?ev_id=${val.ev_id}`}>
+        <a>
+        <div>
+        <img src={
+        val.ev_img != ''?
+        val.ev_img:
+        '/img/no_img.png'
+        }
+        />
+        </div>
+        <p className={"offshop_name"}>{val.ev_subject}</p>
+        </a>
+        </Link>
+        </li>
           ))}
         </ul>
-      </div>
+      </div> */}
       <div className={"eco_banner"}>
         <img src="/img/eco_banner.jpg" />
       </div>

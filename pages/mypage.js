@@ -11,6 +11,7 @@ export default function MyPage() {
   const [mb_id , setMb_id] = useState('');
   const [mb_nick , setMb_nick] = useState('');
   const [userImg , setUserImg] = useState('/img/no_prof.png');
+  const [info ,setInfo] = useState([]);
   useEffect(() => {
 
     axios.get(process.env.api+"Member/Info",{
@@ -24,6 +25,13 @@ export default function MyPage() {
         setMb_nick(res.data.data.mb_nick)
       }
     }).catch((error)=> {
+    });
+
+    axios.get(process.env.api+'Shop/Info',{
+    }).then((res) => {
+      setInfo(res.data.data);
+    }).catch((error) => {
+
     });
   },[]);
 
@@ -180,7 +188,7 @@ export default function MyPage() {
             <li>
               <img src="/img/call.png" />
               <p>
-                <a href='tel:070-8801-7713'>
+                <a href={`tel:${info.de_admin_company_tel}`}>
                   070-8801-7713
                 </a>
               </p>
@@ -196,19 +204,19 @@ export default function MyPage() {
           <div className={"company_info"}>
             <div>
               <p>사업자번호</p>
-              <span>104-81-13766</span>
+              <span>{info.de_admin_company_saupja_no}</span>
             </div>
             <div>
               <p>사업자명</p>
-              <span>(주)남흥</span>
+              <span>{info.de_admin_company_name}</span>
             </div>
             <div>
               <p>대표자명</p>
-              <span>김정규</span>
+              <span>{info.de_admin_company_owner}</span>
             </div>
             <div>
               <p>주소(본사)</p>
-              <span>서울특별시 중구 소월로 10, 19층(남대문로5가, 단암딜빙)</span>
+              <span>{info.de_admin_company_addr}</span>
             </div>
             <div>
               <p>주소(이커머스 사업부)</p>
