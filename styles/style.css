@@ -557,6 +557,9 @@
   line-height: 1;
   padding-top: 5px;
 }
+input[type="password"] {
+  font-family: "NEXONGothicR" !important;
+}
 .input_btn input::placeholder {
   color: #a6a6a6;
 }

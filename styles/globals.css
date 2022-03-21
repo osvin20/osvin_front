@@ -112,7 +112,7 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0px 1000px #fff0 inset !important;
 }
 input[type="password"] {
-  font-family: "" !important;
+  font-family: "NEXONGothicR" !important;
 }
 body, html {
   max-width: 600px;
