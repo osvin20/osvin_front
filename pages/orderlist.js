@@ -113,7 +113,7 @@ export default function OrderList() {
               <button
                 onClick={()=>router.push(`/order_cancle?od_id=${val.od_id}`)}
               >
-                교환 및 환불
+                취소신청
               </button>
               <button className={'decide_btn'} onClick={()=>orderComplete(val.od_id)}>
                 구매확정

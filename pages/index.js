@@ -57,7 +57,7 @@ export default function Main() {
     <MainLayout pages={"home"}>
       <Link href={'/campaign'}>
         <a className={"content_box"}>
-          <img src="/img/main_banner_01.jpg" />
+          <img src="/img/main_banner_01.png" />
           <div className={"main_banner_txt"}>
             <p>
               날이 갈수록 나빠지는 지구 생태계

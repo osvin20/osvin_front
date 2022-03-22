@@ -114,6 +114,7 @@
   width: 100%;
   padding-bottom: 0px;
   font-size: 13px;
+  text-shadow: 1px 1px 3px #000;
 }
 .main_banner_txt p {
   line-height: 1.4;
