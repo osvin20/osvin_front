@@ -193,17 +193,17 @@ export default function Main() {
           ))}
         </ul>
       </div> */}
-      <div className={"eco_banner"}>
+      {/* <div className={"eco_banner"}>
         <img src="/img/eco_banner.jpg" />
-      </div>
-      <div className={"donation_banner"}>
+        </div>
+        <div className={"donation_banner"}>
         <Link href="/donation">
           <a>
-            <p>오늘의 스타일은 빈티지 기부현황</p>
-            <img src="/img/arrow_03.png" />
+        <p>오늘의 스타일은 빈티지 기부현황</p>
+        <img src="/img/arrow_03.png" />
           </a>
         </Link>
-      </div>
+      </div> */}
       <FooterInfo/>
     </MainLayout>
   );
