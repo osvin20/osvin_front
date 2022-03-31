@@ -223,7 +223,7 @@ export default function Post({query}){
               </li>
               <li>
                 <p>상품명</p>
-                <Link href="/item">
+                <Link href={'/item?it_id='+item.it_id}>
                   <a>{item.it_name}</a>
                 </Link>
               </li>

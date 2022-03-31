@@ -77,9 +77,9 @@ function OrderList({query}) {
                 </p>
                 <p className={"od_state bold_txt del_state"}>
                   {val.ct_status}
-                  {val.ct_status == '배송'? <Link href="/">
+                  {/* {val.ct_status == '배송'? <Link href="/">
                     <a className={''}>배송조회</a>
-                  </Link>:""}
+                  </Link>:""} */}
                 </p>
               </div>
               <div className={"odinfo_price"}>

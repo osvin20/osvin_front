@@ -39,7 +39,6 @@ function ItemList({query}){
 
       });
     },[cata]);
-
     useEffect(() =>{
       axios.get(process.env.api+"Cate/List",{
       	params: {
@@ -48,6 +47,9 @@ function ItemList({query}){
       }).then((res)=>{
         if(res.data){
           setCateList(res.data.data);
+        }
+        if(value != 0){
+          setCata(res.data.data[value-1].ca_id)
         }
       }).catch((error)=> {
 
