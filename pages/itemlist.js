@@ -57,7 +57,7 @@ function ItemList({query}){
     },[]);
 
     return (
-      <SubLayout>
+      <SubLayout historyScroll={true}>
           <div className={'feedcate itemcate'}>
             <AppBar position="static" centerTitle="true">
               <Tabs value={value} onChange={handleChange}>
