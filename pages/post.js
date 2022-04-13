@@ -217,8 +217,8 @@ export default function Post({query}){
             <ul className={'post_info'}>
               <li>
                 <p>스토어명</p>
-                <Link href="/store">
-                  <a>오스빈스토어</a>
+                <Link href={"/store?mb_id="+feed.mb_sell_id}>
+                  <a>{item.mb_nick}</a>
                 </Link>
               </li>
               <li>
