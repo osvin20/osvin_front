@@ -134,6 +134,7 @@ export default function Post({query}){
         }
       }).then((res)=>{
         if(res.data.state){
+          console.log(res.data.data);
           setCommentList(res.data.data);
         }
       }).catch((error)=> {});
@@ -275,16 +276,14 @@ export default function Post({query}){
                       </Link>
                       <div>
                         <div className={'comment'}>
-                          <Link href='/userfeed'>
+                          <Link href={'/userfeed?mb_id='+val.mb_id}>
                             <a>
                               {val.wr_name}
                             </a>
                           </Link>
-                          <Link href='/comment'>
-                            <a className={'comment_dir'}>
-                              {val.wr_content}
-                            </a>
-                          </Link>
+                          <a className={'comment_dir'}>
+                            {val.wr_content}
+                          </a>
                         </div>
                         <div className={'comment_info'}>
                           <p className={'comment_date'}>{val.wr_datetime}</p>

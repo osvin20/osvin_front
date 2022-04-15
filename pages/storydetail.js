@@ -27,10 +27,14 @@ export default function StoreDetail({query}){
           <div className={'story_detail'}>
             <div className={'post_content'}>
               <div className={'rv_prof'}>
-                <Link href="/userfeed">
+                <Link href={"/store?mb_id="+story.mb_id}>
                   <a className={'story_info'}>
                     <div className={'story_info_img'}>
-                      <img src="/img/prof_04.jpg"/>
+
+                      <img
+                        src={story.mb_img}
+                        onError={(e)=>{e.target.src = "/img/no_img.png"}}
+                      />
                     </div>
                     <div>
                       <p>{story.wr_name}</p>
