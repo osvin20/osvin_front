@@ -7,7 +7,6 @@ export default function ItemBox({list,className}){
           {list.map((val,key) =>(
             <li key={key}>
                 <Link href={"/item?it_id="+val.it_id}>
-
                     <a>
                       <div>
                         {val.it_stock_qty == 0&&

@@ -175,6 +175,8 @@
   position: relative;
   margin-top: 10px;
 }
+
+
 .banner_img {
   border-radius: 30px 0 0 30px;
   width: 100%;
@@ -191,6 +193,37 @@
   bottom: 30px;
   color: #fff;
   font-family: "NanumSquareEB";
+}
+
+.banner_div_left {
+  padding: 20px 20px 20px 0;
+  padding-right: 0;
+  position: relative;
+  margin-top: 10px;
+  width:calc(100% - 20px)
+
+}
+
+.banner_div_left a {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+.banner_div_left p {
+  position: absolute;
+  left:  50px;
+  bottom: 30px;
+  color: #fff;
+  font-family: "NanumSquareEB";
+}
+.banner_div_left .banner_img {
+  border-radius: 0px 30px 30px 0px;
+  width: 100%;
+  display: block;
+}
+.banner_div_left .arrow {
+  right: none;
+  left:30px;
 }
 .arrow {
   position: absolute;
@@ -1271,6 +1304,11 @@ input[type="password"] {
 .price_flex a {
   position: absolute;
   right: 0;
+}
+.au_com_time_s_box{
+  position: absolute;
+  right: 0;
+  bottom: -10px;
 }
 .price_flex img {
   width: 115px;
@@ -3913,6 +3951,50 @@ input[type="password"] {
 .normalpay_sel input[type="radio"]:checked + label p {
   color: #000;
 }
+
+
+.radio_sel {
+  display: flex;
+  margin-top: 15px;
+  padding-bottom: 15px;
+}
+.radio_sel input[type="radio"] {
+  display: none;
+}
+.radio_sel label {
+  border: 1px solid #ccc;
+  width: 80px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  line-height: 1.3;
+
+  background-size: cover;
+  margin-right: 10px
+}
+.radio_sel label:last-child {
+  margin-right: 0
+}
+
+.radio_sel label p {
+  color: #ccc;
+  font-size: 11px;
+  line-height: 1.3;
+}
+.radio_sel input[type="radio"]:checked + label{
+  border: 1px solid;
+}
+.radio_sel input[type="radio"]:checked + label p {
+  color: #000;
+}
+.swal2-html-container .info_input{
+  text-align:left;
+  padding:0px;
+}
+
 .card_sel {
   margin-bottom: 15px
 }
@@ -4148,6 +4230,7 @@ input[type="password"] {
 }
 .donation_content {
   padding: 20px;
+  width:100%;
   background: #fff;
   border-radius: 20px 20px 0 0;
   position: fixed;
@@ -5545,7 +5628,10 @@ input[type="password"] {
   display: flex;
   align-items: center;
   padding: 15px;
-  font-size: 15px
+  font-size: 13px
+}
+.youtube_prof > div p{
+  line-height:1.3
 }
 .youtube_prof_img {
   width: 55px;
@@ -5587,10 +5673,25 @@ input[type="password"] {
 .ytb_list li a {
   display: flex;
 }
+.au_com_time{
+  text-align:left;
+  font-size: 13px;
+  font-weight: 400;
+  color: #999;
+  margin-top: 0px;
+  margin-bottom: 7px;
+  display: block;
+}
+.au_com_time span{
+  color: #f00;
+  font-weight:600
+}
 .ytd_date {
-  font-size: 12px;
-  color: #ccc;
+  font-size: 14px;
+  font-weight:bold;
+  color: #f00;
   margin-top: 5px;
+  margin-bottom:5px;
   display: block;
 }
 .ytb_tit {
@@ -6138,4 +6239,36 @@ body .swal2-styled.swal2-confirm{
   width: 0;
   height: 0;
   visibility: hidden;
+}
+.ac_item{
+  display:flex;
+  flex-wrap: wrap;
+}
+.ac_item li{
+  width: 49%;
+  margin-right:1%;
+  position: relative;
+  margin-bottom:15px;
+}
+.ac_item li img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+.ac_item li .img_box{
+  width: 100%;
+  position: relative;
+  display: block;
+}
+.ac_item li .img_box::after{
+  content: "";
+  display: block;
+  padding-bottom: 100%;;
+}
+.auction_item_list{
+  padding:20px;
 }

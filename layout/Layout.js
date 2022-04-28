@@ -18,7 +18,7 @@ export default function Layout({children}){
             </div>
 
             {children}
-            
+
             <footer className={styles.footer}>
                 <a
                 href="http://www.wizmade.com/"

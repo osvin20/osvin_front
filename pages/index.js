@@ -13,6 +13,7 @@ import Image from 'next/image'
 export default function Main() {
   const dispatch = useDispatch();
   const [evList ,setEvList] = useState([]);
+  const [mb_id ,setMb_id] = useState('');
   const [ofstore, setOfstore] = useState([]);
   const [ytubeList, setYtubeList] = useState([]);
   const myLoader = (src) => {
@@ -50,7 +51,7 @@ export default function Main() {
     }).catch((error) => {
 
     });
-
+    setMb_id(localStorage.mb_id)
   },[])
 
   return (
@@ -104,6 +105,18 @@ export default function Main() {
           </Link>
         </div>
       </div>
+      {mb_id == 'test00@naver.com'&&
+      <div className={"banner_div_left"}>
+        <div>
+          <Link href="/auction_list">
+            <a>
+              <img className={"banner_img"} src="/img/banner_02.jpg" />
+              <p>경매보러 가기</p>
+              <img className={"arrow"} src="/img/arrow_01.png" />
+            </a>
+          </Link>
+        </div>
+      </div>}
       <div className={"main_offshop"}>
         <h3 className={"main_tit"}>
           OFFLINE SHOP
