@@ -35,7 +35,7 @@ export default function QnaWrite({query}){
   const iq_subject_title = useChange('');
   const iq_subject = useChange('');
   const iq_question = useChange('');
-  const iq_secret = useCheck(1);
+  const iq_secret = useCheck(0);
   const submitForm = () => {
 
     if(iq_subject_title.value == ''){
@@ -51,12 +51,13 @@ export default function QnaWrite({query}){
       return false;
     }
     const form = new FormData();
-    if(iq_secret.checked){
-      form.append('iq_secret',1);
-    }
+
     form.append('iq_subject',`[${iq_subject_title.value}]${iq_subject.value}`);
     form.append('iq_question',iq_question.value);
     form.append('iq_secret',iq_secret.value);
+    if(iq_secret.checked){
+      form.append('iq_secret',1);
+    }
     form.append('mb_token',localStorage.mb_token);
     form.append('mb_sell_id',item.mb_id);
     form.append('it_id',it_id);

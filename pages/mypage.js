@@ -102,6 +102,11 @@ export default function MyPage() {
             <p>내 활동</p>
             <ul>
               <li>
+                <Link href="/myauction">
+                  <a>나의경매</a>
+                </Link>
+              </li>
+              <li>
                 <Link href="/followingstore">
                   <a>팔로잉 스토어</a>
                 </Link>

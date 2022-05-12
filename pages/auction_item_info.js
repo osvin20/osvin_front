@@ -214,13 +214,10 @@ function Item({query}){
             </div>
           </div>
           <div className={'item_detail'}>
-
             <div
               dangerouslySetInnerHTML={{ __html: item.it_content }}
             />
-
           </div>
-
           <div className={'item_buy'}>
             <a onClick={()=>addCart(1)}>
               입찰하기
