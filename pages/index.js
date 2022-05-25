@@ -105,18 +105,18 @@ export default function Main() {
           </Link>
         </div>
       </div>
-      {mb_id == 'test00@naver.com'&&
-      <div className={"banner_div_left"}>
+      
+      {/* <div className={"banner_div_left"}>
         <div>
           <Link href="/auction_list">
-            <a>
-              <img className={"banner_img"} src="/img/banner_02.jpg" />
-              <p>경매보러 가기</p>
-              <img className={"arrow"} src="/img/arrow_01.png" />
-            </a>
+        <a>
+        <img className={"banner_img"} src="/img/banner_02.jpg" />
+        <p>경매보러 가기</p>
+        <img className={"arrow"} src="/img/arrow_01.png" />
+        </a>
           </Link>
         </div>
-      </div>}
+      </div> */}
       <div className={"main_offshop"}>
         <h3 className={"main_tit"}>
           OFFLINE SHOP
@@ -150,32 +150,32 @@ export default function Main() {
           ))}
         </ul>
       </div>
-      {/* <div className={"main_offshop"}>
+      <div className={"main_offshop"}>
         <h3 className={"main_tit"}>YOUTUBE
           <Link href="/youtube">
-        <a>
-        채널 바로가기
-        <img src="/img/arrow_02.png" />
-        </a>
+            <a>
+              채널 바로가기
+              <img src="/img/arrow_02.png" />
+            </a>
           </Link>
         </h3>
         <ul className={"offshop ytblist"}>
           {ytubeList.map((val, key)=>(
-        <li key={key}>
-        <Link href={val.yo_url}>
-        <a>
-        <img src={
-        val.yo_img != ''?
-        val.yo_img:
-        '/img/no_img.png'
-        }
-        />
-        </a>
-        </Link>
-        </li>
+            <li key={key}>
+              <Link href={val.yo_url}>
+                <a>
+                  <img src={
+                    val.yo_img != ''?
+                    val.yo_img:
+                    '/img/no_img.png'
+                  }
+                  />
+                </a>
+              </Link>
+            </li>
           ))}
         </ul>
-      </div> */}
+      </div>
       {/* <div className={"main_offshop"}>
         <h3 className={"main_tit"}>
           오스빈 SPECIAL EVENT

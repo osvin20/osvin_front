@@ -170,7 +170,7 @@ function Item({query}){
               <div className={'detail_price'}>
                 <div>
                   <p className={'sale_price'}>
-                    {item.it_price}원
+                    {item.it_price_text}원
                   </p>
                   {
                       //<p className={'sale_per'}>10%</p>

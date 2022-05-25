@@ -754,9 +754,10 @@ input[type="password"] {
   height: 1px;
   background: #ddd;
 }
-
 /* 탭 css */
-
+.feedcateline{
+  border-bottom: 1px solid #ddd;
+}
 .feedcate .PrivateTabIndicator-colorSecondary-3 {
   background: rgb(255, 255, 255);
   background: linear-gradient(
@@ -6271,4 +6272,24 @@ body .swal2-styled.swal2-confirm{
 }
 .auction_item_list{
   padding:20px;
+}
+
+
+.lo_add_bnt{
+  padding:5px 3px;
+  background-color: #ca8756;
+  color:#fff;
+  float: right;
+}
+.lo_address{
+  margin-top:5px;
+  font-size:11px;
+}
+.address_form .it_name{
+  font-size:15px;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+.myauction_info{
+  margin:15px;
 }

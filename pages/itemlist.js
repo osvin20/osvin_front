@@ -14,10 +14,10 @@ import {setTabNumber} from '../store/modules/tab_number';
 
 function ItemList({query}){
     const {ca_id} = query;
-    const [cata,setCata] = useState(ca_id);
+    const [cata,setCata] = useHistoryState(ca_id);
     const [cataList,setCateList] = useState([]);
     const [itemList,setItemList] = useState([]);
-    const [value, setValue] = useHistoryState(0);
+    const [value, setValue] = useState(0);
     const handleChange = (event, newValue) => {
       setValue(newValue);
       if(newValue === 0){
@@ -40,9 +40,10 @@ function ItemList({query}){
       });
     },[cata]);
     useEffect(() =>{
+
       axios.get(process.env.api+"Cate/List",{
       	params: {
-          ca_id:cata
+          ca_id:ca_id
         }
       }).then((res)=>{
         if(res.data){
@@ -51,6 +52,14 @@ function ItemList({query}){
         if(value != 0){
           setCata(res.data.data[value-1].ca_id)
         }
+
+        if(res.data.data.findIndex(i => i.ca_id == cata) !== -1){
+          setValue(res.data.data.findIndex(i => i.ca_id == cata)+1)
+        }else {
+          setValue(0)
+        }
+
+
       }).catch((error)=> {
 
       });
