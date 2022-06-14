@@ -59,7 +59,7 @@ export default function Main() {
       <Link href={'/campaign'}>
         <a className={"content_box"}>
           <img src="/img/main_banner_01.png" />
-          <div className={"main_banner_txt"}>
+          {/* <div className={"main_banner_txt"}>
             <p>
               날이 갈수록 나빠지는 지구 생태계
               <br />
@@ -69,7 +69,7 @@ export default function Main() {
               누적 판매량
               <span className={"extra_bold"}>589,881</span>개
             </div>
-          </div>
+          </div> */}
         </a>
       </Link>
       <ul className={"feed_cate"}>
@@ -94,29 +94,45 @@ export default function Main() {
           </Link>
         </li>
       </ul>
-      <div className={"banner_div"}>
+      {/* <div className={"banner_div"}>
         <div>
           <Link href="/itemlist">
-            <a>
-              <img className={"banner_img"} src="/img/banner_01.jpg" />
-              <p>상품보러 가기</p>
-              <img className={"arrow"} src="/img/arrow_01.png" />
-            </a>
+        <a>
+        <img className={"banner_img"} src="/img/banner_01.png" />
+        <p>상품보러 가기</p>
+        <img className={"arrow"} src="/img/arrow_01.png" />
+        </a>
           </Link>
         </div>
-      </div>
+        </div>
 
-      <div className={"banner_div_left"}>
+        <div className={"banner_div_left"}>
         <div>
           <Link href="/auction_list">
-            <a>
-              <img className={"banner_img"} src="/img/banner_02.jpg" />
-              <p>경매보러 가기</p>
-              <img className={"arrow"} src="/img/arrow_01.png" />
-            </a>
+        <a>
+        <img className={"banner_img"} src="/img/banner_02.png" />
+        <p>경매보러 가기</p>
+        <img className={"arrow"} src="/img/arrow_01.png" />
+        </a>
           </Link>
         </div>
+      </div> */}
+      <div>
+        <Link href="/itemlist">
+          <a>
+            <img className={"banner_new"} src="/img/banner_01.png" />
+          </a>
+        </Link>
       </div>
+
+      <div>
+        <Link href="/auction_list">
+          <a>
+            <img className={"banner_new"} src="/img/banner_02.png" />
+          </a>
+        </Link>
+      </div>
+
       <div className={"main_offshop"}>
         <h3 className={"main_tit"}>
           OFFLINE SHOP
@@ -152,12 +168,12 @@ export default function Main() {
       </div>
       <div className={"main_offshop"}>
         <h3 className={"main_tit"}>YOUTUBE
-          <Link href="/youtube">
+          {/* <Link href="/youtube">
             <a>
               채널 바로가기
               <img src="/img/arrow_02.png" />
             </a>
-          </Link>
+          </Link> */}
         </h3>
         <ul className={"offshop ytblist"}>
           {ytubeList.map((val, key)=>(
