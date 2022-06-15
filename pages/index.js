@@ -94,44 +94,44 @@ export default function Main() {
           </Link>
         </li>
       </ul>
-      {/* <div className={"banner_div"}>
+      <div className={"banner_div"}>
         <div>
           <Link href="/itemlist">
-        <a>
-        <img className={"banner_img"} src="/img/banner_01.png" />
-        <p>상품보러 가기</p>
-        <img className={"arrow"} src="/img/arrow_01.png" />
-        </a>
+            <a>
+              <img className={"banner_img"} src="/img/banner_01.png" />
+              <p>상품보러 가기</p>
+              <img className={"arrow"} src="/img/arrow_01_b.png" />
+            </a>
           </Link>
         </div>
-        </div>
+      </div>
 
-        <div className={"banner_div_left"}>
+      <div className={"banner_div_left"}>
         <div>
           <Link href="/auction_list">
-        <a>
-        <img className={"banner_img"} src="/img/banner_02.png" />
-        <p>경매보러 가기</p>
-        <img className={"arrow"} src="/img/arrow_01.png" />
-        </a>
+            <a>
+              <img className={"banner_img"} src="/img/banner_02.png" />
+              <p>경매보러 가기</p>
+              <img className={"arrow"} src="/img/arrow_01.png" />
+            </a>
           </Link>
         </div>
-      </div> */}
-      <div>
+      </div>
+      {/* <div>
         <Link href="/itemlist">
           <a>
-            <img className={"banner_new"} src="/img/banner_01.png" />
+        <img className={"banner_new"} src="/img/banner_01.png" />
           </a>
         </Link>
-      </div>
+      </div> */}
 
-      <div>
+      {/* <div>
         <Link href="/auction_list">
           <a>
-            <img className={"banner_new"} src="/img/banner_02.png" />
+        <img className={"banner_new"} src="/img/banner_02.png" />
           </a>
         </Link>
-      </div>
+      </div> */}
 
       <div className={"main_offshop"}>
         <h3 className={"main_tit"}>

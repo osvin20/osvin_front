@@ -64,7 +64,7 @@ export function HeadTop(props){
         <div className={'cart_ico'}>
             <Link href='/cart'>
                 <a>
-                    <img src="/img/main_cart.png"/>
+                    <img src="/img/cart2.png"/>
                     <span className={'cart_count'}>{count}</span>
                 </a>
             </Link>

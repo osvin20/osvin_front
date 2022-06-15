@@ -182,57 +182,67 @@
 
 .banner_img {
   border-radius: 30px 0 0 30px;
-  width: 100%;
+  width: calc(100% - 90px);
   display: block;
+  margin-right: -10px
 }
 .banner_div a {
   position: relative;
   width: 100%;
   display: block;
+  border: 3px solid #000;
+  border-right: none;
+  border-radius: 30px 0 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .banner_div p {
   position: absolute;
-  right: 50px;
+  left: 45px;
   bottom: 30px;
-  color: #fff;
+  color: #000;
   font-family: "NanumSquareEB";
+  font-size: 14px;
 }
-
 .banner_div_left {
   padding: 20px 20px 20px 0;
   padding-right: 0;
   position: relative;
   margin-top: 10px;
   width:calc(100% - 20px)
-
 }
-
 .banner_div_left a {
   position: relative;
   width: 100%;
   display: block;
+  border-radius: 0 30px 30px 0;
+  background: #000;
+  overflow: hidden;
+  border: 3px solid #000
 }
 .banner_div_left p {
   position: absolute;
-  left:  50px;
+  right:  45px;
   bottom: 30px;
   color: #fff;
   font-family: "NanumSquareEB";
+  font-size: 14px;
 }
 .banner_div_left .banner_img {
-  border-radius: 0px 30px 30px 0px;
-  width: 100%;
+  width: calc(100% - 90px);
   display: block;
+  margin-left: -10px;
 }
 .banner_div_left .arrow {
-  right: none;
-  left:30px;
+  right: 20px;
+  left: inherit;
 }
 .arrow {
   position: absolute;
   bottom: 20px;
-  right: 20px;
-  width: 37%;
+  left: 20px;
+  width: 110px
 }
 .main_tit {
   display: flex;
