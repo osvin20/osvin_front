@@ -35,9 +35,11 @@ function ItemList({query}){
         if(res.data){
           setItemList(res.data.data);
         }
+        window.scrollTo(0,0)
       }).catch((error)=> {
 
       });
+
     },[cata]);
     useEffect(() =>{
 
